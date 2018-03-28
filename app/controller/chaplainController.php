@@ -53,18 +53,6 @@ class ChaplainController {
 					$this->deleteChaplain();
 				}
 				break;
-
-			case 'editdocument':
-				$save = isset($_POST["save"]);
-				if ($save) {
-					$this->editDocument();
-				}
-
-				$delete = isset($_POST["delete"]);
-				if ($delete) {
-					$this->deleteDocument();
-				}
-				break;
 		}
 
 	}
@@ -124,28 +112,24 @@ class ChaplainController {
 	public function addProcess() {
 		// get POST variables
 		$name 	     = $_POST['name']; // required
-		$born 	     = $_POST['born']; // required
-		$died 		 = $_POST['died'];
-		$location    = $_POST['location'];
-		$parents 	 = $_POST['parents'];
-		$siblings    = $_POST['siblings'];
-		$children 	 = $_POST['children'];
+		$faith 	     = $_POST['faith']; // required
+		$faithtype 		 = $_POST['faithtype'];
+		$rank    = $_POST['rank'];
+		$hometown 	 = $_POST['hometown'];
 		$file        = $_POST['file'];
 
-		// name and born are required
-		if ( empty($name) || empty($born) ) {
+		// name and faith are required
+		if ( empty($name) || empty($faith) ) {
 			header('Location: '.BASE_URL.'/soldier/add/'); exit();
 		}
 
 		$chaplain = new Chaplain();
 
 		$chaplain->name       = $name;
-		$chaplain->born       = $born;
-		$chaplain->died       = $died;
-		$chaplain->location   = $location;
-		$chaplain->parents    = $parents;
-		$chaplain->siblings   = $siblings;
-		$chaplain->children   = $children;
+		$chaplain->faith      = $faith;
+		$chaplain->faithtype  = $faithtype;
+		$chaplain->rank       = $rank;
+		$chaplain->hometown   = $hometown;
 		$chaplain->file       = $file;
 		$chaplain->creator_id = 1; // hard coded user ID for now
 
@@ -160,7 +144,7 @@ class ChaplainController {
 		$title       = $_POST['title'];
 		$description = $_POST['description'];
 		$id          = $_POST['id'];
-		$chaplainID     = $_POST['chaplainID'];
+		$chaplainID  = $_POST['chaplainID'];
 
 		$timelineEntry = new TimelineEntry();
 
@@ -193,27 +177,23 @@ class ChaplainController {
 
 	public function editChaplain() {
 
-		$name     = $_POST['name'];
-		$born     = $_POST['born'];
-		$died     = $_POST['died'];
-		$location = $_POST['location'];
-		$parents  = $_POST['parents'];
-		$siblings = $_POST['siblings'];
-		$children = $_POST['children'];
-		$file     = $_POST['file'];
-		$id       = $_POST['id'];
+		$name      = $_POST['name'];
+		$faith     = $_POST['faith'];
+		$faithtype = $_POST['faithtype'];
+		$rank      = $_POST['rank'];
+		$hometown  = $_POST['hometown'];
+		$file      = $_POST['file'];
+		$id        = $_POST['id'];
 
 		$chaplain = new Chaplain();
 
-		$chaplain->name     = $name    ;
-		$chaplain->born     = $born    ;
-		$chaplain->died     = $died    ;
-		$chaplain->location = $location;
-		$chaplain->parents  = $parents ;
-		$chaplain->siblings = $siblings;
-		$chaplain->children = $children;
-		$chaplain->file     = $file    ;
-		$chaplain->id       = $id      ;
+		$chaplain->name      = $name;
+		$chaplain->faith     = $faith;
+		$chaplain->faithtype = $faithtype;
+		$chaplain->rank      = $rank;
+		$chaplain->hometown  = $hometown;
+		$chaplain->file      = $file;
+		$chaplain->id        = $id;
 
 		$chaplainID = $chaplain->save();
 
@@ -231,44 +211,6 @@ class ChaplainController {
 		$chaplainID = $chaplain->delete();
 
 		header('Location: '.BASE_URL.'/search/?search='); exit();
-	}
-
-	public function editDocument() {
-
-		$title    = $_POST['title'];
-		$location = $_POST['location'];
-		$date     = $_POST['date'];
-		$file     = $_POST['file'];
-		$chaplainID  = $_POST['chaplainID'];
-		$id       = $_POST['id'];
-
-		$document = new Document();
-
-		$document->title       = $title;
-		$document->location    = $location;
-		$document->date        = $date;
-		$document->file        = $file;
-		$document->chaplain_id = $chaplainID;
-		$document->creator_id  = 1;
-		$document->id          = $id;
-
-		$documentID = $document->save();
-
-		header('Location: '.BASE_URL.'/chaplain/'.$chaplainID); exit();
-	}
-
-	public function deleteDocument() {
-
-		$id      = $_POST['id'];
-		$chaplainID = $_POST['chaplainID'];
-
-		$document = new Document();
-
-		$document->id = $id;
-
-		$documentID = $document->delete();
-
-		header('Location: '.BASE_URL.'/chaplain/'.$chaplainID); exit();
 	}
 
 }
