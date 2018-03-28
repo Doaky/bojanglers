@@ -6,7 +6,7 @@
 	</form>
 
 	<section class="middle">
-		<h3 class="labels">Pandas:</h3>
+		<h3 class="labels">Chaplains:</h3>
 		<aside class="results">
 			<aside id="search-pandas">
 				<hr>
