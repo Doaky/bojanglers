@@ -1,0 +1,688 @@
+/*TODO Organize by pages and add comments*/
+
+@import url('https://fonts.googleapis.com/css?family=Poiret+One|Quattrocento+Sans');
+
+body * {
+	font-family: 'Quattrocento Sans', sans-serif;
+}
+
+body {
+	background-color: #24292d;
+	color: white;
+	margin-bottom: 0;
+}
+
+::-webkit-scrollbar {
+	width: 10px;
+}
+
+::-webkit-scrollbar-track {
+	background: #ffffff;; 
+}
+
+::-webkit-scrollbar-thumb {
+	background: #131619;
+}
+
+.text {
+	max-width: 800px;
+    margin: 0 auto;
+    padding-left: 25px;
+    text-align: left;
+}
+
+main {
+	height: calc(100vh - 260px) !important;
+	min-height: 440px;
+	text-align: center;
+	margin-top: 60px;
+	position: relative;
+}
+
+hr {
+	border: 0;
+	clear:both;
+	display:block;
+	width: 85%;               
+	background-color:#FFF;
+	height: 2px;
+	margin-left: 0px;
+}
+
+h1 {
+	font-size: 65px;
+	margin: 0;
+	width: auto;
+}
+
+h3 {
+	margin: 0;
+}
+
+h4 {
+	font-weight: bold !important; 
+	margin: 0;
+	font-weight: normal;
+	display: inline-block;
+}
+
+figure {
+	margin: 0;
+}
+
+a {
+	color: white !important;
+}
+
+.selected {
+	text-decoration: underline !important;
+	font-weight: bold;
+}
+
+label {
+	font-weight: bold;
+}
+
+.labels {
+	padding: .5rem;
+}
+
+nav {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	position: fixed;
+	top: 0;
+	right: 0;
+	left: 0;
+	height: 60px;
+	padding: 0;
+	background: #131619;
+	z-index: 1;
+}
+
+nav ul {
+	padding: 0;
+}
+
+.nav-item {
+	list-style: none;
+	margin: 0 10px;
+}
+
+.nav-item > a {
+	color: rgba(255, 255, 255, 0.75);
+	font-weight: bold;
+	text-decoration: none;
+}
+
+.nav-menu-list {
+	display: flex;
+	align-items: center;
+	margin: 0;
+	height: 100%;
+}
+
+#menu-logo {
+	position: fixed;
+	top: 5px;
+	left: 15px;
+	height: 50px;
+}
+
+.status {
+	position: fixed;
+	top: 22px;
+	right: 15px;
+}
+
+.status h4 {
+	padding-right: 5px;
+}
+
+input[type="search"] {
+	background: #4b4e53;
+	border: none;
+	border-radius: 5px;
+	width: 200px;
+	padding: 6px;
+	font-size: 18px;
+	color: white;
+	transition: .5s;
+}
+
+input[type="search"]::-webkit-search-cancel-button {
+	-webkit-appearance: none;
+}
+
+input[type="search"]:focus {
+	outline: none;
+	filter: brightness(130%);
+}
+
+footer {
+	right: 0;
+	bottom: 0;
+	left: 0;
+	padding: 1rem;
+	text-align: center;
+}
+
+footer > a {
+	color: white !important;
+}
+
+.background-image {
+	position: fixed;
+	left: 0;
+	right: 0;
+	margin-top: -150px;
+	z-index: -1;
+
+	display: block;
+	background-image: url('../img/backgrounds/prayer.jpg');
+	background-size: cover;
+	background-position: center; 
+	width: 100%;
+	height: 100%;
+
+	filter: opacity(.5) blur(1.5px);
+}
+
+.left,
+.middle,
+.right {
+	width: 33.33%;
+	display: inline-block;
+	float: left;
+	text-align: left;
+	height: 70%;
+}
+
+.middle input[type="text"] {
+	width: 135px;
+}
+
+.middle input[type="date"] {
+	width: 130px;
+}
+
+.home-page {
+	padding-top: 150px;
+}
+
+#home-search {
+	background: #e4e4e4;
+	width: 500px;
+	color: #000;
+}
+
+#logo {
+	width: 65px;
+	/* TODO Remove filter*/
+	filter: brightness(1);
+	margin: 0 20px 20px 0;
+	padding: 0;
+	float: left;
+}
+
+#title {
+	display: -webkit-inline-box;
+	padding-bottom: 50px;
+}
+
+#create-zoo {
+	background: #e4e4e4;
+	padding: 15px;
+	border-radius: 5px;
+	font-size: 14px;
+	font-weight: bold;
+	border: none;
+	cursor: pointer;
+	transition: .5s;
+}
+
+#create-zoo:hover {
+	background: #fff;
+	transition: .5s;
+}
+
+#create-zoo a {
+	color: #000 !important;
+	text-decoration: none;
+}
+
+.title-text {
+	font-family: 'Poiret One', cursive;
+	letter-spacing: 10px;
+	display: inline-block;
+}
+
+#title h3 {
+	display: inline-block;
+}
+
+.search-page {
+	margin-top: 60px;
+	position: relative;
+	height: calc(100vh - 110px) !important;
+}
+
+.search {
+	height: auto;
+	padding: 12px;
+}
+
+.search-page .middle,
+.search-page .right {
+	width: 50% !important;
+}
+
+.results {
+	display: inline-grid;
+	overflow-y: scroll;
+	height: calc(100vh - 204px) !important;
+	display: flex;
+	overflow: hidden;
+	position: relative;
+	width: 100%;
+}
+
+article h5 {
+	margin: 0;
+}
+
+#search-zoos,
+#search-pandas,
+#search-documents {
+	overflow-y: scroll;
+	height: auto;
+	padding: .5rem;
+	width: 100%;
+}
+
+.zoo-title, .zoo-listing {
+	padding-top: 50px;
+}
+
+.zoo-listing > ul {
+	width: auto;
+	margin: 0 auto;
+	text-align: left;
+	font-size: 18px;
+	display: -webkit-inline-box;
+	list-style: none;
+}
+
+.zoo-listing > ul > li {
+	padding-left: 25px;
+}
+
+.zoo-creator-page {
+	height: calc(100vh - 110px) !important;
+}
+
+#zoo-creator {
+	background-image: url('../img/backgrounds/background-bamboo.jpg');
+	margin-top: 0px;
+	filter: opacity(0.5) blur(2.5px);
+}
+
+.zoo-listing > ul > li > ul * {
+	padding-top: 3px;
+}
+
+.panda {
+	height: calc(100vh - 155px) !important;
+	padding-top: 45px;
+}
+
+.panda .left {
+	width: 45%;
+	height: 100%;
+}
+
+.panda .middle {
+	width: 27.5%;
+}
+
+.panda .right {
+	width: 27.5%;
+}
+
+.panda .profile-picture-container {
+	width: 35%;
+	height: auto;
+	float: right;
+	padding-right: 60px;
+	padding-bottom: 10px;
+}
+
+.panda .middle ul {
+	list-style: none;
+	padding-bottom: 50px;
+}
+
+.panda h1 {
+	display: inline-block;
+	text-align: justify;
+	width: 50%;
+}
+
+.panda h3 {
+	padding-left: 5px;
+}
+
+.profile-picture-container {
+	width: 90%;
+	min-height: 226.8px;
+}
+.panda .left hr {
+	width: 100%;
+	margin-bottom: 15px;
+}
+
+.panda button {
+	margin-left: 5px;
+}
+
+.list-title{
+	font-weight: bold;
+}
+
+.profile-picture {
+	max-width: 100%;
+	max-height: 226.8px;
+	border-radius: 5px;
+}
+
+.timeline-entry p {
+	margin-top: 2px;
+}
+
+.timeline {
+	padding-right: 40px;
+	overflow-y: auto;
+	height: calc(100vh - 449px);
+	min-height: 151px;
+}
+
+.add-panda-page {
+	height: calc(100vh - 170px) !important;
+	padding-top: 60px;
+}
+
+.add-panda-page form {
+	height: 100%;
+}
+
+#add-panda {
+	background-image: url('../img/backgrounds/blessing.jpg');
+	margin-top: -60px;
+	filter: opacity(.5) blur(2px);
+}
+
+#add-panda-submit {
+	margin-top: 20px;
+}
+
+.document-display {
+	height: 75%;
+	padding: 10px;
+	width: 80%;
+	border: 2px #FFF solid;
+	border-radius: 4px;
+	margin-bottom: 10px;
+	background: #131619;
+}
+
+.add-panda-page .middle {
+	overflow-y: auto;
+	width: 66.66% !important;
+}
+
+.add-documents {
+	margin-left: 10px;
+}
+
+.add-panda-page .logged-in {
+	height: 100%;
+}
+
+.hide-info {
+	display: none;
+}
+
+.button {
+	background: #e4e4e4;
+	padding: 8px;
+	font-weight: bold;
+	border: none;
+	cursor: pointer;
+	transition: .5s;
+	padding-top: 4px;
+	padding-bottom: 4px;
+}
+
+.button:hover {
+	background: #fff;
+}
+
+.deleteButton {
+	background-color: #F44336;
+	color: #fff;
+	cursor: pointer;
+	border: none;
+	padding: 8px;
+	font-weight: bold;
+	transition: .5s;
+}
+
+.deleteButton:hover {
+	background-color: #f77066;
+}
+
+.submitButton {
+	background-color: #1fc54a;
+	color: #fff;
+	cursor: pointer;
+	border: none;
+	padding: 8px;
+	font-weight: bold;
+	transition: .5s;
+}
+
+.submitButton:hover {
+	background-color: #65ec88;
+}
+
+.modal {
+	color: black;
+	display: none;
+	position: fixed;
+	z-index: 1;
+	padding-top: 80px;
+	left: 0;
+	top: 0;
+	width: 100%;
+	height: calc(100vh - 80px);
+	overflow: auto;
+	background-color: rgba(0,0,0,0.4);
+}
+
+.modal-content {
+	background-color: #fefefe;
+	margin: auto;
+	padding: 20px;
+	width: 80%;
+}
+
+.close {
+	color: #aaaaaa;
+	float: right;
+	font-size: 28px;
+	font-weight: bold;
+	transition: .5s;
+}
+
+.close:hover,
+.close:focus {
+	color: #000;
+	text-decoration: none;
+	cursor: pointer;
+}
+
+.timeline-entry .editing {
+	float: right;
+}
+
+.event-container textarea {
+	width: 95%;
+}
+
+.actions {
+	display: flex;
+	padding: 30px;
+	position: absolute;
+	right: 0;
+}
+
+.actions button {
+	margin-left: 15px;
+}
+
+.error-messaage {
+	height: 100%;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+}
+
+.about-page {
+	height: calc(100vh - 110px) !important;
+}
+
+#about {
+	margin-top: 0px;
+	background-image: url('../img/backgrounds/chaplain-kit.jpg');
+	filter: opacity(.5) blur(2px);
+}
+
+.about-page p {
+	padding-top: 150px;
+}
+
+#red-panda {
+	width: 50%;
+	border-radius: 50%;
+	max-width: 350px;
+}
+
+.help-page {
+	height: calc(100vh - 208px) !important;
+	margin-top: 0px !important;
+	padding-top: 150px;
+}
+
+#help {
+	margin-top: -100px;
+	background-image: url('../img/backgrounds/memorial.jpg');
+	filter: opacity(.5) blur(.5px);
+}
+
+.contact-page {
+	height: calc(100vh - 110px) !important;
+}
+
+#contact {
+	margin-top: 0px;
+	background-image: url('../img/backgrounds/ship.jpg');
+}
+
+.contact-page p {
+	padding-top: 150px;
+}
+
+@media (max-width: 900px) {
+	nav {
+		font-size: 14px;
+		display: -webkit-inline-box; 
+	}
+	input[type="search"] {
+		width: 160px;
+		font-size: 14px;
+	}
+	.panda .left {
+		width: 100% !important;
+	}
+	.panda .middle,
+	.panda .right {
+		width: 50% !important;
+	}
+
+	#menu-logo {
+		display: none;
+	}
+}
+
+@media (max-width: 750px) {
+	.actions {
+		bottom: 0;
+	}
+
+	.search-page .left,
+	.search-page .middle,
+	.search-page .right {
+		width: 100%;
+	}
+
+	.add-panda-page .middle {
+		margin-bottom: 20px;
+	}
+
+	.add-panda-page .left,
+	.add-panda-page .middle,
+	.add-panda-page .right {
+		width: 100%;
+	}
+
+	.results {
+		height: 90% !important;
+	}
+
+	#add-panda-submit {
+		margin-top: -20px;
+		float: right;
+	}
+}
+
+@media (max-width: 650px) {
+	nav {
+		font-size: 12px;
+	}
+	input[type="search"] {
+		width: 140px;
+		font-size: 12px;
+	}
+}
+
+@media (max-width: 530px) {
+	nav {
+		font-size: 10px;
+	}
+	input[type="search"] {
+		width: 110px;
+		font-size: 10px;
+	}
+	.nav-item {
+		margin: 0px 5px;
+	}
+
+	.zoo-listing > ul {
+		display: inline-grid;
+	}
+	.zoo-listing > ul > li {
+		padding-left: 0px;
+		padding-bottom: 25px; 
+	}
+}

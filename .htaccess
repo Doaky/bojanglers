@@ -1,0 +1,29 @@
+Options -Indexes
+
+RewriteEngine on
+
+# ErrorDocument 404 /error.php
+
+## Site
+# Login/Logout
+RewriteRule ^login/?$ app/controller/siteController.php?action=login [QSA,L]
+RewriteRule ^login/process/?$ app/controller/siteController.php?action=loginProcess [QSA,L]
+RewriteRule ^logout/?$ app/controller/siteController.php?action=logout [QSA,L]
+
+# Header
+RewriteRule ^$ app/controller/siteController.php?action=home [QSA,L]
+RewriteRule ^account/?$ app/controller/siteController.php?action=account [QSA,L]
+RewriteRule ^addchaplain/?$ app/controller/siteController.php?action=add [QSA,L]
+
+# Footer
+RewriteRule ^about/?$ app/controller/siteController.php?action=about [QSA,L]
+RewriteRule ^help/?$ app/controller/siteController.php?action=help [QSA,L]
+RewriteRule ^contact/?$ app/controller/siteController.php?action=contact [QSA,L]
+
+# Chaplains
+RewriteRule ^search/?$ app/controller/chaplainController.php?action=index [QSA,L]
+RewriteRule ^chaplain/(\d+)/?$ app/controller/chaplainController.php?action=chaplain&id=$1 [QSA,L]
+RewriteRule ^chaplain/add/process/?$ app/controller/chaplainController.php?action=addProcess [QSA,L]
+RewriteRule ^chaplain/edittimeline/?$ app/controller/chaplainController.php?action=edittimeline [QSA,L]
+RewriteRule ^chaplain/editchaplain/?$ app/controller/chaplainController.php?action=editchaplain [QSA,L]
+RewriteRule ^chaplain/editdocument/?$ app/controller/chaplainController.php?action=editdocument [QSA,L]
