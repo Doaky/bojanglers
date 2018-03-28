@@ -216,7 +216,7 @@ class ChaplainController {
 		$chaplain->id       = $id      ;
 
 		$chaplainID = $chaplain->save();
-		
+
 		header('Location: '.BASE_URL.'/chaplain/'.$chaplainID); exit();
 	}
 

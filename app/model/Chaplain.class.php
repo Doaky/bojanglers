@@ -1,0 +1,142 @@
+<?php
+
+class Chaplain {
+	const DB_TABLE = 'chaplains'; // database table name
+
+	// database fields for this table
+	public $id = 0;
+	public $name = '';
+	public $faith = '';
+	public $faithtype = 0;
+	public $rank = null;
+	public $hometown = null;
+	public $file = null;
+	public $creator_id = 0;
+	public $date_created = 0;
+
+	// return a Chaplains object by ID
+	public static function loadById($id) {
+		$db = Db::instance(); // create db connection
+		// build query
+		$q = sprintf("SELECT * FROM `%s` WHERE id = %d;",
+			self::DB_TABLE,
+			$id
+			);
+		$result = $db->query($q); // execute query
+		// make sure we found something
+		if ($result->num_rows == 0) {
+			return null;
+		}
+		else {
+			$row = $result->fetch_assoc(); // get results as associative array
+
+			$chaplain = new Chaplain(); // instantiate new Chaplains object
+
+			// store db results in local object
+			$chaplain->id           = $row['id'];
+			$chaplain->name         = $row['name'];
+			$chaplain->faith        = $row['faith'];
+			$chaplain->faithtype    = $row['faithtype'];
+			$chaplain->rank         = $row['rank'];
+			$chaplain->hometown     = $row['hometown'];
+			$chaplain->file         = $row['file'];
+			$chaplain->creator_id   = $row['creator_id'];
+			$chaplain->date_created = $row['date_created'];
+
+			return $chaplain; // return the chaplains
+		}
+	}
+
+	// return all Chaplains as an array
+	public static function getChaplains() {
+		$db = Db::instance();
+		$q = "SELECT id FROM `".self::DB_TABLE."` ORDER BY name ASC;";
+		$result = $db->query($q);
+
+		$chaplains = array();
+		if($result->num_rows != 0) {
+			while($row = $result->fetch_assoc()) {
+				$chaplains[] = self::loadById($row['id']);
+			}
+		}
+		return $chaplains;
+	}
+
+	public function save(){
+		if($this->id == 0) {
+			return $this->insert(); // chaplains is new and needs to be created
+		} else {
+			return $this->update(); // chaplains already exists and needs to be updated
+		}
+	}
+
+	public function insert() {
+		if($this->id != 0)
+			return null; // can't insert something that already has an ID
+
+		$db = Db::instance(); // connect to db
+
+		// build query
+		$q = sprintf("INSERT INTO %s (name, faith, faithtype, rank, hometown, file, creator_id)
+		VALUES (%s, %s, %d, %s, %s, %s, %d);",
+			self::DB_TABLE,
+			$db->escape($this->name),
+			$db->escape($this->faith),
+			$db->escape($this->faithtype),
+			$db->escape($this->rank),
+			$db->escape($this->hometown),
+			$db->escape($this->file),
+			$db->escape($this->creator_id)
+			);
+
+		$db->query($q); // execute query
+		echo $db->getInsertID();
+		return $db->getInsertID(); // return last inserted ID
+	}
+
+	public function update() {
+		if($this->id == 0)
+			return null; // can't update something without an ID
+
+		$db = Db::instance(); // connect to db
+
+		// build query
+		$q = sprintf("UPDATE chaplains SET
+			name      = %s,
+			faith     = %s,
+			faithtype = %d,
+			rank 		  = %s,
+			hometown  = %s,
+			file      = %s
+			WHERE id = %s;",
+			$db->escape($this->name),
+			$db->escape($this->faith),
+			$db->escape($this->faithtype),
+			$db->escape($this->rank),
+			$db->escape($this->hometown),
+			$db->escape($this->file),
+			$db->escape($this->id)
+		);
+
+		$db->query($q);
+
+		return $this->id; // return this object's ID
+	}
+
+	public function delete() {
+		if($this->id == 0) {
+			return null; // can't update something without an ID
+		}
+
+		$db = Db::instance(); // connect to db
+
+		// build query
+		$q = sprintf("DELETE FROM chaplains WHERE id = %s;",
+			$db->escape($this->id)
+			);
+
+		$db->query($q);
+		return 0; // return this object's ID
+	}
+
+}

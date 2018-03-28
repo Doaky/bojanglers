@@ -5,7 +5,7 @@ class TimelineEntry {
 
 	// database fields for this table
 	public $id = 0;
-	public $panda_id = 0;
+	public $chaplain_id = 0;
 	public $title = '';
 	public $year = 0;
 	public $description = null;
@@ -31,7 +31,7 @@ class TimelineEntry {
 
 			// store db results in local object
 			$te->id           = $row['id'];
-			$te->panda_id     = $row['panda_id'];
+			$te->chaplain_id  = $row['fk_chaplain'];
 			$te->title        = $row['title'];
 			$te->year         = $row['year'];
 			$te->description  = $row['description'];
@@ -43,16 +43,16 @@ class TimelineEntry {
 	}
 
 	// return all life events attached to a soldier
-	public static function getByPandaId($pandaID) {
+	public static function getByChaplainId($chaplainID) {
 		$db = Db::instance();
 		$q = sprintf("SELECT te.id AS TimelineEntryID FROM `%s` te
 			INNER JOIN `%s` s ON
-			te.panda_id = s.id
-			WHERE te.panda_id = %d
+			te.chaplain_id = s.id
+			WHERE te.chaplain_id = %d
 			ORDER BY te.year ASC ",
 			self::DB_TABLE,
-			Panda::DB_TABLE,
-			$pandaID
+			Chaplain::DB_TABLE,
+			$chaplainID
 			);
 
 		$result = $db->query($q);
@@ -81,10 +81,10 @@ class TimelineEntry {
 
 		$db = Db::instance(); // connect to db
 		// build query
-		$q = sprintf("INSERT INTO %s (panda_id, title, year, description, creator_id)
+		$q = sprintf("INSERT INTO %s (chaplain_id, title, year, description, creator_id)
 		VALUES (%s, %s, %s, %s, %d);",
 			self::DB_TABLE,
-			$db->escape($this->panda_id),
+			$db->escape($this->chaplain_id),
 			$db->escape($this->title),
 			$db->escape($this->year),
 			$db->escape($this->description),
@@ -150,7 +150,7 @@ class TimelineEntry {
 		$q = sprintf("DELETE FROM timeline_entries WHERE id = %s;",
 			$db->escape($this->id)
 			);
-		
+
 		$db->query($q);
 		return 0; // return this object's ID
 	}
