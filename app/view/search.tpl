@@ -1,9 +1,7 @@
 <main class="search-page">
 
-	<form class="search" action="<?= BASE_URL ?>/search" method="get">
-		<input type="search" name="search" placeholder="Search..." value="<?= $search ?>">
-		<input class="button" type="submit" value="Search">
-	</form>
+	<input type="search" name="search" placeholder="Search..." id = "searchbox">
+	<button type="button" id="searchbtn">search</button>
 
 	<section class="middle">
 		<h3 class="labels">Chaplains:</h3>
@@ -46,5 +44,5 @@
 			</aside>
 		</aside>
 	</section>
-	
+
 </main>
