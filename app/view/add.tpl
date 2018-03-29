@@ -20,24 +20,20 @@
 					<h4>Chaplain Information:</h4>
 					<br><br>
 					<label>*Name: <input type="text" name="name" required="required" placeholder="Enter Name..."></label><br>
+					<label>*Faith: <input type="text" name="faith" required="required" placeholder="Enter Faith..."></label><br>
+					<!-- TODO Change to dropdown? -->
+					<label>Rank: <input type="text" name="rank" placeholder="Enter Rank..."></label><br>
+					<label>Hometown: <input type="text" name="hometown" placeholder="Enter Hometown..."></label><br>
+
 					<!-- date type works in Chrome and Firefox. -->
-					<label>*Born: <input type="number" min="0" max="2019" name="born" required="required"></label><br>
-					<label>Died: <input type="number" min="0" max="2019" name="died"></label><br>
-					<label>Denomination: <input type="text" name="location"></label><br>
-					<label>Rank: <input type="text" name="location"></label><br>
-					<aside class="event-container">
-					</aside>
+					<!-- <label>*Born: <input type="number" min="0" max="2019" name="born" required="required"></label><br>
+					<label>Died: <input type="number" min="0" max="2019" name="died"></label><br> -->
+					
+					<!-- <aside class="event-container">
+					</aside> -->
 					<!-- <button id="add-event">Add Event</button> -->
 				</section>
 				
-				<!-- Kept for future implementation -->
-				<!-- <section class="right">
-					<h4 class="add-documents">Documents:</h4>
-					<figure class="document-display add-documents">
-					</figure>
-					<button class="add-documents">Upload Document</button>
-				</section> -->
-
 				<input id="add-submit" class="button" type="submit" value="Add Chaplain">
 
 			</form>

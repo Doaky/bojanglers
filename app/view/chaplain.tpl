@@ -6,7 +6,7 @@
 			<span class="close">&times;</span>
 			<br><br>
 
-			<form action="<?= BASE_URL ?>/panda/edit_timeline/" method="POST">
+			<form action="<?= BASE_URL ?>/chaplain/edittimeline/" method="POST">
 				<fieldset>
 					<legend>Year</legend>
 					<input type="number" name="year">
@@ -23,7 +23,7 @@
 				</fieldset>
 
 				<input class="hide-info" type="number" name="id" value="0">
-				<input class="hide-info" type="number" name="pandaID" value="<?= $panda->id ?>">
+				<input class="hide-info" type="number" name="chaplainID" value="<?= $chaplain->id ?>">
 
 				<br><br>
 
@@ -38,7 +38,7 @@
 			<span class="close">&times;</span>
 			<br><br>
 
-			<form action="<?= BASE_URL ?>/panda/edit_timeline/" method="POST">
+			<form action="<?= BASE_URL ?>/chaplain/edittimeline/" method="POST">
 				<fieldset>
 					<legend>Year</legend>
 					<input type="number" name="year">
@@ -55,7 +55,7 @@
 				</fieldset>
 
 				<input class="hide-info" id="timelineID" type="number" name="id" value="0">
-				<input class="hide-info" type="number" name="pandaID" value="<?= $panda->id ?>">
+				<input class="hide-info" type="number" name="chaplainID" value="<?= $chaplain->id ?>">
 
 				<br><br>
 
@@ -71,53 +71,40 @@
 			<span class="close">&times;</span>
 			<br><br>
 
-			<form action="<?= BASE_URL ?>/panda/edit_panda/" method="POST">
+			<form action="<?= BASE_URL ?>/chaplain/editchaplain/" method="POST">
 				<fieldset>
 					<legend>Name</legend>
-					<input type="text" name="name" value="<?= $panda->name ?>">
+					<input type="text" name="name" value="<?= $chaplain->name ?>">
 				</fieldset>
 
 				<fieldset>
-					<legend>Location</legend>
-					<input type="text" name="location" value="<?= $panda->location ?>">
+					<legend>Faith</legend>
+					<input type="text" name="faith" value="<?= $chaplain->faith ?>">
+				</fieldset>
+
+				<!-- TODO Add dropdown for faith type -->
+
+				<fieldset>
+					<legend>Rank</legend>
+					<input type="text" name="rank" value="<?= $chaplain->rank ?>">
 				</fieldset>
 
 				<fieldset>
-					<legend>Born</legend>
-					<input type="number" name="born" min="0" value="<?= $panda->born ?>">
-				</fieldset>
-
-				<fieldset>
-					<legend>Died</legend>
-					<input type="number" name="died" min="0" value="<?= $panda->died ?>">
-				</fieldset>
-
-				<fieldset>
-					<legend>Parents</legend>
-					<textarea rows="4" cols="50" name="parents"><?= $panda->parents ?></textarea>
-				</fieldset>
-
-				<fieldset>
-					<legend>Siblings</legend>
-					<textarea rows="4" cols="50" name="siblings"><?= $panda->siblings ?></textarea>
-				</fieldset>
-
-				<fieldset>
-					<legend>Children</legend>
-					<textarea rows="4" cols="50" name="children"><?= $panda->children ?></textarea>
+					<legend>Hometown</legend>
+					<input type="text" name="hometown" value="<?= $chaplain->hometown ?>">
 				</fieldset>
 
 				<fieldset>
 					<legend>File</legend>
-					<input type="text" name="file" value="<?= $panda->file ?>">
+					<input type="text" name="file" value="<?= $chaplain->file ?>">
 				</fieldset>
 
-				<input class="hide-info" type="number" name="id" value="<?= $panda->id ?>">
+				<input class="hide-info" type="number" name="id" value="<?= $chaplain->id ?>">
 
 				<br><br>
 				
 				<input type="submit" class="submitButton" value="Add Changes" name="save" />
-				<input type="submit" class="deleteButton" value="Delete Panda" name="delete" />
+				<input type="submit" class="deleteButton" value="Delete Chaplain" name="delete" />
 			</form>
 		</div>
 	</div>
@@ -128,7 +115,7 @@
 			<span class="close">&times;</span>
 			<br><br>
 
-			<form action="<?= BASE_URL ?>/panda/edit_document/" method="POST">
+			<form action="<?= BASE_URL ?>/chaplain/editdocument/" method="POST">
 				<fieldset>
 					<legend>Title</legend>
 					<input type="text" name="title">
@@ -149,7 +136,7 @@
 					<input type="text" name="file">
 				</fieldset>
 
-				<input class="hide-info" type="number" name="pandaID" value="<?= $panda->id ?>">
+				<input class="hide-info" type="number" name="chaplainID" value="<?= $chaplain->id ?>">
 
 				<br><br>
 
@@ -164,7 +151,7 @@
 			<span class="close">&times;</span>
 			<br><br>
 
-			<form action="<?= BASE_URL ?>/panda/edit_document/" method="POST">
+			<form action="<?= BASE_URL ?>/chaplain/editdocument/" method="POST">
 				<fieldset>
 					<legend>Title</legend>
 					<input type="text" name="title">
@@ -181,7 +168,7 @@
 				</fieldset>
 
 				<input class="hide-info" id="documentID" type="number" name="id" value="0">
-				<input class="hide-info" type="number" name="pandaID" value="<?= $panda->id ?>">
+				<input class="hide-info" type="number" name="chaplainID" value="<?= $chaplain->id ?>">
 
 				<br><br>
 
@@ -192,23 +179,30 @@
 	</div>
 
 	<section class="left">
-		<h1><?= $panda->name ?></h1>
+		<h1><?= $chaplain->name ?></h1>
 
 		<figure class="profile-picture-container">
-			<?php if($panda->file != null): ?>
-				<img class="profile-picture" src="<?= BASE_URL ?>/public/img/pandas/<?= $panda->name ?>/<?= $panda->file ?>" alt="Panda Profile Picture"/><br>
+			<?php if($chaplain->file != null): ?>
+				<img class="profile-picture" src="<?= BASE_URL ?>/public/img/pandas/<?= $chaplain->name ?>/<?= $chaplain->file ?>" alt="Panda Profile Picture"/><br>
 			<?php else: ?>
 				<img class="profile-picture" src="<?= BASE_URL ?>/public/img/placeholder.jpg" alt="Profile Picture"/><br>
 			<?php endif; ?>
 			
 		</figure>
-		<h3><a href="#"><?= $panda->location ?></a></h3>
 
-		<?php if($panda->died != null): ?>
-			<h3><?= $panda->born ?> - <?= $panda->died ?></h3>
+		<h3>
+			<?php if($chaplain->hometown != null): ?>
+				<a><?= $chaplain->hometown ?></a>
+			<?php else: ?>
+				<a>Unknown</a>
+			<?php endif; ?>
+		</h3>
+
+		<!-- <?php if($chaplain->died != null): ?>
+			<h3><?= $chaplain->born ?> - <?= $chaplain->died ?></h3>
 		<?php else: ?>
-			<h3><?= $panda->born ?> - Present</h3>
-		<?php endif; ?>
+			<h3><?= $chaplain->born ?> - Present</h3>
+		<?php endif; ?> -->
 		<br>
 		
 		<?php if(isset($_SESSION['username'])): ?>
@@ -237,42 +231,8 @@
 	</section>
 
 	<section class="middle">
-		<h4>Relatives:</h4>
-		<ul>
-			<li class="list-title">Parents:</li>
-			<?php if($panda->parents != null): ?>
-				<?php foreach(explode(",", $panda->parents) as $p): ?>
-					<li><?= $p ?></li>
-				<?php endforeach; ?>
-			<?php else: ?>
-				<li>None</li>
-			<?php endif; ?>
-		</ul>
-		<ul>
-			<li class="list-title">Siblings:</li>
-			<?php if($panda->siblings != null): ?>
-				<?php foreach(explode(",", $panda->siblings) as $s): ?>
-					<li><?= $s ?></li>
-				<?php endforeach; ?>
-			<?php else: ?>
-				<li>None</li>
-			<?php endif; ?>
-		</ul>
-		<ul> 
-			<li class="list-title">Children:</li>
-			<?php if($panda->children != null): ?>
-				<?php foreach(explode(",", $panda->children) as $c): ?>
-					<li><?= $c ?></li>
-				<?php endforeach; ?>
-			<?php else: ?>
-				<li>None</li>
-			<?php endif; ?>
-		</ul>
-	</section>
-
-	<section class="right">
 		<h4>Documents:</h4>
-		<?php if(isset($_SESSION['username'])): ?>
+		<!-- <?php if(isset($_SESSION['username'])): ?>
 			<button id="addDocument" class="editing button">Add Document</button>
 		<?php endif; ?>
 		<br><br>
@@ -284,7 +244,11 @@
 				<?php endif; ?>
 				<br>
 			<?php endforeach; ?>
-		</figure>
+		</figure> -->
+	</section>
+
+	<section class="right">
+		
 	</section>
 
 </main>

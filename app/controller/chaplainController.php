@@ -72,7 +72,7 @@ class ChaplainController {
 		if ($chaplain != null) {
 			// Loads in Chaplain's timeline and documents
 			$timelineEntries = TimelineEntry::getByChaplainId($id);
-			$documents = Document::getByChaplainId($id);
+			// $documents = Document::getByChaplainId($id);
 			include_once SYSTEM_PATH.'/view/chaplain.tpl';
 		}
 		else {
@@ -96,13 +96,13 @@ class ChaplainController {
 		}
 		$chaplains = $conn->query($chaplain_query);
 
-		if ($search != null) {
-			$document_query = 'SELECT * FROM documents WHERE title LIKE"%'.$search.'%"';
-		}
-		else {
-			$document_query = "SELECT * FROM documents";
-		}
-		$documents = $conn->query($document_query);
+		// if ($search != null) {
+		// 	$document_query = 'SELECT * FROM documents WHERE title LIKE"%'.$search.'%"';
+		// }
+		// else {
+		// 	$document_query = "SELECT * FROM documents";
+		// }
+		// $documents = $conn->query($document_query);
 
 		include_once SYSTEM_PATH.'/view/header.tpl';
 		include_once SYSTEM_PATH.'/view/search.tpl';
@@ -111,12 +111,12 @@ class ChaplainController {
 
 	public function addProcess() {
 		// get POST variables
-		$name 	     = $_POST['name']; // required
-		$faith 	     = $_POST['faith']; // required
-		$faithtype 		 = $_POST['faithtype'];
-		$rank    = $_POST['rank'];
-		$hometown 	 = $_POST['hometown'];
-		$file        = $_POST['file'];
+		$name      = $_POST['name']; // required
+		$faith     = $_POST['faith']; // required
+		$faithtype = $_POST['faithtype'];
+		$rank      = $_POST['rank'];
+		$hometown  = $_POST['hometown'];
+		$file      = $_POST['file'];
 
 		// name and faith are required
 		if ( empty($name) || empty($faith) ) {

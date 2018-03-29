@@ -1,13 +1,15 @@
 -- phpMyAdmin SQL Dump
--- version 4.6.5.2
+-- version 4.7.4
 -- https://www.phpmyadmin.net/
 --
--- Host: localhost
--- Generation Time: Mar 29, 2018 at 12:38 AM
--- Server version: 10.1.21-MariaDB
--- PHP Version: 7.1.1
+-- Host: 127.0.0.1
+-- Generation Time: Mar 29, 2018 at 05:01 PM
+-- Server version: 10.1.30-MariaDB
+-- PHP Version: 7.2.1
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET AUTOCOMMIT = 0;
+START TRANSACTION;
 SET time_zone = "+00:00";
 
 
@@ -17,7 +19,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `chaplains`
+-- Database: `chaplain`
 --
 
 -- --------------------------------------------------------
@@ -46,7 +48,7 @@ CREATE TABLE `chaplains` (
 
 CREATE TABLE `timeline_entries` (
   `id` int(11) NOT NULL,
-  `fk_chaplain` int(11) NOT NULL,
+  `chaplain_id` int(11) NOT NULL,
   `title` varchar(200) NOT NULL,
   `year` year(4) NOT NULL,
   `description` mediumtext NOT NULL,
@@ -69,14 +71,6 @@ CREATE TABLE `users` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 ROW_FORMAT=COMPACT;
 
 --
--- Dumping data for table `users`
---
-
-INSERT INTO `users` (`id`, `username`, `password`, `email`, `date_created`) VALUES
-(1, 'admin', 'root', 'djo96@vt.edu', '2018-02-27 03:05:21'),
-(2, 'doaky', 'panda', 'danielocheltree@gmail.com', '2018-02-27 03:10:40');
-
---
 -- Indexes for dumped tables
 --
 
@@ -97,7 +91,7 @@ ALTER TABLE `chaplains`
 --
 ALTER TABLE `timeline_entries`
   ADD PRIMARY KEY (`id`),
-  ADD KEY `fk_chaplain` (`fk_chaplain`);
+  ADD KEY `fk_chaplain` (`chaplain_id`);
 
 --
 -- Indexes for table `users`
@@ -115,17 +109,21 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `chaplains`
 --
 ALTER TABLE `chaplains`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+
 --
 -- AUTO_INCREMENT for table `timeline_entries`
 --
 ALTER TABLE `timeline_entries`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
+
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+COMMIT;
+
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

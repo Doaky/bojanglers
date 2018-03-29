@@ -31,7 +31,7 @@ class TimelineEntry {
 
 			// store db results in local object
 			$te->id           = $row['id'];
-			$te->chaplain_id  = $row['fk_chaplain'];
+			$te->chaplain_id  = $row['chaplain_id'];
 			$te->title        = $row['title'];
 			$te->year         = $row['year'];
 			$te->description  = $row['description'];

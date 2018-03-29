@@ -4,14 +4,14 @@ class Chaplain {
 	const DB_TABLE = 'chaplains'; // database table name
 
 	// database fields for this table
-	public $id = 0;
-	public $name = '';
-	public $faith = '';
-	public $faithtype = 0;
-	public $rank = null;
-	public $hometown = null;
-	public $file = null;
-	public $creator_id = 0;
+	public $id           = 0;
+	public $name         = '';
+	public $faith        = '';
+	public $faith_type   = 0;
+	public $rank         = null;
+	public $hometown     = null;
+	public $file         = null;
+	public $creator_id   = 0;
 	public $date_created = 0;
 
 	// return a Chaplains object by ID
@@ -36,7 +36,7 @@ class Chaplain {
 			$chaplain->id           = $row['id'];
 			$chaplain->name         = $row['name'];
 			$chaplain->faith        = $row['faith'];
-			$chaplain->faithtype    = $row['faithtype'];
+			$chaplain->faith_type   = $row['faith_type'];
 			$chaplain->rank         = $row['rank'];
 			$chaplain->hometown     = $row['hometown'];
 			$chaplain->file         = $row['file'];
@@ -77,12 +77,12 @@ class Chaplain {
 		$db = Db::instance(); // connect to db
 
 		// build query
-		$q = sprintf("INSERT INTO %s (name, faith, faithtype, rank, hometown, file, creator_id)
+		$q = sprintf("INSERT INTO %s (name, faith, faith_type, rank, hometown, file, creator_id)
 		VALUES (%s, %s, %d, %s, %s, %s, %d);",
 			self::DB_TABLE,
 			$db->escape($this->name),
 			$db->escape($this->faith),
-			$db->escape($this->faithtype),
+			$db->escape($this->faith_type),
 			$db->escape($this->rank),
 			$db->escape($this->hometown),
 			$db->escape($this->file),
@@ -102,16 +102,16 @@ class Chaplain {
 
 		// build query
 		$q = sprintf("UPDATE chaplains SET
-			name      = %s,
-			faith     = %s,
-			faithtype = %d,
-			rank 		  = %s,
-			hometown  = %s,
-			file      = %s
-			WHERE id = %s;",
+			name       = %s,
+			faith      = %s,
+			faith_type = %d,
+			rank       = %s,
+			hometown   = %s,
+			file       = %s
+			WHERE id   = %s;",
 			$db->escape($this->name),
 			$db->escape($this->faith),
-			$db->escape($this->faithtype),
+			$db->escape($this->faith_type),
 			$db->escape($this->rank),
 			$db->escape($this->hometown),
 			$db->escape($this->file),

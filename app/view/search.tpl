@@ -10,18 +10,18 @@
 		<aside class="results">
 			<aside id="search-pandas">
 				<hr>
-				<!-- <?php while($row = $pandas->fetch_assoc()): ?>
+				<?php while($row = $chaplains->fetch_assoc()): ?>
 					<article class="search-result">
-						<h3><a href="<?= BASE_URL ?>/panda/<?= $row['id'] ?>"><?= $row['name'] ?></a></h3>
-						<h5><?= $row['location'] ?></h5>
-						<?php if($row['died'] != ''): ?>
+						<h3><a href="<?= BASE_URL ?>/chaplain/<?= $row['id'] ?>"><?= $row['name'] ?></a></h3>
+						<h5><?= $row['faith'] ?></h5>
+						<!-- <?php if($row['died'] != ''): ?>
 							<h5><?= $row['born'] ?> - <?= $row['died'] ?></h5>
 						<?php else: ?>
 							<h5><?= $row['born'] ?> - Present</h5>
-						<?php endif; ?>
+						<?php endif; ?> -->
 						<hr>
 					</article>
-				<?php endwhile; ?> -->
+				<?php endwhile; ?>
 			</aside>
 		</aside>
 	</section>
