@@ -31,7 +31,7 @@
 			</form>
 		</div>
 	</div>
-	
+
 	<div id="timelineEdit" class="modal">
 		<!-- Modal content -->
 		<div class="modal-content">
@@ -109,7 +109,7 @@
 				<input class="hide-info" type="number" name="id" value="<?= $chaplain->id ?>">
 
 				<br><br>
-				
+
 				<input type="submit" class="submitButton" value="Add Changes" name="save" />
 				<input type="submit" class="deleteButton" value="Delete Chaplain" name="delete" />
 			</form>
@@ -117,7 +117,7 @@
 	</div>
 
 	<section class="left">
-		<h1><?= $chaplain->name ?></h1>
+		<h1 id = "chaplain-name"><?= $chaplain->name ?></h1>
 
 		<figure class="profile-picture-container">
 			<?php if($chaplain->file != null): ?>
@@ -125,7 +125,7 @@
 			<?php else: ?>
 				<img class="profile-picture" src="<?= BASE_URL ?>/public/img/placeholder.jpg" alt="Profile Picture"/><br>
 			<?php endif; ?>
-			
+
 		</figure>
 
 		<h3>
@@ -163,13 +163,13 @@
 		<?php endif; ?> -->
 
 		<br>
-		
+
 		<?php if(isset($_SESSION['username'])): ?>
 			<button class="logged-in button" id="edit">Edit</button>
 			<button class="editing button" id="general">Edit Info</button>
 			<button class="editing button" id="done">Done</button>
 		<?php endif; ?>
-		
+
 		<hr>
 		<h4>Timeline:</h4>
 		<?php if(isset($_SESSION['username'])): ?>
@@ -191,6 +191,9 @@
 
 	<section class="middle">
 		<h4>Documents:</h4>
+		<figure class = "document-display" id = "chaplain-docs">
+
+		</figure>
 		<!-- <?php if(isset($_SESSION['username'])): ?>
 			<button id="addDocument" class="editing button">Add Document</button>
 		<?php endif; ?>
@@ -207,7 +210,7 @@
 	</section>
 
 	<!-- <section class="right">
-		
+
 	</section> -->
 
 </main>

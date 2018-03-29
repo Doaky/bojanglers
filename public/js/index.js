@@ -13,6 +13,8 @@ $(document).ready(function() {
 
 	searchEventListener();
 
+	loadChaplainDocs();
+
 	// Starts session with editing off.
 	$(".editing").hide();
 
@@ -108,7 +110,14 @@ $(document).ready(function() {
 
 //______________________________________________________________________________//
 //--------------------------API SEARCHING FUNCTIONS----------------------------//
-
+function loadChaplainDocs() {
+	var displayObjects = [];
+	var i = 0;
+	while(i < 20) {
+		ajaxCall($("#chaplain-name").text(), i+1, displayObjects);
+		i++;
+	}
+}
 //event listener for the search button
 function searchEventListener() {
   $("#searchbtn").click(function() {
@@ -133,8 +142,10 @@ function searchNewspapers(query) {
 //displays the results from the search query
 function displayResults(objectarray) {
   $("#search-documents").empty();
+	$("#chaplain-docs").empty();
   if (objectarray.length == 0) {
     $("#search-documents").append("<p>No results found</p>");
+		$("#chaplain-docs").append("<p>No Documents found</p>");
   }
   objectarray.forEach(function(e) {
     $("#search-documents").append('<article class="search-result"> ' +
@@ -143,6 +154,8 @@ function displayResults(objectarray) {
       '<h5>' + e.date + '</h5>' +
       '<hr>' +
       '</article>')
+
+		$("#chaplain-docs").append('<a href="' + e.link + '">' + e.title + '</a>');
   })
 }
 //this function makes an ajax call to the chroniclingamerica.loc.gov api
