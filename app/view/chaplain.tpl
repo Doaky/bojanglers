@@ -183,7 +183,7 @@
 
 		<figure class="profile-picture-container">
 			<?php if($chaplain->file != null): ?>
-				<img class="profile-picture" src="<?= BASE_URL ?>/public/img/pandas/<?= $chaplain->name ?>/<?= $chaplain->file ?>" alt="Panda Profile Picture"/><br>
+				<img class="profile-picture" src="<?= BASE_URL ?>/public/img/chaplains/<?= $chaplain->name ?>/<?= $chaplain->file ?>" alt="Panda Profile Picture"/><br>
 			<?php else: ?>
 				<img class="profile-picture" src="<?= BASE_URL ?>/public/img/placeholder.jpg" alt="Profile Picture"/><br>
 			<?php endif; ?>
@@ -197,6 +197,8 @@
 				<a>Unknown</a>
 			<?php endif; ?>
 		</h3>
+
+		<h3><?= $chaplain->faith ?></h3>
 
 		<!-- <?php if($chaplain->died != null): ?>
 			<h3><?= $chaplain->born ?> - <?= $chaplain->died ?></h3>
@@ -247,8 +249,8 @@
 		</figure> -->
 	</section>
 
-	<section class="right">
+	<!-- <section class="right">
 		
-	</section>
+	</section> -->
 
 </main>

@@ -344,12 +344,12 @@ article h5 {
 }
 
 .panda .left {
-	width: 45%;
+	width: 70%;
 	height: 100%;
 }
 
 .panda .middle {
-	width: 27.5%;
+	width: 30%;
 }
 
 .panda .right {
@@ -371,7 +371,7 @@ article h5 {
 
 .panda h1 {
 	display: inline-block;
-	text-align: justify;
+	/*text-align: justify;*/
 	width: 50%;
 }
 
@@ -623,7 +623,8 @@ article h5 {
 	}
 	.panda .middle,
 	.panda .right {
-		width: 50% !important;
+		width: 100% !important;
+    	padding-top: 20px;
 	}
 
 	#menu-logo {
@@ -632,6 +633,10 @@ article h5 {
 }
 
 @media (max-width: 750px) {
+	.panda h1 {
+		font-size: 55px;
+	}
+
 	.actions {
 		bottom: 0;
 	}
@@ -663,6 +668,9 @@ article h5 {
 }
 
 @media (max-width: 650px) {
+	.panda h1 {
+		font-size: 50px;
+	}
 	nav {
 		font-size: 12px;
 	}
@@ -673,6 +681,9 @@ article h5 {
 }
 
 @media (max-width: 530px) {
+	.panda h1 {
+		font-size: 45px;
+	}
 	nav {
 		font-size: 10px;
 	}
