@@ -1,7 +1,9 @@
 /*TODO Organize by pages and add comments*/
 
 @import url('https://fonts.googleapis.com/css?family=Poiret+One|Quattrocento+Sans');
-
+/*
+ * === GENERAL ===
+ */
 body * {
 	font-family: 'Quattrocento Sans', sans-serif;
 }
@@ -26,9 +28,9 @@ body {
 
 .text {
 	max-width: 800px;
-    margin: 0 auto;
-    padding-left: 25px;
-    text-align: left;
+	margin: 0 auto;
+	padding-left: 25px;
+	text-align: left;
 }
 
 main {
@@ -218,7 +220,7 @@ footer > a {
 }
 
 #logo {
-	width: 65px;
+	width: 87px;;
 	/* TODO Remove filter*/
 	filter: brightness(1);
 	margin: 0 20px 20px 0;
@@ -260,6 +262,10 @@ footer > a {
 
 #title h3 {
 	display: inline-block;
+	margin-left: -20px;
+	font-size: 38px;
+	padding-top: 6px;
+	font-weight: normal;
 }
 
 .search-page {
@@ -407,22 +413,22 @@ article h5 {
 	min-height: 151px;
 }
 
-.add-panda-page {
+.add-page {
 	height: calc(100vh - 170px) !important;
 	padding-top: 60px;
 }
 
-.add-panda-page form {
+.add-page form {
 	height: 100%;
 }
 
-#add-panda {
+#add {
 	background-image: url('../img/backgrounds/blessing.jpg');
 	margin-top: -60px;
 	filter: opacity(.5) blur(2px);
 }
 
-#add-panda-submit {
+#add-submit {
 	margin-top: 20px;
 }
 
@@ -436,7 +442,7 @@ article h5 {
 	background: #131619;
 }
 
-.add-panda-page .middle {
+.add-page .middle {
 	overflow-y: auto;
 	width: 66.66% !important;
 }
@@ -445,7 +451,7 @@ article h5 {
 	margin-left: 10px;
 }
 
-.add-panda-page .logged-in {
+.add-page .logged-in {
 	height: 100%;
 }
 
@@ -636,13 +642,13 @@ article h5 {
 		width: 100%;
 	}
 
-	.add-panda-page .middle {
+	.add-page .middle {
 		margin-bottom: 20px;
 	}
 
-	.add-panda-page .left,
-	.add-panda-page .middle,
-	.add-panda-page .right {
+	.add-page .left,
+	.add-page .middle,
+	.add-page .right {
 		width: 100%;
 	}
 
@@ -650,7 +656,7 @@ article h5 {
 		height: 90% !important;
 	}
 
-	#add-panda-submit {
+	#add-submit {
 		margin-top: -20px;
 		float: right;
 	}

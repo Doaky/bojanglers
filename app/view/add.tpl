@@ -1,6 +1,6 @@
-<main class="add-panda-page">
+<main class="add-page">
 	
-	<div id="add-panda" class="background-image"></div>
+	<div id="add" class="background-image"></div>
 
 	<?php if(isset($_SESSION['username'])): ?>
 
@@ -38,7 +38,7 @@
 					<button class="add-documents">Upload Document</button>
 				</section> -->
 
-				<input id="add-panda-submit" class="button" type="submit" value="Add Chaplain">
+				<input id="add-submit" class="button" type="submit" value="Add Chaplain">
 
 			</form>
 
