@@ -104,10 +104,10 @@ class Chaplain {
 		$q = sprintf("UPDATE chaplains SET
 			name       = %s,
 			faith      = %s,
-			faith_type = %d,
+			faith_type = %s,
 			rank       = %s,
 			hometown   = %s,
-			file       = %s
+			file       = %d
 			WHERE id   = %s;",
 			$db->escape($this->name),
 			$db->escape($this->faith),

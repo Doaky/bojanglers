@@ -20,7 +20,15 @@
 					<h4>Chaplain Information:</h4>
 					<br><br>
 					<label>*Name: <input type="text" name="name" required="required" placeholder="Enter Name..."></label><br>
-					<label>*Faith: <input type="text" name="faith" required="required" placeholder="Enter Faith..."></label><br>
+					<label>*Denomination: 
+						<select name="faith_type" required="required">
+							<option disabled selected value>Select a Denomination</option>
+							<option value="0">Jewish</option>
+							<option value="1">Catholic</option>
+							<option value="2">Protestant</option>
+						</select>
+					</label><br>
+					<label>*Order: <input type="text" name="faith" required="required" placeholder="Enter Faith..."></label><br>
 					<!-- TODO Change to dropdown? -->
 					<label>Rank: <input type="text" name="rank" placeholder="Enter Rank..."></label><br>
 					<label>Hometown: <input type="text" name="hometown" placeholder="Enter Hometown..."></label><br>

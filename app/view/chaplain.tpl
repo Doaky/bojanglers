@@ -78,11 +78,18 @@
 				</fieldset>
 
 				<fieldset>
-					<legend>Faith</legend>
-					<input type="text" name="faith" value="<?= $chaplain->faith ?>">
+					<legend>Denomination</legend>
+					<select name="faith_type" value="<?= $chaplain->faith_type ?>">
+						<option value="0">Jewish</option>
+						<option value="1">Catholic</option>
+						<option value="2">Protestant</option>
+					</select>
 				</fieldset>
 
-				<!-- TODO Add dropdown for faith type -->
+				<fieldset>
+					<legend>Order</legend>
+					<input type="text" name="faith" value="<?= $chaplain->faith ?>">
+				</fieldset>
 
 				<fieldset>
 					<legend>Rank</legend>
@@ -109,81 +116,12 @@
 		</div>
 	</div>
 
-	<div id="documentAdd" class="modal">
-		<!-- Modal content -->
-		<div class="modal-content">
-			<span class="close">&times;</span>
-			<br><br>
-
-			<form action="<?= BASE_URL ?>/chaplain/editdocument/" method="POST">
-				<fieldset>
-					<legend>Title</legend>
-					<input type="text" name="title">
-				</fieldset>
-
-				<fieldset>
-					<legend>Location</legend>
-					<input type="text" name="location">
-				</fieldset>
-
-				<fieldset>
-					<legend>Date</legend>
-					<input type="date" name="date">
-				</fieldset>
-
-				<fieldset>
-					<legend>File</legend>
-					<input type="text" name="file">
-				</fieldset>
-
-				<input class="hide-info" type="number" name="chaplainID" value="<?= $chaplain->id ?>">
-
-				<br><br>
-
-				<input type="submit" class="submitButton" value="Add Document" name="save" />
-			</form>
-		</div>
-	</div>
-
-	<div id="documentEdit" class="modal">
-		<!-- Modal content -->
-		<div class="modal-content">
-			<span class="close">&times;</span>
-			<br><br>
-
-			<form action="<?= BASE_URL ?>/chaplain/editdocument/" method="POST">
-				<fieldset>
-					<legend>Title</legend>
-					<input type="text" name="title">
-				</fieldset>
-
-				<fieldset>
-					<legend>Location</legend>
-					<input type="text" name="location">
-				</fieldset>
-
-				<fieldset>
-					<legend>Date</legend>
-					<input type="date" name="date">
-				</fieldset>
-
-				<input class="hide-info" id="documentID" type="number" name="id" value="0">
-				<input class="hide-info" type="number" name="chaplainID" value="<?= $chaplain->id ?>">
-
-				<br><br>
-
-				<input type="submit" class="submitButton" value="Add Changes" name="save" />
-				<input type="submit" class="deleteButton" value="Delete Document" name="delete" />
-			</form>
-		</div>
-	</div>
-
 	<section class="left">
 		<h1><?= $chaplain->name ?></h1>
 
 		<figure class="profile-picture-container">
 			<?php if($chaplain->file != null): ?>
-				<img class="profile-picture" src="<?= BASE_URL ?>/public/img/chaplains/<?= $chaplain->name ?>/<?= $chaplain->file ?>" alt="Panda Profile Picture"/><br>
+				<img class="profile-picture" src="<?= BASE_URL ?>/public/img/chaplains/<?= $chaplain->name ?>/<?= $chaplain->file ?>" alt="Chaplain Profile Picture"/><br>
 			<?php else: ?>
 				<img class="profile-picture" src="<?= BASE_URL ?>/public/img/placeholder.jpg" alt="Profile Picture"/><br>
 			<?php endif; ?>
@@ -194,17 +132,36 @@
 			<?php if($chaplain->hometown != null): ?>
 				<a><?= $chaplain->hometown ?></a>
 			<?php else: ?>
-				<a>Unknown</a>
+				<a>Unknown Hometown</a>
 			<?php endif; ?>
 		</h3>
 
-		<h3><?= $chaplain->faith ?></h3>
+		<h3>
+			<?php if($chaplain->rank != null): ?>
+				<a><?= $chaplain->rank ?></a>
+			<?php else: ?>
+				<a>Unknown Rank</a>
+			<?php endif; ?>
+		</h3>
+
+		<h3>
+			<?php if($chaplain->faith_type == 0): ?>
+				Jewish -
+			<?php elseif($chaplain->faith_type == 1): ?>
+				Catholic - 
+			<?php elseif($chaplain->faith_type == 2): ?>
+				Protestant - 
+			<?php endif; ?>
+
+			<?= $chaplain->faith ?>
+		</h3>
 
 		<!-- <?php if($chaplain->died != null): ?>
 			<h3><?= $chaplain->born ?> - <?= $chaplain->died ?></h3>
 		<?php else: ?>
 			<h3><?= $chaplain->born ?> - Present</h3>
 		<?php endif; ?> -->
+
 		<br>
 		
 		<?php if(isset($_SESSION['username'])): ?>
