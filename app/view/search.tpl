@@ -1,7 +1,10 @@
 <main class="search-page">
-
-	<input type="search" name="search" placeholder="Search..." id = "searchbox">
-	<button type="button" id="searchbtn">search</button>
+	
+	<form class="search" action="<?= BASE_URL ?>/search" method="get">
+		<input type="search" name="search" placeholder="Search..." id = "searchbox">
+		<button  class="button" type="submit" id="searchbtn">search</button>
+		<!-- <input class="button" type="submit" value="Search"> -->
+	</form>
 
 	<section class="middle">
 		<h3 class="labels">Chaplains:</h3>
