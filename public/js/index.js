@@ -11,6 +11,8 @@ $(document).ready(function() {
 
 	addUsername();
 
+	searchEventListener();
+
 	// Starts session with editing off.
 	$(".editing").hide();
 
@@ -80,7 +82,7 @@ $(document).ready(function() {
 	// Avatar Uploading
 	var upload = function(image) {
 		var avatar = new FileReader();
-		avatar.onload = function (e) { 
+		avatar.onload = function (e) {
 			// Adds the picture's path to the HTML object's src attribute.
 			$(".profile-picture").attr('src', e.target.result);
 		}
@@ -103,3 +105,83 @@ $(document).ready(function() {
 		eventCounter++;
 	});
 });
+
+//______________________________________________________________________________//
+//--------------------------API SEARCHING FUNCTIONS----------------------------//
+
+//event listener for the search button
+function searchEventListener() {
+  $("#searchbtn").click(function() {
+    if ($("#searchbox").val() != '') {
+      searchNewspapers($("#searchbox").val());
+    }
+  });
+}
+//Makes a function call to load search results
+function searchNewspapers(query) {
+  $("#search-documents").empty();
+  $("#search-documents").append("<p>Loading results for " + query + "</p>");
+  var displayObjects = []; //array where results are kept
+  var i = 0;
+  //load results from the first 20 pages
+  while (i < 20) {
+    ajaxCall(query, i + 1, displayObjects);
+    i++;
+  }
+}
+
+//displays the results from the search query
+function displayResults(objectarray) {
+  $("#search-documents").empty();
+  if (objectarray.length == 0) {
+    $("#search-documents").append("<p>No results found</p>");
+  }
+  objectarray.forEach(function(e) {
+    $("#search-documents").append('<article class="search-result"> ' +
+      '<h3><a href="' + e.link + '">' + e.title + '</a></h3>' +
+      '<h5>' + e.location + '</h5>' +
+      '<h5>' + e.date + '</h5>' +
+      '<hr>' +
+      '</article>')
+  })
+}
+//this function makes an ajax call to the chroniclingamerica.loc.gov api
+function ajaxCall(query, number, displayObjects) {
+  //make an ajax call to the chroniclingamerica api and load results into an array
+  $.ajax({
+    url: 'http://chroniclingamerica.loc.gov/search/pages/results/',
+    dataType: 'jsonp',
+    data: {
+      andtext: 'chaplains ' + query,
+      page: number,
+      format: 'json'
+    },
+    success: function(response) {
+      response.items.forEach(function(e) {
+        //only look for results that are from 1930 or later
+        if (parseInt(e.date) > 19300000) {
+          var obj = {
+            title: toTitleCase(e.title_normal), //title of the newspaper, journal, etc.
+            link: 'https://chroniclingamerica.loc.gov' + e.id, //link to the actual article
+            location: e.place_of_publication, //location of publication
+            text: e.ocr_eng, //full text of the article
+            date: e.date.substring(0, 4) + '/' + e.date.substring(4, 6) + '/' + e.date.substring(6, 8) //date of publishing
+          };
+          displayObjects.push(obj); //add to the array
+        }
+      });
+      displayResults(displayObjects); //display the results when we get them
+    }
+  });
+}
+
+// Source
+// https://stackoverflow.com/a/4878800
+function toTitleCase(str) {
+  return str.replace(/\w\S*/g, function(txt) {
+    return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();
+  });
+}
+
+//----------------------END OF API SEARCHING FUNCTIONS------------------------//
+//____________________________________________________________________________//
