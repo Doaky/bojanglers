@@ -96,14 +96,6 @@ class ChaplainController {
 		}
 		$chaplains = $conn->query($chaplain_query);
 
-		// if ($search != null) {
-		// 	$document_query = 'SELECT * FROM documents WHERE title LIKE"%'.$search.'%"';
-		// }
-		// else {
-		// 	$document_query = "SELECT * FROM documents";
-		// }
-		// $documents = $conn->query($document_query);
-
 		include_once SYSTEM_PATH.'/view/header.tpl';
 		include_once SYSTEM_PATH.'/view/search.tpl';
 		include_once SYSTEM_PATH.'/view/footer.tpl';
@@ -111,23 +103,23 @@ class ChaplainController {
 
 	public function addProcess() {
 		// get POST variables
-		$name      = $_POST['name']; // required
-		$faith     = $_POST['faith']; // required
-		$faithtype = $_POST['faithtype'];
-		$rank      = $_POST['rank'];
-		$hometown  = $_POST['hometown'];
-		$file      = $_POST['file'];
+		$name       = $_POST['name']; // required
+		$faith      = $_POST['faith'];
+		$faith_type = $_POST['faith_type']; // required
+		$rank       = $_POST['rank'];
+		$hometown   = $_POST['hometown'];
+		$file       = $_POST['file'];
 
 		// name and faith are required
-		if ( empty($name) || empty($faith) ) {
-			header('Location: '.BASE_URL.'/soldier/add/'); exit();
+		if ( !isset($name) || !isset($faith_type) ) {
+			header('Location: '.BASE_URL.'/addchaplain/'); exit();
 		}
 
 		$chaplain = new Chaplain();
 
 		$chaplain->name       = $name;
 		$chaplain->faith      = $faith;
-		$chaplain->faithtype  = $faithtype;
+		$chaplain->faith_type = $faith_type;
 		$chaplain->rank       = $rank;
 		$chaplain->hometown   = $hometown;
 		$chaplain->file       = $file;
@@ -163,7 +155,7 @@ class ChaplainController {
 
 	public function deleteTimeline() {
 
-		$id      = $_POST['id'];
+		$id         = $_POST['id'];
 		$chaplainID = $_POST['chaplainID'];
 
 		$timelineEntry = new TimelineEntry();
@@ -177,23 +169,23 @@ class ChaplainController {
 
 	public function editChaplain() {
 
-		$name      = $_POST['name'];
-		$faith     = $_POST['faith'];
-		$faithtype = $_POST['faithtype'];
-		$rank      = $_POST['rank'];
-		$hometown  = $_POST['hometown'];
-		$file      = $_POST['file'];
-		$id        = $_POST['id'];
+		$name       = $_POST['name'];
+		$faith      = $_POST['faith'];
+		$faith_type = $_POST['faith_type'];
+		$rank       = $_POST['rank'];
+		$hometown   = $_POST['hometown'];
+		$file       = $_POST['file'];
+		$id         = $_POST['id'];
 
 		$chaplain = new Chaplain();
 
-		$chaplain->name      = $name;
-		$chaplain->faith     = $faith;
-		$chaplain->faithtype = $faithtype;
-		$chaplain->rank      = $rank;
-		$chaplain->hometown  = $hometown;
-		$chaplain->file      = $file;
-		$chaplain->id        = $id;
+		$chaplain->name       = $name;
+		$chaplain->faith      = $faith;
+		$chaplain->faith_type = $faith_type;
+		$chaplain->rank       = $rank;
+		$chaplain->hometown   = $hometown;
+		$chaplain->file       = $file;
+		$chaplain->id         = $id;
 
 		$chaplainID = $chaplain->save();
 

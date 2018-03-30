@@ -78,7 +78,7 @@ class Chaplain {
 
 		// build query
 		$q = sprintf("INSERT INTO %s (name, faith, faith_type, rank, hometown, file, creator_id)
-		VALUES (%s, %s, %d, %s, %s, %s, %d);",
+		VALUES (%s, %s, %s, %s, %s, %s, %d);",
 			self::DB_TABLE,
 			$db->escape($this->name),
 			$db->escape($this->faith),
@@ -107,7 +107,7 @@ class Chaplain {
 			faith_type = %s,
 			rank       = %s,
 			hometown   = %s,
-			file       = %d
+			file       = %s
 			WHERE id   = %s;",
 			$db->escape($this->name),
 			$db->escape($this->faith),

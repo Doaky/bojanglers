@@ -78,17 +78,8 @@
 				</fieldset>
 
 				<fieldset>
-					<legend>Denomination</legend>
-					<select name="faith_type" value="<?= $chaplain->faith_type ?>">
-						<option value="0">Jewish</option>
-						<option value="1">Catholic</option>
-						<option value="2">Protestant</option>
-					</select>
-				</fieldset>
-
-				<fieldset>
-					<legend>Order</legend>
-					<input type="text" name="faith" value="<?= $chaplain->faith ?>">
+					<legend>Hometown</legend>
+					<input type="text" name="hometown" value="<?= $chaplain->hometown ?>">
 				</fieldset>
 
 				<fieldset>
@@ -97,9 +88,16 @@
 				</fieldset>
 
 				<fieldset>
-					<legend>Hometown</legend>
-					<input type="text" name="hometown" value="<?= $chaplain->hometown ?>">
+					<legend>Denomination</legend>
+					<select name="faith_type" value="<?= $chaplain->faith_type ?>" required="required" onchange="showOrderInput(this.options[this.selectedIndex].value)">
+						<option value="0">Jewish</option>
+						<option value="1">Catholic</option>
+						<option value="2">Protestant</option>
+					</select>
 				</fieldset>
+
+				<div id="order">
+				</div>
 
 				<fieldset>
 					<legend>File</legend>
@@ -146,14 +144,12 @@
 
 		<h3>
 			<?php if($chaplain->faith_type == 0): ?>
-				Jewish -
+				Jewish
 			<?php elseif($chaplain->faith_type == 1): ?>
-				Catholic - 
+				Catholic - <?= $chaplain->faith ?>
 			<?php elseif($chaplain->faith_type == 2): ?>
-				Protestant - 
+				Protestant
 			<?php endif; ?>
-
-			<?= $chaplain->faith ?>
 		</h3>
 
 		<!-- <?php if($chaplain->died != null): ?>

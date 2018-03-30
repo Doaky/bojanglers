@@ -42,7 +42,7 @@ class TimelineEntry {
 		}
 	}
 
-	// return all life events attached to a soldier
+	// return all life events attached to a chaplain
 	public static function getByChaplainId($chaplainID) {
 		$db = Db::instance();
 		$q = sprintf("SELECT te.id AS TimelineEntryID FROM `%s` te

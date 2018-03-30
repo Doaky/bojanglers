@@ -18,28 +18,38 @@
 
 				<section class="middle">
 					<h4>Chaplain Information:</h4>
-					<br><br>
-					<label>*Name: <input type="text" name="name" required="required" placeholder="Enter Name..."></label><br>
-					<label>*Denomination: 
-						<select name="faith_type" required="required">
-							<option disabled selected value>Select a Denomination</option>
-							<option value="0">Jewish</option>
-							<option value="1">Catholic</option>
-							<option value="2">Protestant</option>
-						</select>
-					</label><br>
-					<label>*Order: <input type="text" name="faith" required="required" placeholder="Enter Faith..."></label><br>
-					<!-- TODO Change to dropdown? -->
-					<label>Rank: <input type="text" name="rank" placeholder="Enter Rank..."></label><br>
-					<label>Hometown: <input type="text" name="hometown" placeholder="Enter Hometown..."></label><br>
-
-					<!-- date type works in Chrome and Firefox. -->
-					<!-- <label>*Born: <input type="number" min="0" max="2019" name="born" required="required"></label><br>
-					<label>Died: <input type="number" min="0" max="2019" name="died"></label><br> -->
 					
-					<!-- <aside class="event-container">
-					</aside> -->
-					<!-- <button id="add-event">Add Event</button> -->
+					<br><br>
+					<div id="add-form">
+						<fieldset>
+							<legend>Name*</legend>
+							<input type="text" name="name" required="required" placeholder="Enter Name..."></label>
+						</fieldset>
+
+						<fieldset>
+							<legend>Hometown</legend>
+							<input type="text" name="hometown" placeholder="Enter Hometown...">
+						</fieldset>
+
+						<fieldset>
+							<legend>Rank</legend>
+							<input type="text" name="rank" placeholder="Enter Rank...">
+						</fieldset>
+
+						<fieldset>
+							<legend>Denomination*</legend>
+							<select name="faith_type" required="required" onchange="showOrderInput(this.options[this.selectedIndex].value)">
+								<option disabled selected value>Select a Denomination</option>
+								<option value="0">Jewish</option>
+								<option value="1">Catholic</option>
+								<option value="2">Protestant</option>
+							</select>
+						</fieldset>
+						
+						<div id="order">
+						</div>
+					</div>
+
 				</section>
 				
 				<input id="add-submit" class="button" type="submit" value="Add Chaplain">

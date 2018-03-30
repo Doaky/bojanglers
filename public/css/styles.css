@@ -422,6 +422,11 @@ article h5 {
 	height: 100%;
 }
 
+#add-form {
+	text-align: center;
+	width: 30%;
+}
+
 #add {
 	background-image: url('../img/backgrounds/blessing.jpg');
 	margin-top: -60px;
@@ -432,14 +437,20 @@ article h5 {
 	margin-top: 20px;
 }
 
+.middle h4 {
+	margin-left: 15px;
+}
+
 .document-display {
-	height: 75%;
+	height: 100%;
 	padding: 10px;
 	width: 80%;
 	border: 2px #FFF solid;
 	border-radius: 4px;
 	margin-bottom: 10px;
 	background: #131619;
+	margin-top: 10px;
+	margin-left: 15px;
 }
 
 .add-page .middle {
