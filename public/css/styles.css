@@ -1,9 +1,5 @@
-/*TODO Organize by pages and add comments*/
-
 @import url('https://fonts.googleapis.com/css?family=Poiret+One|Quattrocento+Sans');
-/*
- * === GENERAL ===
- */
+
 body * {
 	font-family: 'Quattrocento Sans', sans-serif;
 }

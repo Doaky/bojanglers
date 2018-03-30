@@ -11,9 +11,13 @@ $(document).ready(function() {
 	addUsername();
 	asyncFunctions();
 	searchEventListener();
-
-	loadChaplainImage(); // Gets image from API
-	loadChaplainDocs(); // Gets info from API
+	if (document.title == "Chaplain | Chaplain Stories") {
+		loadChaplainImage(); // Gets image from API
+		loadChaplainDocs(); // Gets info from API
+	}
+	else if (document.title == "Search | Chaplain Stories") {
+		loadChaplainDocs(); // Gets info from API
+	}
 
 //_______________________________________________________________________//
 //----------------------------Editing Chaplain---------------------------//
@@ -88,7 +92,7 @@ $(document).ready(function() {
 		chaplainEditModal.style.display = "none";
 	});
 //---------------------------End Editing Chaplain-------------------------//
-//_______________________________________________________________________//
+//___________________________________________________________________-____//
 
 	/**
 	 * Replaced defualt "user" text with actual username.
@@ -309,9 +313,9 @@ function asyncFunctions() {
 		console.log("error in the get");
 	});
 }
-
 //----------------------END OF AJAX ASYNC FUNCTIONS---------------------------//
 //____________________________________________________________________________//
+
 //______________________________________________________________________________//
 //--------------------------------Wikipedia API---------------------------------//
 /**
@@ -340,6 +344,9 @@ function getWikiImage(title) {
 			var image = response.query.pages[Object.keys(response.query.pages)[0]].original.source;
 			if (image) {
 				document.getElementsByClassName("profile-picture")[0].src = image;
+			}
+			else {
+				 console.log('the property is not available...');
 			}
 		}
 	});
