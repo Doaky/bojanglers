@@ -22,7 +22,7 @@
 
 	<h5>or</h5>
 	<?php if(isset($_SESSION['username'])): ?>
-		<a href="<?= BASE_URL ?>/addpanda/">
+		<a href="<?= BASE_URL ?>/addchaplain/">
 			<button class="logged-in" id="create-zoo">Add New Chaplain</button>
 		</a>
 	<?php else: ?>

@@ -2,8 +2,6 @@
 
 	<div id="about" class="background-image"></div>
 	
-	<!-- <img id="red-panda" src="<?= BASE_URL ?>/public/img/four-chaplains.jpg" alt="Four Chaplains"/> -->
-
 	<p class="text">
 		Chaplain Stories is a website created for history buffs that are particularly interested in the Chaplains that served during WWII.
 		<br> <br>
@@ -14,7 +12,5 @@
 		Users can add and edit information about individual Chaplains and their stories. If you wish to contribute to the site by adding pictures, documents, and life events, please <a href="<?= BASE_URL ?>/account/">sign in</a> or <a href="#">create an account</a>.
 		<br><br>
 	</p>
-
-	
 
 </main>

@@ -1,125 +1,139 @@
 $(document).ready(function() {
-  var username;
-  // If there is a username in localStorage use it, if not set to hardcoded user.
-  if (localStorage.username) {
-    username = localStorage.username;
-  } else {
-    username = "Daniel";
-  }
+	var username;
+	// If there is a username in localStorage use it, if not set to hardcoded user.
+	if (localStorage.username) {
+		username = localStorage.username;
+	}
+	else {
+		username = "Daniel";
+	}
 
-  addUsername();
-  asyncFunctions();
-  searchEventListener();
+	addUsername();
+	asyncFunctions();
+	searchEventListener();
 
-  loadChaplainDocs();
+	loadChaplainImage(); // Gets image from API
+	loadChaplainDocs(); // Gets info from API
 
+//_______________________________________________________________________//
+//----------------------------Editing Chaplain---------------------------//
+	// Toggles edit view
+	$("#edit").click(function() {
+		$(".editing").show();
+		$("#edit").hide();
+	});
 
-  // Starts session with editing off.
-  $(".editing").hide();
+	$("#done").click(function() {
+		$(".editing").hide();
+		$("#done").hide();
+		$("#edit").show();
+	});
 
-  // Toggles edit view
-  $("#edit").click(function() {
-    $(".editing").show();
-    $("#edit").hide();
-  });
+	// Modals
+	// Get the modal
+	var timelineAddModal = document.getElementById('timelineAdd');
+	var timelineEditModal = document.getElementById('timelineEdit');
+	var chaplainEditModal = document.getElementById('chaplainEdit');
 
-  $("#done").click(function() {
-    $(".editing").hide();
-    $("#done").hide();
-    $("#edit").show();
-  });
+	// Get the <span> element that closes the modal
+	var span = document.getElementsByClassName("close")[0];
 
-  // Modals
-  // Get the modal
-  var timelineAddModal = document.getElementById('timelineAdd');
-  var timelineEditModal = document.getElementById('timelineEdit');
-  var pandaEditModal = document.getElementById('pandaEdit');
-  var documentAddModal = document.getElementById('documentAdd');
-  var documentEditModal = document.getElementById('documentEdit');
+	var timelineID = document.getElementById("timelineID");
 
-  // Get the <span> element that closes the modal
-  var span = document.getElementsByClassName("close")[0];
+	$(".timelineEntry").click(function() {
+		timelineEditModal.style.display = "block";
+		timelineEditModal.animate([
+			// keyframes
+			{ opacity: '0', transform: 'scale3d(0.3, 0.3, 0.3)', background: 'rgba(0,0,0,0)' },
+			{ opacity: '1', transform: 'scale3d(1, 1, 1)', background: 'rgba(0,0,0,0.4)' }
+		], {
+			// timing options
+			duration: 250,
+			iterations: 1
+		});
+		timelineID.value = this.id;
+	});
 
-  var timelineID = document.getElementById("timelineID");
-  var documentID = document.getElementById("documentID");
+	$("#addEvent").click(function() {
+		timelineAddModal.style.display = "block";
+		timelineAddModal.animate([
+			// keyframes
+			{ opacity: '0', transform: 'scale3d(0.3, 0.3, 0.3)', background: 'rgba(0,0,0,0)' },
+			{ opacity: '1', transform: 'scale3d(1, 1, 1)', background: 'rgba(0,0,0,0.4)' }
+		], {
+			// timing options
+			duration: 250,
+			iterations: 1
+		});
+	});
 
-  $(".timelineEntry").click(function() {
-    timelineEditModal.style.display = "block";
-    timelineID.value = this.id;
-  });
+	$("#general").click(function() {
+		chaplainEditModal.style.display = "block";
+		chaplainEditModal.animate([
+			// keyframes
+			{ opacity: '0', transform: 'scale3d(0.3, 0.3, 0.3)', background: 'rgba(0,0,0,0)' },
+			{ opacity: '1', transform: 'scale3d(1, 1, 1)', background: 'rgba(0,0,0,0.4)' }
+		], {
+			// timing options
+			duration: 250,
+			iterations: 1
+		});
+	});
 
-  $(".documentEntry").click(function() {
-    documentEditModal.style.display = "block";
-    documentID.value = this.id;
-  });
+	// When the user clicks on <span> (x), close the modal
+	// span.onclick = function() {
+	$(".close").click(function() {
+		timelineEditModal.style.display = "none";
+		timelineAddModal.style.display = "none";
+		chaplainEditModal.style.display = "none";
+	});
+//---------------------------End Editing Chaplain-------------------------//
+//_______________________________________________________________________//
 
-  $("#addEvent").click(function() {
-    timelineAddModal.style.display = "block";
-  });
+	/**
+	 * Replaced defualt "user" text with actual username.
+	 * @param faith_type	Option chosen for denomination.
+	 */
+	function addUsername() {
+		$(".username").text(username);
+	}
 
-  $("#general").click(function() {
-    pandaEditModal.style.display = "block";
-  });
+	// Avatar Uploading
+	var upload = function(image) {
+		var avatar = new FileReader();
+		avatar.onload = function (e) {
+			// Adds the picture's path to the HTML object's src attribute.
+			$(".profile-picture").attr('src', e.target.result);
+		}
+		// Actually loads in image from input
+		avatar.readAsDataURL(image.files[0]);
+	};
 
-  $("#addDocument").click(function() {
-    documentAddModal.style.display = "block";
-  });
-
-  // When the user clicks on <span> (x), close the modal
-  // span.onclick = function() {
-  $(".close").click(function() {
-    $("#editView").hide();
-    timelineEditModal.style.display = "none";
-    timelineAddModal.style.display = "none";
-    pandaEditModal.style.display = "none";
-    documentAddModal.style.display = "none";
-    documentEditModal.style.display = "none";
-  });
-
-  // Replaced defualt "user" text with actual username.
-  function addUsername() {
-    $(".username").text(username);
-  }
-
-  // Avatar Uploading
-  var upload = function(image) {
-    var avatar = new FileReader();
-    avatar.onload = function(e) {
-      // Adds the picture's path to the HTML object's src attribute.
-      $(".profile-picture").attr('src', e.target.result);
-    }
-    // Actually loads in image from input
-    avatar.readAsDataURL(image.files[0]);
-  };
-
-  // Runs when the input field changes (gets input)
-  $(".file-upload").on('change', function() {
-    upload(this);
-  });
-
-  // Keeps track of event number
-  var eventCounter = 1;
-  // Adds event entry when clicked
-  $("#add-event").click(function() {
-    $(".event-container").append('Event ' + eventCounter + ': <input type="date" name="event-date-1">' +
-      '<br><textarea rows="4" cols="50" name="event-description-1" form="usrform"' +
-      'placeholder="Enter Event Description..."></textarea><br>');
-    eventCounter++;
-  });
+	// Runs when the input field changes (gets input)
+	$(".file-upload").on('change', function() {
+		upload(this);
+	});
 });
 
-// Shows and displays
+/**
+ * Toggles new form input if Catholic is selected
+ * @param faith_type	Option chosen for denomination.
+ */
 function showOrderInput(faith_type) {
-  if (faith_type == 1) {
-    document.getElementById('order').innerHTML = '<fieldset><legend>Order*</legend>' +
-      '<input type="text" name="faith" required="required" placeholder="Enter Faith..."></fieldset>';
-  } else {
-    document.getElementById('order').innerHTML = '';
-  }
+	if (faith_type == 1) { // Catholic chosen
+		document.getElementById('order').innerHTML = '<fieldset><legend>Order*</legend>' +
+													 '<input type="text" name="faith" required="required" placeholder="Enter Faith..."></fieldset>';
+	}
+	else { // Other chosen
+		document.getElementById('order').innerHTML = '';
+	}
 }
 
 //______________________________________________________________________________//
-//--------------------------API SEARCHING FUNCTIONS----------------------------//
+//----------------------------Chronicling America API---------------------------//
+/**
+ * Loads in documents for the Chaplain being viewed.
+ */
 function loadChaplainDocs() {
   $("#chaplain-docs").append("<p>Loading results for " + $("#chaplain-name").text() + "</p>");
   var displayObjects = [];
@@ -129,7 +143,10 @@ function loadChaplainDocs() {
     i++;
   }
 }
-//event listener for the search button
+
+/**
+ * Event listener for the search button on the search page.
+ */
 function searchEventListener() {
   $("#searchbtn").click(function() {
     if ($("#searchbox").val() != '') {
@@ -138,7 +155,10 @@ function searchEventListener() {
   });
 }
 
-//Makes a function call to load search results
+/**
+ * Makes a function call to load search results.
+ * @param query		Stores the search query.
+ */
 function searchNewspapers(query) {
   $("#search-documents").empty();
   $("#search-documents").append("<p>Loading results for " + query + "</p>");
@@ -151,7 +171,10 @@ function searchNewspapers(query) {
   }
 }
 
-//displays the results from the search query
+/**
+ * Displays the reults from the search query on the search page and chaplain view.
+ * @param objectarray	Stores the items to be displayed.
+ */
 function displayResults(objectarray) {
   $("#search-documents").empty();
   $("#chaplain-docs").empty();
@@ -170,7 +193,12 @@ function displayResults(objectarray) {
   })
 }
 
-// This function makes an ajax call to the chroniclingamerica.loc.gov api
+/**
+ * This function makes an ajax call to the chroniclingamerica.loc.gov api.
+ * @param query				Search query from user.
+ * @param number			Stores the number of items to be displayed.
+ * @param displayObjects	Stores the items to be displayed.
+ */
 function ajaxCall(query, number, displayObjects) {
   // Make an ajax call to the chroniclingamerica api and load results into an array
   $.ajax({
@@ -200,17 +228,18 @@ function ajaxCall(query, number, displayObjects) {
   });
 }
 
-// Source
-// https://stackoverflow.com/a/4878800
+/**
+ * Makes first letters uppercase.
+ * Source: https://stackoverflow.com/a/4878800
+ * @param str	String to be converted.
+ */
 function toTitleCase(str) {
   return str.replace(/\w\S*/g, function(txt) {
     return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();
   });
 }
-
-//----------------------END OF API SEARCHING FUNCTIONS------------------------//
-//____________________________________________________________________________//
-
+//---------------------------End Chronicling America API------------------------//
+//______________________________________________________________________________//
 //----------------------START OF AJAX ASYNC FUNCTIONS------------------------//
 //____________________________________________________________________________//
 
@@ -288,3 +317,37 @@ function asyncFunctions() {
 
 //----------------------END OF AJAX ASYNC FUNCTIONS---------------------------//
 //____________________________________________________________________________//
+//______________________________________________________________________________//
+//--------------------------------Wikipedia API---------------------------------//
+/**
+ * Calls get function for Chaplain Image.
+ */
+function loadChaplainImage() {
+	getWikiImage($("#chaplain-name").text());
+}
+
+/**
+ * Gets image from Wikipedia and inserts it into the page if found.
+ * @param title 	The name of the Chaplain.
+ */
+function getWikiImage(title) {
+	$.ajax({
+		url: 'https://en.wikipedia.org/w/api.php',
+		dataType: 'jsonp',
+		data: {
+			action: 'query',
+			prop  : 'pageimages',
+			format: 'json',
+			piprop: 'original',
+			titles: title
+		},
+		success: function(response) {
+			var image = response.query.pages[Object.keys(response.query.pages)[0]].original.source;
+			if (image) {
+				document.getElementsByClassName("profile-picture")[0].src = image;
+			}
+		}
+	});
+}
+//-------------------------------End Wikipedia API-------------------------------//
+//______________________________________________________________________________//

@@ -298,8 +298,7 @@ article h5 {
 	margin: 0;
 }
 
-#search-zoos,
-#search-pandas,
+#search-chaplains,
 #search-documents {
 	overflow-y: scroll;
 	height: auto;
@@ -338,25 +337,25 @@ article h5 {
 	padding-top: 3px;
 }
 
-.panda {
+.chaplain {
 	height: calc(100vh - 155px) !important;
 	padding-top: 45px;
 }
 
-.panda .left {
+.chaplain .left {
 	width: 70%;
 	height: 100%;
 }
 
-.panda .middle {
+.chaplain .middle {
 	width: 30%;
 }
 
-.panda .right {
+.chaplain .right {
 	width: 27.5%;
 }
 
-.panda .profile-picture-container {
+.chaplain .profile-picture-container {
 	width: 35%;
 	height: auto;
 	float: right;
@@ -364,18 +363,18 @@ article h5 {
 	padding-bottom: 10px;
 }
 
-.panda .middle ul {
+.chaplain .middle ul {
 	list-style: none;
 	padding-bottom: 50px;
 }
 
-.panda h1 {
+.chaplain h1 {
 	display: inline-block;
 	/*text-align: justify;*/
 	width: 50%;
 }
 
-.panda h3 {
+.chaplain h3 {
 	padding-left: 5px;
 }
 
@@ -383,12 +382,12 @@ article h5 {
 	width: 90%;
 	min-height: 226.8px;
 }
-.panda .left hr {
+.chaplain .left hr {
 	width: 100%;
 	margin-bottom: 15px;
 }
 
-.panda button {
+chaplain button {
 	margin-left: 5px;
 }
 
@@ -549,6 +548,10 @@ article h5 {
 	cursor: pointer;
 }
 
+.editing {
+	display: none;
+}
+
 .timeline-entry .editing {
 	float: right;
 }
@@ -587,12 +590,6 @@ article h5 {
 
 .about-page p {
 	padding-top: 150px;
-}
-
-#red-panda {
-	width: 50%;
-	border-radius: 50%;
-	max-width: 350px;
 }
 
 .help-page {
@@ -687,11 +684,11 @@ th, td {
 		width: 160px;
 		font-size: 14px;
 	}
-	.panda .left {
+	.chaplain .left {
 		width: 100% !important;
 	}
-	.panda .middle,
-	.panda .right {
+	.chaplain .middle,
+	.chaplain .right {
 		width: 100% !important;
     	padding-top: 20px;
 	}
@@ -702,7 +699,7 @@ th, td {
 }
 
 @media (max-width: 750px) {
-	.panda h1 {
+	.chaplain h1 {
 		font-size: 55px;
 	}
 
@@ -737,7 +734,7 @@ th, td {
 }
 
 @media (max-width: 650px) {
-	.panda h1 {
+	.chaplain h1 {
 		font-size: 50px;
 	}
 	nav {
@@ -750,7 +747,7 @@ th, td {
 }
 
 @media (max-width: 530px) {
-	.panda h1 {
+	.chaplain h1 {
 		font-size: 45px;
 	}
 	nav {
