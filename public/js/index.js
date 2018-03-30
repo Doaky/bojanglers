@@ -139,8 +139,8 @@ function loadChaplainDocs() {
   var displayObjects = [];
   var i = 0;
   while (i < 20) {
-    ajaxCall($("#chaplain-name").text(), i + 1, displayObjects);
-    i++;
+	ajaxCall($("#chaplain-name").text(), i + 1, displayObjects);
+	i++;
   }
 }
 
@@ -149,9 +149,9 @@ function loadChaplainDocs() {
  */
 function searchEventListener() {
   $("#searchbtn").click(function() {
-    if ($("#searchbox").val() != '') {
-      searchNewspapers($("#searchbox").val());
-    }
+	if ($("#searchbox").val() != '') {
+	  searchNewspapers($("#searchbox").val());
+	}
   });
 }
 
@@ -166,8 +166,8 @@ function searchNewspapers(query) {
   var i = 0;
   // Load results from the first 20 pages
   while (i < 20) {
-    ajaxCall(query, i + 1, displayObjects);
-    i++;
+	ajaxCall(query, i + 1, displayObjects);
+	i++;
   }
 }
 
@@ -179,17 +179,17 @@ function displayResults(objectarray) {
   $("#search-documents").empty();
   $("#chaplain-docs").empty();
   if (objectarray.length == 0) {
-    $("#search-documents").append("<p>No results found</p>");
-    $("#chaplain-docs").append("<p>No Documents found</p>");
+	$("#search-documents").append("<p>No results found</p>");
+	$("#chaplain-docs").append("<p>No Documents found</p>");
   }
   objectarray.forEach(function(e) {
-    $("#search-documents").append('<hr><article class="search-result"> ' +
-      '<h3><a href="' + e.link + '" target="_blank">' + e.title + '</a></h3>' +
-      '<h5>' + e.location + '</h5>' +
-      '<h5>' + e.date + '</h5>' +
-      '</article>')
+	$("#search-documents").append('<hr><article class="search-result"> ' +
+	  '<h3><a href="' + e.link + '" target="_blank">' + e.title + '</a></h3>' +
+	  '<h5>' + e.location + '</h5>' +
+	  '<h5>' + e.date + '</h5>' +
+	  '</article>')
 
-    $("#chaplain-docs").append('<a href="' + e.link + '" target="_blank">' + e.title + '</a> <br>');
+	$("#chaplain-docs").append('<a href="' + e.link + '" target="_blank">' + e.title + '</a> <br>');
   })
 }
 
@@ -202,29 +202,29 @@ function displayResults(objectarray) {
 function ajaxCall(query, number, displayObjects) {
   // Make an ajax call to the chroniclingamerica api and load results into an array
   $.ajax({
-    url: 'http://chroniclingamerica.loc.gov/search/pages/results/',
-    dataType: 'jsonp',
-    data: {
-      andtext: 'chaplains ' + query,
-      page: number,
-      format: 'json'
-    },
-    success: function(response) {
-      response.items.forEach(function(e) {
-        //only look for results that are from 1930 or later
-        if (parseInt(e.date) > 19300000) {
-          var obj = {
-            title: toTitleCase(e.title_normal), //title of the newspaper, journal, etc.
-            link: 'https://chroniclingamerica.loc.gov' + e.id, //link to the actual article
-            location: e.place_of_publication, //location of publication
-            text: e.ocr_eng, //full text of the article
-            date: e.date.substring(0, 4) + '/' + e.date.substring(4, 6) + '/' + e.date.substring(6, 8) //date of publishing
-          };
-          displayObjects.push(obj); //add to the array
-        }
-      });
-      displayResults(displayObjects); //display the results when we get them
-    }
+	url: 'http://chroniclingamerica.loc.gov/search/pages/results/',
+	dataType: 'jsonp',
+	data: {
+	  andtext: 'chaplains ' + query,
+	  page: number,
+	  format: 'json'
+	},
+	success: function(response) {
+	  response.items.forEach(function(e) {
+		//only look for results that are from 1930 or later
+		if (parseInt(e.date) > 19300000) {
+		  var obj = {
+			title: toTitleCase(e.title_normal), //title of the newspaper, journal, etc.
+			link: 'https://chroniclingamerica.loc.gov' + e.id, //link to the actual article
+			location: e.place_of_publication, //location of publication
+			text: e.ocr_eng, //full text of the article
+			date: e.date.substring(0, 4) + '/' + e.date.substring(4, 6) + '/' + e.date.substring(6, 8) //date of publishing
+		  };
+		  displayObjects.push(obj); //add to the array
+		}
+	  });
+	  displayResults(displayObjects); //display the results when we get them
+	}
   });
 }
 
@@ -235,84 +235,79 @@ function ajaxCall(query, number, displayObjects) {
  */
 function toTitleCase(str) {
   return str.replace(/\w\S*/g, function(txt) {
-    return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();
+	return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();
   });
 }
 //---------------------------End Chronicling America API------------------------//
 //______________________________________________________________________________//
+
 //----------------------START OF AJAX ASYNC FUNCTIONS------------------------//
 //____________________________________________________________________________//
-
+/**
+ * Async loading functions.
+ */
 function asyncFunctions() {
-
-
-  $("#submitEdit").click(function(e) {
+	$("#submitEdit").click(function(e) {
 		e.preventDefault();
-    var name = $("#nameSubmit").val();
-    var faith = $("#faithSubmit").val();
-    var rank = $("#rankSubmit").val();
-    var hometown = $("#homeSubmit").val();
+		var name = $("#nameSubmit").val();
+		var faith = $("#faithSubmit").val();
+		var rank = $("#rankSubmit").val();
+		var hometown = $("#homeSubmit").val();
 
-    if (name === '' || faith === '' || rank === '' || hometown === '') {
-      alert("Please fill out all necessary information");
-    } else {
+		if (name === '' || faith === '' || rank === '' || hometown === '') {
+			alert("Please fill out all necessary information");
+		} else {
 			$.ajax({
-	          url: window.location.origin+"/bojanglers/app/controller/postInfo.php",
-	          type: "POST",
-	          data: {
-	            "name": name,
-	            "faith": faith,
-	            "rank": rank,
-	            "hometown": hometown
-	          },
-	          success: function(result) {
-	            // var value = $.parseJSON(result);
-							$("#editView").hide();
-							$("#celebTable").append("<tr>" + "<td>" + name + "</td>" +
-				        "<td>" + faith + "</td>" +
-				        "<td>" + rank + "</td>" +
-				        "<td>" + hometown + "</td>" + "</tr>");
-	          }
+				url: window.location.origin+"/bojanglers/app/controller/postInfo.php",
+				type: "POST",
+				data: {
+					"name": name,
+					"faith": faith,
+					"rank": rank,
+					"hometown": hometown
+				  },
+				success: function(result) {
+				// var value = $.parseJSON(result);
+				$("#editView").hide();
+				$("#celebTable").append("<tr>" + "<td>" + name + "</td>" +
+					"<td>" + faith + "</td>" +
+					"<td>" + rank + "</td>" +
+					"<td>" + hometown + "</td>" + "</tr>");
+				}
+			})
+		}
+	});
 
-	        })
-	      }
-  });
+	$("#addEntry").click(function() {
+		$("#editView").fadeIn(200);
+	});
 
-  $("#addEntry").click(function() {
-    $("#editView").fadeIn(200);
+	$.ajax({
+		method: "GET",
+		url: window.location.origin + "/bojanglers/app/controller/info.php",
+	}).done(function(data) {
 
-  });
-  $.ajax({
-    method: "GET",
-    url: window.location.origin + "/bojanglers/app/controller/info.php",
+	var result = $.parseJSON(data);
+	var string = "<table id = \"celebTable\">" + "<tr>" +
+		"<th>NAME</th>" +
+		"<th>FAITH</th>" +
+		"<th>RANK</th>" +
+		"<th>HOMETOWN</th>" +
+		"</tr>";
 
-  }).done(function(data) {
+	//from result create a string of data and append to the div
+	$.each(result, function(key, value) {
 
-    var result = $.parseJSON(data);
-    var string = "<table id = \"celebTable\">" + "<tr>" +
-      "<th>NAME</th>" +
-      "<th>FAITH</th>" +
-      "<th>RANK</th>" +
-      "<th>HOMETOWN</th>" +
-
-      "</tr>";
-
-    //from result create a string of data and append to the div
-
-
-
-    $.each(result, function(key, value) {
-
-      string = string + "<tr>" + "<td>" + value['name'] + "</td>" +
-        "<td>" + value['faith'] + "</td>" +
-        "<td>" + value['rank'] + "</td>" +
-        "<td>" + value['hometown'] + "</td>" + "</tr>";
-    });
-    string += '</table>';
-    $("#content").html(string);
-  }).fail(function(data) {
-    console.log("error in the get");
-  });
+		string = string + "<tr>" + "<td>" + value['name'] + "</td>" +
+			"<td>" + value['faith'] + "</td>" +
+			"<td>" + value['rank'] + "</td>" +
+			"<td>" + value['hometown'] + "</td>" + "</tr>";
+	});
+	string += '</table>';
+	$("#content").html(string);
+	}).fail(function(data) {
+		console.log("error in the get");
+	});
 }
 
 //----------------------END OF AJAX ASYNC FUNCTIONS---------------------------//
