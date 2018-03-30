@@ -53,6 +53,10 @@ class SiteController {
 			case 'contact':
 				$this->contact();
 				break;
+
+			case 'info' :
+				$this->info();
+				break;
 		}
 
 	}
@@ -61,6 +65,13 @@ class SiteController {
 		$pageTitle = 'Home';
 		include_once SYSTEM_PATH.'/view/header.tpl';
 		include_once SYSTEM_PATH.'/view/home.tpl';
+		include_once SYSTEM_PATH.'/view/footer.tpl';
+	}
+
+	public function info() {
+		$pageTitle = 'Info';
+		include_once SYSTEM_PATH.'/view/header.tpl';
+		include_once SYSTEM_PATH.'/view/info.tpl';
 		include_once SYSTEM_PATH.'/view/footer.tpl';
 	}
 

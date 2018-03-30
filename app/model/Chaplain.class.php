@@ -77,9 +77,8 @@ class Chaplain {
 		$db = Db::instance(); // connect to db
 
 		// build query
-		$q = sprintf("INSERT INTO %s (name, faith, faith_type, rank, hometown, file, creator_id)
-		VALUES (%s, %s, %s, %s, %s, %s, %d);",
-			self::DB_TABLE,
+		$q = sprintf("INSERT INTO chaplains (name, faith, faith_type, `rank`, hometown, file, creator_id)
+		VALUES (%s, %s, %d, %s, %s, %s, %d);",
 			$db->escape($this->name),
 			$db->escape($this->faith),
 			$db->escape($this->faith_type),
@@ -89,8 +88,9 @@ class Chaplain {
 			$db->escape($this->creator_id)
 			);
 
-		$db->query($q); // execute query
-		echo $db->getInsertID();
+			$db->query($q); // execute query
+
+		// echo $db->getInsertID();
 		return $db->getInsertID(); // return last inserted ID
 	}
 
