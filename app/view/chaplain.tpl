@@ -1,4 +1,4 @@
-<main class="panda">
+<main class="chaplain">
 
 	<div id="timelineAdd" class="modal">
 		<!-- Modal content -->
@@ -65,7 +65,7 @@
 		</div>
 	</div>
 
-	<div id="pandaEdit" class="modal">
+	<div id="chaplainEdit" class="modal">
 	 	<!-- Modal content -->
 	 	<div class="modal-content">
 			<span class="close">&times;</span>
@@ -118,12 +118,7 @@
 		<h1 id = "chaplain-name"><?= $chaplain->name ?></h1>
 
 		<figure class="profile-picture-container">
-			<?php if($chaplain->file != null): ?>
-				<img class="profile-picture" src="<?= BASE_URL ?>/public/img/chaplains/<?= $chaplain->name ?>/<?= $chaplain->file ?>" alt="Chaplain Profile Picture"/><br>
-			<?php else: ?>
 				<img class="profile-picture" src="<?= BASE_URL ?>/public/img/placeholder.jpg" alt="Profile Picture"/><br>
-			<?php endif; ?>
-
 		</figure>
 
 		<h3>
@@ -151,12 +146,6 @@
 				Protestant
 			<?php endif; ?>
 		</h3>
-
-		<!-- <?php if($chaplain->died != null): ?>
-			<h3><?= $chaplain->born ?> - <?= $chaplain->died ?></h3>
-		<?php else: ?>
-			<h3><?= $chaplain->born ?> - Present</h3>
-		<?php endif; ?> -->
 
 		<br>
 
@@ -190,23 +179,6 @@
 		<figure class = "document-display" id = "chaplain-docs">
 
 		</figure>
-		<!-- <?php if(isset($_SESSION['username'])): ?>
-			<button id="addDocument" class="editing button">Add Document</button>
-		<?php endif; ?>
-		<br><br>
-		<figure class="document-display">
-			<?php foreach($documents as $d): ?>
-				<a id="<?= $d->id ?>" href="<?= BASE_URL ?>/public/img/pandas/<?= $d->file ?>" target="_blank"><?= $d->title ?></a>
-				<?php if(isset($_SESSION['username'])): ?>
-					<button id="<?= $d->id ?>" class="editing documentEntry button">Edit</button>
-				<?php endif; ?>
-				<br>
-			<?php endforeach; ?>
-		</figure> -->
 	</section>
-
-	<!-- <section class="right">
-
-	</section> -->
 
 </main>

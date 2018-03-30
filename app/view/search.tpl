@@ -1,14 +1,14 @@
 <main class="search-page">
 	
-	<form class="search" action="<?= BASE_URL ?>/search" method="get">
+	<div class="search">
 		<input type="search" name="search" placeholder="Search..." id = "searchbox">
-		<button  class="button" type="submit" id="searchbtn">Search</button>
-	</form>
+		<button  class="button" type="search" id="searchbtn">Search</button>
+	</div>
 
 	<section class="middle">
 		<h3 class="labels">Chaplains:</h3>
 		<aside class="results">
-			<aside id="search-pandas">
+			<aside id="search-chaplains">
 				<hr>
 				<?php while($row = $chaplains->fetch_assoc()): ?>
 					<article class="search-result">

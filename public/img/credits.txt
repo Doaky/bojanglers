@@ -19,3 +19,5 @@ https://s-i.huffpost.com/gadgets/slideshows/352753/slide_352753_3824679_free.jpg
 
 prayer.jpg
 https://www.pinterest.com/pin/380906080956543098/
+
+All other pictures are pulled from the Wikipedia API
