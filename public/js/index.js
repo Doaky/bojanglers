@@ -245,8 +245,9 @@ function toTitleCase(str) {
 //---------------------------End Chronicling America API------------------------//
 //______________________________________________________________________________//
 
-//----------------------START OF AJAX ASYNC FUNCTIONS------------------------//
+//----------------------START OF AJAX ASYNC FUNCTIONS-------------------------//
 //____________________________________________________________________________//
+
 /**
  * Async loading functions.
  */
@@ -255,10 +256,11 @@ function asyncFunctions() {
 		e.preventDefault();
 		var name = $("#nameSubmit").val();
 		var faith = $("#faithSubmit").val();
+		var faith_type = $("#faithTypeSubmit").val();
 		var rank = $("#rankSubmit").val();
 		var hometown = $("#homeSubmit").val();
 
-		if (name === '' || faith === '' || rank === '' || hometown === '') {
+		if (name === '' || faith_type === '' || rank === '' || hometown === '' || faith === '') {
 			alert("Please fill out all necessary information");
 		} else {
 			$.ajax({
@@ -267,11 +269,11 @@ function asyncFunctions() {
 				data: {
 					"name": name,
 					"faith": faith,
+					"faith_type": faith_type,
 					"rank": rank,
 					"hometown": hometown
 				  },
 				success: function(result) {
-				// var value = $.parseJSON(result);
 				$("#editView").hide();
 				$("#celebTable").append("<tr>" + "<td>" + name + "</td>" +
 					"<td>" + faith + "</td>" +
@@ -282,8 +284,23 @@ function asyncFunctions() {
 		}
 	});
 
+	var infoAddModal = document.getElementById('editView');
+
 	$("#addEntry").click(function() {
-		$("#editView").fadeIn(200);
+		infoAddModal.style.display = "block";
+		infoAddModal.animate([
+			// keyframes
+			{ opacity: '0', transform: 'scale3d(0.3, 0.3, 0.3)', background: 'rgba(0,0,0,0)' },
+			{ opacity: '1', transform: 'scale3d(1, 1, 1)', background: 'rgba(0,0,0,0.4)' }
+		], {
+			// timing options
+			duration: 250,
+			iterations: 1
+		});
+	});
+
+	$(".close2").click(function() {
+		infoAddModal.style.display = "none";
 	});
 
 	$.ajax({
@@ -301,11 +318,19 @@ function asyncFunctions() {
 
 	//from result create a string of data and append to the div
 	$.each(result, function(key, value) {
-
-		string = string + "<tr>" + "<td>" + value['name'] + "</td>" +
-			"<td>" + value['faith'] + "</td>" +
-			"<td>" + value['rank'] + "</td>" +
-			"<td>" + value['hometown'] + "</td>" + "</tr>";
+		if (value['faith']) {
+			string = string + "<tr>" + "<td>" + value['name'] + "</td>" +
+				"<td>" + value['faith'] + "</td>" +
+				"<td>" + value['rank'] + "</td>" +
+				"<td>" + value['hometown'] + "</td>" + "</tr>";
+		}
+		else {
+			string = string + "<tr>" + "<td>" + value['name'] + "</td>" +
+				"<td>" + "Unknown" + "</td>" +
+				"<td>" + value['rank'] + "</td>" +
+				"<td>" + value['hometown'] + "</td>" + "</tr>";
+		}
+		
 	});
 	string += '</table>';
 	$("#content").html(string);

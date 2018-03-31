@@ -10,7 +10,6 @@ class Chaplain {
 	public $faith_type   = 0;
 	public $rank         = null;
 	public $hometown     = null;
-	public $file         = null;
 	public $creator_id   = 0;
 	public $date_created = 0;
 
@@ -39,7 +38,6 @@ class Chaplain {
 			$chaplain->faith_type   = $row['faith_type'];
 			$chaplain->rank         = $row['rank'];
 			$chaplain->hometown     = $row['hometown'];
-			$chaplain->file         = $row['file'];
 			$chaplain->creator_id   = $row['creator_id'];
 			$chaplain->date_created = $row['date_created'];
 
@@ -77,14 +75,13 @@ class Chaplain {
 		$db = Db::instance(); // connect to db
 
 		// build query
-		$q = sprintf("INSERT INTO chaplains (name, faith, faith_type, `rank`, hometown, file, creator_id)
-		VALUES (%s, %s, %d, %s, %s, %s, %d);",
+		$q = sprintf("INSERT INTO chaplains (name, faith, faith_type, rank, hometown, creator_id)
+		VALUES (%s, %s, %d, %s, %s, %d);",
 			$db->escape($this->name),
 			$db->escape($this->faith),
 			$db->escape($this->faith_type),
 			$db->escape($this->rank),
 			$db->escape($this->hometown),
-			$db->escape($this->file),
 			$db->escape($this->creator_id)
 			);
 
@@ -107,14 +104,12 @@ class Chaplain {
 			faith_type = %s,
 			rank       = %s,
 			hometown   = %s,
-			file       = %s
 			WHERE id   = %s;",
 			$db->escape($this->name),
 			$db->escape($this->faith),
 			$db->escape($this->faith_type),
 			$db->escape($this->rank),
 			$db->escape($this->hometown),
-			$db->escape($this->file),
 			$db->escape($this->id)
 		);
 

@@ -15,10 +15,9 @@
 	<?php endif; ?>
 	<br>
 
-	<form action="<?= BASE_URL ?>/search/">
-		<label for="home-search">Search:</label>
-		<input id="home-search" type="search" name="search">
-	</form>
+	<a href="<?= BASE_URL ?>/search/">
+		<button id="create-zoo">Search</button>
+	</a>
 
 	<h5>or</h5>
 	<?php if(isset($_SESSION['username'])): ?>

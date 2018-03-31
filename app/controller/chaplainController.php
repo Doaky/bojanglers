@@ -108,7 +108,6 @@ class ChaplainController {
 		$faith_type = $_POST['faith_type']; // required
 		$rank       = $_POST['rank'];
 		$hometown   = $_POST['hometown'];
-		$file       = $_POST['file'];
 
 		// name and faith are required
 		if ( !isset($name) || !isset($faith_type) ) {
@@ -122,7 +121,6 @@ class ChaplainController {
 		$chaplain->faith_type = $faith_type;
 		$chaplain->rank       = $rank;
 		$chaplain->hometown   = $hometown;
-		$chaplain->file       = $file;
 		$chaplain->creator_id = 1; // hard coded user ID for now
 
 		$chaplainID = $chaplain->save();
@@ -174,7 +172,6 @@ class ChaplainController {
 		$faith_type = $_POST['faith_type'];
 		$rank       = $_POST['rank'];
 		$hometown   = $_POST['hometown'];
-		$file       = $_POST['file'];
 		$id         = $_POST['id'];
 
 		$chaplain = new Chaplain();
@@ -184,7 +181,6 @@ class ChaplainController {
 		$chaplain->faith_type = $faith_type;
 		$chaplain->rank       = $rank;
 		$chaplain->hometown   = $hometown;
-		$chaplain->file       = $file;
 		$chaplain->id         = $id;
 
 		$chaplainID = $chaplain->save();
