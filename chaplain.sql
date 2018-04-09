@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Mar 30, 2018 at 07:06 PM
+-- Generation Time: Apr 09, 2018 at 06:34 PM
 -- Server version: 5.6.39
 -- PHP Version: 7.0.27
 
@@ -51,6 +51,44 @@ INSERT INTO `chaplains` (`id`, `name`, `faith`, `faith_type`, `rank`, `hometown`
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `chaplain_actions`
+--
+
+CREATE TABLE `chaplain_actions` (
+  `id` int(11) NOT NULL,
+  `fkUser` int(11) NOT NULL,
+  `actionType` int(11) NOT NULL COMMENT '0 add chaplain, 1 edit, 2 delete, 3 add timeline, 4 edit, 5 delete',
+  `timestamp` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `followers`
+--
+
+CREATE TABLE `followers` (
+  `id` int(11) NOT NULL,
+  `fkUser` int(11) NOT NULL,
+  `timestamp` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `follower_actions`
+--
+
+CREATE TABLE `follower_actions` (
+  `id` int(11) NOT NULL,
+  `fkFriend` int(11) NOT NULL,
+  `actionType` int(11) NOT NULL COMMENT '0 add friend, 1 edit, 2 delete',
+  `timestamp` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `timeline_entries`
 --
 
@@ -94,18 +132,22 @@ CREATE TABLE `users` (
   `username` varchar(30) NOT NULL,
   `password` varchar(30) NOT NULL,
   `email` varchar(50) NOT NULL,
-  `date_created` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
+  `date_created` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `firstName` varchar(50) DEFAULT NULL,
+  `lastName` varchar(50) DEFAULT NULL,
+  `permission` int(11) NOT NULL,
+  `education` int(11) DEFAULT NULL COMMENT '0 no finish hs, 1 hs, 2 some college, 3 bachelors, 4 graduate'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 ROW_FORMAT=COMPACT;
 
 --
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`id`, `username`, `password`, `email`, `date_created`) VALUES
-(1, 'djo96', 'bojanglers18', 'djo96@vt.edu', '2018-03-29 15:54:18'),
-(2, 'bgregos', 'bojanglers18', 'bgregos@vt.edu', '2018-03-29 15:54:51'),
-(3, 'jpark96', 'bojanglers18', 'jpark96@vt.edu', '2018-03-30 02:13:49'),
-(4, 'parker45', 'bojanglers18', 'parker45@vt.edu', '2018-03-30 17:44:48');
+INSERT INTO `users` (`id`, `username`, `password`, `email`, `date_created`, `firstName`, `lastName`, `permission`, `education`) VALUES
+(1, 'djo96', 'bojanglers18', 'djo96@vt.edu', '2018-03-29 15:54:18', '', '', 0, NULL),
+(2, 'bgregos', 'bojanglers18', 'bgregos@vt.edu', '2018-03-29 15:54:51', '', '', 0, NULL),
+(3, 'jpark96', 'bojanglers18', 'jpark96@vt.edu', '2018-03-30 02:13:49', '', '', 0, NULL),
+(4, 'parker45', 'bojanglers18', 'parker45@vt.edu', '2018-03-30 17:44:48', '', '', 0, NULL);
 
 --
 -- Indexes for dumped tables
@@ -122,6 +164,24 @@ ALTER TABLE `chaplains`
   ADD KEY `faith` (`faith`),
   ADD KEY `faith_type` (`faith_type`),
   ADD KEY `rank` (`rank`);
+
+--
+-- Indexes for table `chaplain_actions`
+--
+ALTER TABLE `chaplain_actions`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `followers`
+--
+ALTER TABLE `followers`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `follower_actions`
+--
+ALTER TABLE `follower_actions`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `timeline_entries`
@@ -147,6 +207,24 @@ ALTER TABLE `users`
 --
 ALTER TABLE `chaplains`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
+-- AUTO_INCREMENT for table `chaplain_actions`
+--
+ALTER TABLE `chaplain_actions`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `followers`
+--
+ALTER TABLE `followers`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `follower_actions`
+--
+ALTER TABLE `follower_actions`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `timeline_entries`
