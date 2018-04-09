@@ -1,14 +1,14 @@
 $(document).ready(function() {
-	var username;
+	// var username;
 	// If there is a username in localStorage use it, if not set to hardcoded user.
-	if (localStorage.username) {
-		username = localStorage.username;
-	}
-	else {
-		username = "Daniel";
-	}
+	// if (localStorage.username) {
+	// 	username = localStorage.username;
+	// }
+	// else {
+	// 	username = "Daniel";
+	// }
 
-	addUsername();
+	// addUsername();
 	asyncFunctions();
 	searchEventListener();
 	if (document.title == "Chaplain | Chaplain Stories") {
@@ -96,11 +96,10 @@ $(document).ready(function() {
 
 	/**
 	 * Replaced defualt "user" text with actual username.
-	 * @param faith_type	Option chosen for denomination.
 	 */
-	function addUsername() {
-		$(".username").text(username);
-	}
+	// function addUsername() {
+	// 	$(".username").text(username);
+	// }
 
 	// Avatar Uploading
 	var upload = function(image) {

@@ -1,7 +1,7 @@
 <main class="search-page">
 	<!-- <div id="upperSection"> -->
 		<button id="addEntry">ADD ENTRY</button>
-
+		
 		<div id="editView" class="modal">
 	  		<div id="editContent" class="modal-content">
 				<span class="close2" id="#close2">&times;</span>
@@ -45,9 +45,13 @@
 	<!-- </div> -->
 
 	</br>
+	<section class="left">
+		<div id="content">
+		</div>
+	</section>
 
-	<div id="content">
-
-	</div>
+	<section class="right">
+		<h2 class="activity-title">Activity:</h2>
+	</section>
 
 </main>

@@ -209,6 +209,14 @@ footer > a {
 	padding-top: 150px;
 }
 
+.account-page {
+	padding-top: 25px;
+}
+
+.account-page .background-image {
+	margin-top: -25px;
+}
+
 #home-search {
 	background: #e4e4e4;
 	width: 500px;

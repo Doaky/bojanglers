@@ -49,7 +49,7 @@
 
     <?php if(isset($_SESSION['username'])): ?>
       <section class="status logged-in">
-        <h4 class="logged-in">Hello, <i class="username">User</i>.</h4>
+        <h4 class="logged-in">Hello, <i class="username"><?= $_SESSION['username'] ?></i>.</h4>
         <a id="log-out" href="<?= BASE_URL ?>/logout/">Sign Out</a>
       </section>
     <?php else: ?>
