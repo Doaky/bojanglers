@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Apr 09, 2018 at 06:34 PM
+-- Generation Time: Apr 09, 2018 at 06:40 PM
 -- Server version: 5.6.39
 -- PHP Version: 7.0.27
 
@@ -64,10 +64,10 @@ CREATE TABLE `chaplain_actions` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `followers`
+-- Table structure for table `following`
 --
 
-CREATE TABLE `followers` (
+CREATE TABLE `following` (
   `id` int(11) NOT NULL,
   `fkUser` int(11) NOT NULL,
   `timestamp` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
@@ -76,10 +76,10 @@ CREATE TABLE `followers` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `follower_actions`
+-- Table structure for table `following_actions`
 --
 
-CREATE TABLE `follower_actions` (
+CREATE TABLE `following_actions` (
   `id` int(11) NOT NULL,
   `fkFriend` int(11) NOT NULL,
   `actionType` int(11) NOT NULL COMMENT '0 add friend, 1 edit, 2 delete',
@@ -172,15 +172,15 @@ ALTER TABLE `chaplain_actions`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `followers`
+-- Indexes for table `following`
 --
-ALTER TABLE `followers`
+ALTER TABLE `following`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `follower_actions`
+-- Indexes for table `following_actions`
 --
-ALTER TABLE `follower_actions`
+ALTER TABLE `following_actions`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -215,15 +215,15 @@ ALTER TABLE `chaplain_actions`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `followers`
+-- AUTO_INCREMENT for table `following`
 --
-ALTER TABLE `followers`
+ALTER TABLE `following`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `follower_actions`
+-- AUTO_INCREMENT for table `following_actions`
 --
-ALTER TABLE `follower_actions`
+ALTER TABLE `following_actions`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
