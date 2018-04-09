@@ -9,6 +9,8 @@ RewriteEngine on
 RewriteRule ^login/?$ app/controller/siteController.php?action=login [QSA,L]
 RewriteRule ^login/process/?$ app/controller/siteController.php?action=loginProcess [QSA,L]
 RewriteRule ^logout/?$ app/controller/siteController.php?action=logout [QSA,L]
+RewriteRule ^createaccount/?$ app/controller/siteController.php?action=createaccount [QSA,L]
+RewriteRule ^createaccount/process/?$ app/controller/siteController.php?action=createaccountProcess [QSA,L]
 
 # Header
 RewriteRule ^$ app/controller/siteController.php?action=home [QSA,L]

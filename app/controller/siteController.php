@@ -1,55 +1,52 @@
 <?php
-
 include_once '../global.php';
-
 // get the identifier for the page we want to load
 $action = $_GET['action'];
-
 // instantiate a SiteController and route it
 $sc = new SiteController();
 $sc->route($action);
-
 class SiteController {
-
 	// route us to the appropriate class method for this action
 	public function route($action) {
-
 		switch($action) {
-
 			case 'home':
 				$this->home();
 				break;
-
 			case 'account':
 				$this->account();
 				break;
-
+			case 'createaccount' :
+				$this->createaccount();
+				break;
+			case 'createaccountProcess' :
+				$email = $_POST['email'];
+				$username = $_POST['username'];
+				$password = $_POST['pw'];
+				$confirmed = $_POST['pwConfirm'];
+				if($password != $confirmed) {
+					header('Location: '.BASE_URL.'/createaccount'); exit();
+				}
+				$this->createaccountProcess($email, $username, $password);
 			case 'login':
 				$this->login();
 				break;
-
 			case 'loginProcess':
 				$username = $_POST['username'];
 				$password = $_POST['pw'];
 				$this->loginProcess($username, $password);
 				break;
-
 			case 'logout':
 				$this->logoutProcess();
 				break;
-
 			case 'add':
 				$this->add();
 				break;
-
 			case 'about':
 				$this->about();
 				break;
-
 			case 'help':
 				$this->help();
 				break;
-
 			case 'contact':
 				$this->contact();
 				break;
@@ -58,9 +55,7 @@ class SiteController {
 				$this->info();
 				break;
 		}
-
 	}
-
 	public function home() {
 		$pageTitle = 'Home';
 		include_once SYSTEM_PATH.'/view/header.tpl';
@@ -80,67 +75,72 @@ class SiteController {
 		if (!isset($_SESSION['username'])) {
 			header('Location: '.BASE_URL.'/login'); exit();
 		}
-
 		$pageTitle = 'Account';
 		include_once SYSTEM_PATH.'/view/header.tpl';
 		include_once SYSTEM_PATH.'/view/account.tpl';
 		include_once SYSTEM_PATH.'/view/footer.tpl';
 	}
-
+	public function createaccount() {
+		$pageTitle = 'Create Account';
+		include_once SYSTEM_PATH.'/view/header.tpl';
+		include_once SYSTEM_PATH.'/view/createaccount.tpl';
+		include_once SYSTEM_PATH.'/view/footer.tpl';
+	}
+	public function createaccountProcess($email, $un, $pw) {
+		$user = new User();
+		$user->username = $un;
+		$user->password = $pw;
+		$user->email = $email;
+		$userID = $user->save();
+		$this->loginProcess($user->username, $user->password);
+	}
 	public function loginProcess($un, $pw) {
-		// TODO Remove hardcode and make user table in database
-		$correctUsername = 'admin';
-		$correctPassword = '123';
-
-		if ($un != $correctUsername)
+		// $correctUsername = 'admin';
+		// $correctPassword = '123';
+		$user = User::login($un, $pw);
+		if ($user == NULL) {
 			header('Location: '.BASE_URL);
-		elseif ($pw != $correctPassword)
-			header('Location: '.BASE_URL);
+		}
 		else {
-			$_SESSION['username'] = $un;
+			$_SESSION['username'] = $user->username;
+			$_SESSION['userID'] = $user->id;
+			// echo($_SESSION['userID']);
 			header('Location: '.BASE_URL.'/account'); exit();
 		}
 	}
-
 	public function login() {
 		$pageTitle = 'Login';
 		include_once SYSTEM_PATH.'/view/header.tpl';
 		include_once SYSTEM_PATH.'/view/login.tpl';
 		include_once SYSTEM_PATH.'/view/footer.tpl';
 	}
-
 	public function logoutProcess() {
 		unset($_SESSION['username']); // not necessary, but just to be safe
 		session_destroy();
 		header('Location: '.BASE_URL); exit(); // send us to home page
 	}
-
 	public function add() {
 		$pageTitle = 'Add Chaplain';
 		include_once SYSTEM_PATH.'/view/header.tpl';
 		include_once SYSTEM_PATH.'/view/add.tpl';
 		include_once SYSTEM_PATH.'/view/footer.tpl';
 	}
-
 	public function about() {
 		$pageTitle = 'About';
 		include_once SYSTEM_PATH.'/view/header.tpl';
 		include_once SYSTEM_PATH.'/view/about.tpl';
 		include_once SYSTEM_PATH.'/view/footer.tpl';
 	}
-
 	public function help() {
 		$pageTitle = 'Help';
 		include_once SYSTEM_PATH.'/view/header.tpl';
 		include_once SYSTEM_PATH.'/view/help.tpl';
 		include_once SYSTEM_PATH.'/view/footer.tpl';
 	}
-
 	public function contact() {
 		$pageTitle = 'Contact';
 		include_once SYSTEM_PATH.'/view/header.tpl';
 		include_once SYSTEM_PATH.'/view/contact.tpl';
 		include_once SYSTEM_PATH.'/view/footer.tpl';
 	}
-
 }
