@@ -30,7 +30,7 @@ class User {
 			$user = new user(); // instantiate new Chaplains object
 			// store db results in local object
 			$user->id            = $row['id'];
-			$user->username         = $row['name'];
+			$user->username         = $row['username'];
 			$user->password        = $row['password'];
 			$user->email           = $row['email'];
 			$user->date_created = $row['date_created'];
@@ -101,7 +101,7 @@ class User {
 			$db->escape($this->email),
       $db->escape($this->firstName),
 			$db->escape($this->lastName),
-			$db->escape($this->education),
+			$db->escape($this->education)
 
 			);
 		$db->query($q); // execute query

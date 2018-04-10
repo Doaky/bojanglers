@@ -79,7 +79,7 @@ class SiteController {
 
 	public function admin() {
 		if($_SESSION['admin'] != 1) {
-			header('Location: '.BASE_URL.); exit();
+			header('Location: '.BASE_URL); exit();
 		}
 		$pageTitle = 'Admin';
 		$users = User::getUsers();
