@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Apr 09, 2018 at 06:40 PM
+-- Generation Time: Apr 09, 2018 at 07:46 PM
 -- Server version: 5.6.39
 -- PHP Version: 7.0.27
 
@@ -69,7 +69,8 @@ CREATE TABLE `chaplain_actions` (
 
 CREATE TABLE `following` (
   `id` int(11) NOT NULL,
-  `fkUser` int(11) NOT NULL,
+  `fkFollower` int(11) NOT NULL,
+  `fkFollowed` int(11) NOT NULL,
   `timestamp` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -135,7 +136,7 @@ CREATE TABLE `users` (
   `date_created` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `firstName` varchar(50) DEFAULT NULL,
   `lastName` varchar(50) DEFAULT NULL,
-  `permission` int(11) NOT NULL, COMMENT '0 registered and 1 is admin'
+  `permission` int(11) NOT NULL,
   `education` int(11) DEFAULT NULL COMMENT '0 no finish hs, 1 hs, 2 some college, 3 bachelors, 4 graduate'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 ROW_FORMAT=COMPACT;
 
