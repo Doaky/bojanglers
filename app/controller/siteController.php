@@ -54,6 +54,10 @@ class SiteController {
 				$this->contact();
 				break;
 
+			case 'admin':
+				$this->admin();
+				break;
+
 			case 'info' :
 				$this->info();
 				break;
@@ -70,6 +74,17 @@ class SiteController {
 		$pageTitle = 'Info';
 		include_once SYSTEM_PATH.'/view/header.tpl';
 		include_once SYSTEM_PATH.'/view/info.tpl';
+		include_once SYSTEM_PATH.'/view/footer.tpl';
+	}
+
+	public function admin() {
+		if($_SESSION['admin'] != 1) {
+			header('Location: '.BASE_URL.); exit();
+		}
+		$pageTitle = 'Admin';
+		$users = User::getUsers();
+		include_once SYSTEM_PATH.'/view/header.tpl';
+		include_once SYSTEM_PATH.'/view/admin.tpl';
 		include_once SYSTEM_PATH.'/view/footer.tpl';
 	}
 
@@ -110,6 +125,7 @@ class SiteController {
 		else {
 			$_SESSION['username'] = $user->username;
 			$_SESSION['userID'] = $user->id;
+			$_SESSION['admin'] = $user->permission;
 			// echo($_SESSION['userID']);
 			header('Location: '.BASE_URL.'/account'); exit();
 		}

@@ -17,6 +17,7 @@ RewriteRule ^$ app/controller/siteController.php?action=home [QSA,L]
 RewriteRule ^info/$ app/controller/siteController.php?action=info
 RewriteRule ^account/?$ app/controller/siteController.php?action=account [QSA,L]
 RewriteRule ^addchaplain/?$ app/controller/siteController.php?action=add [QSA,L]
+RewriteRule ^admin/?$ app/controller/siteController.php?action=admin [QSA,L]
 
 # Footer
 RewriteRule ^about/?$ app/controller/siteController.php?action=about [QSA,L]
