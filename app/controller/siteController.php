@@ -61,6 +61,10 @@ class SiteController {
 			case 'info' :
 				$this->info();
 				break;
+
+			case 'deleteUserProcess' :
+				$id = $_POST['id'];
+				$this->deleteUserProcess($id);
 		}
 	}
 	public function home() {
@@ -129,6 +133,10 @@ class SiteController {
 			// echo($_SESSION['userID']);
 			header('Location: '.BASE_URL.'/account'); exit();
 		}
+	}
+
+	public function deleteUserProcess($id) {
+		User::delete($id);
 	}
 	public function login() {
 		$pageTitle = 'Login';

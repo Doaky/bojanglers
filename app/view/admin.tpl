@@ -3,8 +3,8 @@
   <table id = "celebTable">
     <th>User Id</th>
     <th>Username</th>
-    <th>Email</th>
     <th>User Permissions</th>
+    <th>Email</th>
     <?php foreach($users as $entry) {
       if($entry->username != $_SESSION['username']) {
         echo('<tr>');
@@ -17,10 +17,17 @@
           echo('<td>Registered Users</td>');
         }
         echo('<td>'.$entry->email.'</td>');
+        echo('<td><button id ="edit-perm">Change Permissions</button></td>');
+        echo('<td><button id ="delete-user">Delete User</button></td>');
         echo('<tr>');
       }
 
-    } ?>
+    }
+  ?>
 
   </table>
+  <br>
+  <!-- <?php if(!empty($users)) {
+    echo('<button id = "submit-changes">Submit Changes </button>');
+  } ?> -->
 </main>
