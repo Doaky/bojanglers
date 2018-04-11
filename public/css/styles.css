@@ -210,6 +210,7 @@ footer > a {
 }
 
 .account-page {
+	height: calc(100vh - 135px) !important;
 	padding-top: 25px;
 }
 
@@ -537,7 +538,7 @@ chaplain button {
 	width: 80%;
 }
 
-.close, .close2 {
+.close, .close2, .close3 {
 	color: #aaaaaa;
 	float: right;
 	font-size: 28px;
@@ -548,7 +549,9 @@ chaplain button {
 .close:hover,
 .close:focus,
 .close2:hover,
-.close2:focus {
+.close2:focus,
+.close3:hover,
+.close3:focus {
 	color: #000;
 	text-decoration: none;
 	cursor: pointer;

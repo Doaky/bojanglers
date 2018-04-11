@@ -1,145 +1,141 @@
 $(document).ready(function() {
-  // var username;
-  // If there is a username in localStorage use it, if not set to hardcoded user.
-  // if (localStorage.username) {
-  // 	username = localStorage.username;
-  // }
-  // else {
-  // 	username = "Daniel";
-  // }
+	// var username;
+	// If there is a username in localStorage use it, if not set to hardcoded user.
+	// if (localStorage.username) {
+	// 	username = localStorage.username;
+	// }
+	// else {
+	// 	username = "Daniel";
+	// }
 
-  // addUsername();
-  asyncFunctions();
-  searchEventListener();
+	// addUsername();
   deleteUser();
-  if (document.title == "Chaplain | Chaplain Stories") {
-    loadChaplainImage(); // Gets image from API
-    loadChaplainDocs(); // Gets info from API
-  } else if (document.title == "Search | Chaplain Stories") {
-    loadChaplainDocs(); // Gets info from API
-  }
+	asyncFunctions();
+	searchEventListener();
+	if (document.title == "Chaplain | Chaplain Stories") {
+		loadChaplainImage(); // Gets image from API
+		loadChaplainDocs(); // Gets info from API
+	}
+	else if (document.title == "Search | Chaplain Stories") {
+		loadChaplainDocs(); // Gets info from API
+	}
 
-  //_______________________________________________________________________//
-  //----------------------------Editing Chaplain---------------------------//
-  // Toggles edit view
-  $("#edit").click(function() {
-    $(".editing").show();
-    $("#edit").hide();
-  });
+//_______________________________________________________________________//
+//----------------------------Editing Chaplain---------------------------//
+	// Toggles edit view
+	$("#edit").click(function() {
+		$(".editing").show();
+		$("#edit").hide();
+	});
 
-  $("#done").click(function() {
-    $(".editing").hide();
-    $("#done").hide();
-    $("#edit").show();
-  });
+	$("#done").click(function() {
+		$(".editing").hide();
+		$("#done").hide();
+		$("#edit").show();
+	});
 
-  // Modals
-  // Get the modal
-  var timelineAddModal = document.getElementById('timelineAdd');
-  var timelineEditModal = document.getElementById('timelineEdit');
-  var chaplainEditModal = document.getElementById('chaplainEdit');
+	// Modals
+	// Get the modal
+	var timelineAddModal = document.getElementById('timelineAdd');
+	var timelineEditModal = document.getElementById('timelineEdit');
+	var chaplainEditModal = document.getElementById('chaplainEdit');
 
-  // Get the <span> element that closes the modal
-  var span = document.getElementsByClassName("close")[0];
+	var accountEditModal = document.getElementById('accountEdit');
 
-  var timelineID = document.getElementById("timelineID");
+	// Get the <span> element that closes the modal
+	var span = document.getElementsByClassName("close")[0];
 
-  $(".timelineEntry").click(function() {
-    timelineEditModal.style.display = "block";
-    timelineEditModal.animate([
-      // keyframes
-      {
-        opacity: '0',
-        transform: 'scale3d(0.3, 0.3, 0.3)',
-        background: 'rgba(0,0,0,0)'
-      },
-      {
-        opacity: '1',
-        transform: 'scale3d(1, 1, 1)',
-        background: 'rgba(0,0,0,0.4)'
-      }
-    ], {
-      // timing options
-      duration: 250,
-      iterations: 1
-    });
-    timelineID.value = this.id;
-  });
+	var timelineID = document.getElementById("timelineID");
 
-  $("#addEvent").click(function() {
-    timelineAddModal.style.display = "block";
-    timelineAddModal.animate([
-      // keyframes
-      {
-        opacity: '0',
-        transform: 'scale3d(0.3, 0.3, 0.3)',
-        background: 'rgba(0,0,0,0)'
-      },
-      {
-        opacity: '1',
-        transform: 'scale3d(1, 1, 1)',
-        background: 'rgba(0,0,0,0.4)'
-      }
-    ], {
-      // timing options
-      duration: 250,
-      iterations: 1
-    });
-  });
+	$(".timelineEntry").click(function() {
+		timelineEditModal.style.display = "block";
+		timelineEditModal.animate([
+			// keyframes
+			{ opacity: '0', transform: 'scale3d(0.3, 0.3, 0.3)', background: 'rgba(0,0,0,0)' },
+			{ opacity: '1', transform: 'scale3d(1, 1, 1)', background: 'rgba(0,0,0,0.4)' }
+		], {
+			// timing options
+			duration: 250,
+			iterations: 1
+		});
+		timelineID.value = this.id;
+	});
 
-  $("#general").click(function() {
-    chaplainEditModal.style.display = "block";
-    chaplainEditModal.animate([
-      // keyframes
-      {
-        opacity: '0',
-        transform: 'scale3d(0.3, 0.3, 0.3)',
-        background: 'rgba(0,0,0,0)'
-      },
-      {
-        opacity: '1',
-        transform: 'scale3d(1, 1, 1)',
-        background: 'rgba(0,0,0,0.4)'
-      }
-    ], {
-      // timing options
-      duration: 250,
-      iterations: 1
-    });
-  });
+	$("#addEvent").click(function() {
+		timelineAddModal.style.display = "block";
+		timelineAddModal.animate([
+			// keyframes
+			{ opacity: '0', transform: 'scale3d(0.3, 0.3, 0.3)', background: 'rgba(0,0,0,0)' },
+			{ opacity: '1', transform: 'scale3d(1, 1, 1)', background: 'rgba(0,0,0,0.4)' }
+		], {
+			// timing options
+			duration: 250,
+			iterations: 1
+		});
+	});
 
-  // When the user clicks on <span> (x), close the modal
-  // span.onclick = function() {
-  $(".close").click(function() {
-    timelineEditModal.style.display = "none";
-    timelineAddModal.style.display = "none";
-    chaplainEditModal.style.display = "none";
-  });
-  //---------------------------End Editing Chaplain-------------------------//
-  //___________________________________________________________________-____//
+	$("#general").click(function() {
+		chaplainEditModal.style.display = "block";
+		chaplainEditModal.animate([
+			// keyframes
+			{ opacity: '0', transform: 'scale3d(0.3, 0.3, 0.3)', background: 'rgba(0,0,0,0)' },
+			{ opacity: '1', transform: 'scale3d(1, 1, 1)', background: 'rgba(0,0,0,0.4)' }
+		], {
+			// timing options
+			duration: 250,
+			iterations: 1
+		});
+	});
 
-  /**
-   * Replaced defualt "user" text with actual username.
-   */
-  // function addUsername() {
-  // 	$(".username").text(username);
-  // }
+	$("#account").click(function() {
+		accountEditModal.style.display = "block";
+		accountEditModal.animate([
+			// keyframes
+			{ opacity: '0', transform: 'scale3d(0.3, 0.3, 0.3)', background: 'rgba(0,0,0,0)' },
+			{ opacity: '1', transform: 'scale3d(1, 1, 1)', background: 'rgba(0,0,0,0.4)' }
+		], {
+			// timing options
+			duration: 250,
+			iterations: 1
+		});
+	});
 
-  // Avatar Uploading
-  var upload = function(image) {
-    var avatar = new FileReader();
-    avatar.onload = function(e) {
-      // Adds the picture's path to the HTML object's src attribute.
-      $(".profile-picture").attr('src', e.target.result);
-    }
-    // Actually loads in image from input
-    avatar.readAsDataURL(image.files[0]);
-  };
+	// When the user clicks on <span> (x), close the modal
+	// span.onclick = function() {
+	$(".close").click(function() {
+		timelineEditModal.style.display = "none";
+		timelineAddModal.style.display = "none";
+		chaplainEditModal.style.display = "none";
+	});
 
-  // Runs when the input field changes (gets input)
-  $(".file-upload").on('change', function() {
-    upload(this);
-  });
+	$(".close3").click(function() {
+		accountEditModal.style.display = "none";
+	});
+//---------------------------End Editing Chaplain-------------------------//
+//___________________________________________________________________-____//
+
+	/**
+	 * Replaced defualt "user" text with actual username.
+	 */
+	// function addUsername() {
+	// 	$(".username").text(username);
+	// }
+
+	// Avatar Uploading
+	var upload = function(image) {
+		var avatar = new FileReader();
+		avatar.onload = function (e) {
+			// Adds the picture's path to the HTML object's src attribute.
+			$(".profile-picture").attr('src', e.target.result);
+		}
+		// Actually loads in image from input
+		avatar.readAsDataURL(image.files[0]);
+	};
+
+	// Runs when the input field changes (gets input)
+	$(".file-upload").on('change', function() {
+		upload(this);
+	});
 });
 
 /**

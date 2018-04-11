@@ -13,6 +13,10 @@ RewriteRule ^createaccount/?$ app/controller/siteController.php?action=createacc
 RewriteRule ^createaccount/process/?$ app/controller/siteController.php?action=createaccountProcess [QSA,L]
 RewriteRule ^deleteuser/process/?$ app/controller/siteController.php?action=deleteuserProcess [QSA,L]
 
+# Users
+RewriteRule ^user/(\d+)/?$ app/controller/userController.php?action=user&id=$1 [QSA,L]
+RewriteRule ^user/editaccount/?$ app/controller/userController.php?action=editaccount [QSA,L]
+
 # Header
 RewriteRule ^$ app/controller/siteController.php?action=home [QSA,L]
 RewriteRule ^info/$ app/controller/siteController.php?action=info
