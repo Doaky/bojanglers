@@ -20,7 +20,7 @@ class ChaplainAction {
 			);
 		$result = $db->query($q); // execute query
 		// make sure we found something
-		if($result->num_rows == 0) {
+		if ($result->num_rows == 0) {
 			return null;
 		} else {
 			$row = $result->fetch_assoc(); // get results as associative array
@@ -48,12 +48,26 @@ class ChaplainAction {
 		$result = $db->query($q);
 
 		$events = array();
-		if($result->num_rows != 0) {
-			while($row = $result->fetch_assoc()) {
+		if ($result->num_rows != 0) {
+			while ($row = $result->fetch_assoc()) {
 				$events[] = self::loadById($row['fkUser']);
 			}
 		}
 		return $events;
+	}
+
+	// return all actions as an array
+	public static function getActions() {
+		$db = Db::instance();
+		$q = "SELECT id FROM `".self::DB_TABLE."` ORDER BY id ASC;";
+		$result = $db->query($q);
+		$actions = array();
+		if ($result->num_rows != 0) {
+			while ($row = $result->fetch_assoc()) {
+				$actions[] = self::loadById($row['id']);
+			}
+		}
+		return $actions;
 	}
 
 	public function save(){
@@ -66,7 +80,7 @@ class ChaplainAction {
 	}
 
 	public function insert() {
-		if($this->id != 0)
+		if ($this->id != 0)
 			return null; // can't insert something that already has an ID
 
 		$db = Db::instance(); // connect to db

@@ -44,11 +44,11 @@
 	</br>
 	<section class="left">
 		<div id="content">
-			<h2 class="activity-title">Chaplains:</h2>
+			<h2 class="title">Chaplains:</h2>
 		</div>
 
 		<div id="users">
-			<h2 class="activity-title">Users:</h2>
+			<h2 class="title">Users:</h2>
 			<?php foreach($users as $u): ?>
 				<article class="user">
 					<?php if($u->permission == 0): ?>
@@ -63,7 +63,6 @@
 								<button id="<?= $u->id ?>" class="demote button">Demote</button>
 							<?php endif; ?> 
 						<?php endif; ?>
-						
 					<?php endif; ?>
 				</article>
 			<?php endforeach; ?>
@@ -71,7 +70,12 @@
 	</section>
 
 	<section class="right">
-		<h2 class="activity-title">Activity:</h2>
+		<h2 class="title">Activity:</h2>
+		<?php foreach($actions as $a): ?>
+			<article class="action">
+				Item was <?= $a->actionType ?> by <?= $a->fkUser ?>
+			</article>
+		<?php endforeach; ?>
 	</section>
 
 </main>

@@ -86,6 +86,7 @@ class User {
 		}
 		return $users;
 	}
+	
 	public function save(){
 		if ($this->id == 0) {
 			return $this->insert(); // chaplains is new and needs to be created
