@@ -11,7 +11,8 @@ RewriteRule ^login/process/?$ app/controller/siteController.php?action=loginProc
 RewriteRule ^logout/?$ app/controller/siteController.php?action=logout [QSA,L]
 RewriteRule ^createaccount/?$ app/controller/siteController.php?action=createaccount [QSA,L]
 RewriteRule ^createaccount/process/?$ app/controller/siteController.php?action=createaccountProcess [QSA,L]
-RewriteRule ^deleteuser/process/?$ app/controller/siteController.php?action=deleteuserProcess [QSA,L]
+RewriteRule ^deleteuser/process/?$ app/controller/siteController.php?action=deleteUserProcess [QSA,L]
+RewriteRule ^edituser/process/?$ app/controller/siteController.php?action=editUserProcess [QSA,L]
 
 # Users
 RewriteRule ^user/(\d+)/?$ app/controller/userController.php?action=user&id=$1 [QSA,L]
