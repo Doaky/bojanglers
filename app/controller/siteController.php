@@ -19,12 +19,12 @@ class SiteController {
 				$this->createaccount();
 				break;
 			case 'createaccountProcess' :
-				$email = $_POST['email'];
-				$username = $_POST['username'];
-				$password = $_POST['pw'];
+				$email     = $_POST['email'];
+				$username  = $_POST['username'];
+				$password  = $_POST['pw'];
 				$confirmed = $_POST['pwConfirm'];
 				$firstName = $_POST['firstName'];
-				$lastName = $_POST['lastName'];
+				$lastName  = $_POST['lastName'];
 				$education = $_POST['education'];
 				if($password != $confirmed) {
 					header('Location: '.BASE_URL.'/createaccount'); exit();
@@ -53,11 +53,9 @@ class SiteController {
 			case 'contact':
 				$this->contact();
 				break;
-
 			case 'admin':
 				$this->admin();
 				break;
-
 			case 'info' :
 				$this->info();
 				break;
@@ -80,6 +78,9 @@ class SiteController {
 		}
 
 		$pageTitle = 'Info';
+
+		$users = User::getUsers();
+
 		include_once SYSTEM_PATH.'/view/header.tpl';
 		include_once SYSTEM_PATH.'/view/info.tpl';
 		include_once SYSTEM_PATH.'/view/footer.tpl';
@@ -116,14 +117,15 @@ class SiteController {
 		include_once SYSTEM_PATH.'/view/footer.tpl';
 	}
 	public function createaccountProcess($email, $un, $pw, $fn, $ln, $ed) {
-		$user = new User();
-		$user->username = $un;
-		$user->password = $pw;
-		$user->email = $email;
-		$user->firstName = $fn;
-		$user->lastName = $ln;
-		$user->education = $ed;
-		$userID = $user->save();
+		$user             = new User();
+		$user->username   = $un;
+		$user->password   = $pw;
+		$user->email      = $email;
+		$user->firstName  = $fn;
+		$user->lastName   = $ln;
+		$user->education  = $ed;
+		$user->permission = 2;
+		$userID           = $user->save();
 		$this->loginProcess($user->username, $user->password);
 	}
 	public function loginProcess($un, $pw) {
@@ -135,8 +137,8 @@ class SiteController {
 		}
 		else {
 			$_SESSION['username'] = $user->username;
-			$_SESSION['userID'] = $user->id;
-			$_SESSION['admin'] = $user->permission;
+			$_SESSION['userID']   = $user->id;
+			$_SESSION['admin']    = $user->permission;
 			// echo($_SESSION['userID']);
 			header('Location: '.BASE_URL.'/account'); exit();
 		}

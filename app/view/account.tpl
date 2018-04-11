@@ -33,9 +33,18 @@
 						<option value="4">Graduate Degree</option>
 					</select>
 				</fieldset>
+
+				<fieldset>
+					<legend>New Password</legend>
+					<input required="required" id="pw" type="password" name="pw" value="<?= $user->password ?>">
+				</fieldset>
+
+				<fieldset>
+					<legend>Confirm Password</legend>
+					<input required="required" id="pwConfirm" type="password" name="pwConfirm" value="<?= $user->password ?>" oninput="check(this)">
+				</fieldset>
 				
 				<input class="hide-info" type="text" name="username" value="<?= $user->username ?>">
-				<input class="hide-info" type="text" name="password" value="<?= $user->password ?>">
 				<input class="hide-info" type="number" name="id" value="<?= $user->id ?>">
 
 				<br><br>
@@ -92,3 +101,14 @@
 		</section>
 	</section>
 </main>
+
+<script language='javascript' type='text/javascript'>
+	// https://stackoverflow.com/questions/9142527/can-you-require-two-form-fields-to-match-with-html5
+	function check(pwConfirm) {
+		if (pwConfirm.value != document.getElementById('pw').value) {
+			pwConfirm.setCustomValidity('Password Must be Matching.');
+		} else {
+			pwConfirm.setCustomValidity('');
+		}
+	}
+</script>
