@@ -49,6 +49,18 @@
           <li class="nav-item"><a href="<?= BASE_URL ?>/info/">Info</a></li>
         <?php endif; ?>
       <?php endif; ?>
+
+      <?php if(isset($_SESSION['admin'])): ?>
+        <?php if($_SESSION['admin'] == 1): ?>
+        <?php if($pageTitle == 'Admin'): ?>
+          <li class="nav-item"><a href="<?= BASE_URL ?>/admin/" class="selected">Admin</a></li>
+        <?php else: ?>
+          <li class="nav-item"><a href="<?= BASE_URL ?>/admin/">Admin</a></li>
+        <?php endif; ?>
+        <?php endif; ?>
+      <?php endif; ?>
+
+
     </ul>
 
     <?php if(isset($_SESSION['username'])): ?>

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Apr 09, 2018 at 07:46 PM
+-- Generation Time: Apr 11, 2018 at 12:43 AM
 -- Server version: 5.6.39
 -- PHP Version: 7.0.27
 
@@ -70,8 +70,7 @@ CREATE TABLE `chaplain_actions` (
 CREATE TABLE `following` (
   `id` int(11) NOT NULL,
   `fkFollower` int(11) NOT NULL,
-  `fkFollowed` int(11) NOT NULL,
-  `timestamp` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
+  `fkFollowed` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -82,8 +81,9 @@ CREATE TABLE `following` (
 
 CREATE TABLE `following_actions` (
   `id` int(11) NOT NULL,
-  `fkFriend` int(11) NOT NULL,
-  `actionType` int(11) NOT NULL COMMENT '0 add friend, 1 edit, 2 delete',
+  `fkFollower` int(11) NOT NULL,
+  `fkFollowed` int(11) NOT NULL,
+  `actionType` int(11) NOT NULL COMMENT '0 add following, 1 remove',
   `timestamp` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -207,7 +207,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `chaplains`
 --
 ALTER TABLE `chaplains`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `chaplain_actions`
