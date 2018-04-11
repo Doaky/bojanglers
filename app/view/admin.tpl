@@ -17,8 +17,8 @@
           echo('<td>Registered Users</td>');
         }
         echo('<td>'.$entry->email.'</td>');
-        echo('<td><button id ="edit-perm">Change Permissions</button></td>');
-        echo('<td><button id ="delete-user">Delete User</button></td>');
+        echo('<td><button class ="edit-perm">Change Permissions</button></td>');
+        echo('<td><button class ="delete-user">Delete User</button></td>');
         echo('<tr>');
       }
 

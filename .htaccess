@@ -11,6 +11,7 @@ RewriteRule ^login/process/?$ app/controller/siteController.php?action=loginProc
 RewriteRule ^logout/?$ app/controller/siteController.php?action=logout [QSA,L]
 RewriteRule ^createaccount/?$ app/controller/siteController.php?action=createaccount [QSA,L]
 RewriteRule ^createaccount/process/?$ app/controller/siteController.php?action=createaccountProcess [QSA,L]
+RewriteRule ^deleteuser/process/?$ app/controller/siteController.php?action=deleteuserProcess [QSA,L]
 
 # Header
 RewriteRule ^$ app/controller/siteController.php?action=home [QSA,L]

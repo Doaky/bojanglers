@@ -61,8 +61,7 @@ class SiteController {
 			case 'info' :
 				$this->info();
 				break;
-
-			case 'deleteUserProcess' :
+			case 'deleteUserProcess':
 				$id = $_POST['id'];
 				$this->deleteUserProcess($id);
 		}

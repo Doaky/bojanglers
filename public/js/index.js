@@ -11,6 +11,7 @@ $(document).ready(function() {
   // addUsername();
   asyncFunctions();
   searchEventListener();
+  deleteUser();
   if (document.title == "Chaplain | Chaplain Stories") {
     loadChaplainImage(); // Gets image from API
     loadChaplainDocs(); // Gets info from API
@@ -273,9 +274,11 @@ function toTitleCase(str) {
  * Async delete function
  */
 function deleteUser() {
-  $("#delete-user").click(function(e) {
-    var target = e.target;
-    var userID = target.parent().parent().children[0].innerHTML;
+  $(".delete-user").click(function(e) {
+
+    var users = $(e.target).parent().parent().children();
+    var userID = users[0].innerHTML;
+    console.log(userID);
     $.ajax({
       url: window.location.origin + "/bojanglers/user/deleteProcess/",
       type: "POST",
