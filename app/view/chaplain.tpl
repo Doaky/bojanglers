@@ -24,6 +24,7 @@
 
 				<input class="hide-info" type="number" name="id" value="0">
 				<input class="hide-info" type="number" name="chaplainID" value="<?= $chaplain->id ?>">
+				<input class="hide-info" type="number" name="userID" value="<?= $_SESSION['userID'] ?>">
 
 				<br><br>
 
@@ -56,6 +57,7 @@
 
 				<input class="hide-info" id="timelineID" type="number" name="id" value="0">
 				<input class="hide-info" type="number" name="chaplainID" value="<?= $chaplain->id ?>">
+				<input class="hide-info" type="number" name="userID" value="<?= $_SESSION['userID'] ?>">
 
 				<br><br>
 
@@ -99,12 +101,8 @@
 				<div id="order">
 				</div>
 
-				<fieldset>
-					<legend>File</legend>
-					<input type="text" name="file" value="<?= $chaplain->file ?>">
-				</fieldset>
-
 				<input class="hide-info" type="number" name="id" value="<?= $chaplain->id ?>">
+				<input class="hide-info" type="number" name="userID" value="<?= $_SESSION['userID'] ?>">
 
 				<br><br>
 
