@@ -1,16 +1,16 @@
 <?php
 
 // Represents a single instance of a user following another
-class Following {
-	const DB_TABLE = 'following'; // database table name
+class ChaplainAction {
+	const DB_TABLE = 'chaplain_actions'; // database table name
 
 	// database fields for this table
 	public $id = 0;
-	public $fkFollowing = 0;
+	public $fkUser = 0;
 	public $actionType = 0;
-	public $timestamp = 0;
+	public $timestamp = '';
 
-	// return a Following object by ID
+	// return a Chaplain Action object by ID
 	public static function loadById($id) {
 		$db = Db::instance(); // create db connection
 		// build query
@@ -25,22 +25,22 @@ class Following {
 		} else {
 			$row = $result->fetch_assoc(); // get results as associative array
 
-			$f = new Following(); // instantiate new Following
+			$f = new ChaplainAction(); // instantiate new FollowingAction
 
 			// store db results in local object
 			$f->id           = $row['id'];
-			$f->fkFollower  = $row['fkFollower'];
-			$f->fkFollowed        = $row['fkFollowed'];
+			$f->fkUser  = $row['fkUser'];
+			$f->actionType        = $row['actionType'];
 			$f->timestamp         = $row['timestamp'];
 
 			return $f; // return the life event
 		}
 	}
 
-	// return all people following a person, given that user's ID
-	public static function getUsersFollowing($userID) {
+	// return all actions associated with the user
+	public static function getbyUserId($userId) {
 		$db = Db::instance();
-		$q = sprintf("SELECT * FROM `%s` WHERE `fkFollower` = %d ",
+		$q = sprintf("SELECT * FROM `%s` WHERE `fkUser` = %d ",
 			self::DB_TABLE,
 			$userID
 			);
@@ -50,26 +50,7 @@ class Following {
 		$events = array();
 		if($result->num_rows != 0) {
 			while($row = $result->fetch_assoc()) {
-				$events[] = self::loadById($row['fkFollowed']);
-			}
-		}
-		return $events;
-	}
-
-	// return all people a user is following, given that user's ID
-	public static function getUsersFollowed($userID) {
-		$db = Db::instance();
-		$q = sprintf("SELECT * FROM `%s` WHERE `fkFollowed` = %d ",
-			self::DB_TABLE,
-			$userID
-			);
-
-		$result = $db->query($q);
-
-		$events = array();
-		if($result->num_rows != 0) {
-			while($row = $result->fetch_assoc()) {
-				$events[] = self::loadById($row['fkFollower']);
+				$events[] = self::loadById($row['fkUser']);
 			}
 		}
 		return $events;
@@ -90,11 +71,11 @@ class Following {
 
 		$db = Db::instance(); // connect to db
 		// build query
-		$q = sprintf("INSERT INTO %s (fkFollower, fkFollowed)
+		$q = sprintf("INSERT INTO %s (fkUser, actionType)
 		VALUES (%d, %d);",
 			self::DB_TABLE,
-			$db->escape($this->fkFollower),
-			$db->escape($this->fkFollowed),
+			$db->escape($this->fkUser),
+			$db->escape($this->actionType)
 			);
 
 		$db->query($q); // execute query
@@ -109,12 +90,11 @@ class Following {
 		$db = Db::instance(); // connect to db
 
 		// build query
-		$q = sprintf("DELETE FROM following WHERE id = %s;",
+		$q = sprintf("DELETE FROM chaplain_actions WHERE id = %s;",
 			$db->escape($this->id)
 			);
 
 		$db->query($q);
-
 		return 0; // return this object's ID
 	}
 }

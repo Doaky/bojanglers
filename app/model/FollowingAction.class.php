@@ -92,7 +92,7 @@ class FollowingAction {
 
 		$db = Db::instance(); // connect to db
 		// build query
-		$q = sprintf("INSERT INTO %s (fkFollower, FkFollowed, actionType)
+		$q = sprintf("INSERT INTO %s (fkFollower, fkFollowed, actionType)
 		VALUES (%d, %d, %d);",
 			self::DB_TABLE,
 			$db->escape($this->fkFollower),

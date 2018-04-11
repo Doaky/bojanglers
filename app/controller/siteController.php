@@ -60,8 +60,12 @@ class SiteController {
 				$this->info();
 				break;
 			case 'deleteUserProcess':
-				$id = $_POST['id'];
+				$id = $_GET['id'];
 				$this->deleteUserProcess($id);
+			case 'editUserProcess':
+				$id = $_POST['id'];
+				$permission = $_POST['permission'];
+				$this->editUserProcess($id, $permission);
 		}
 	}
 	public function home() {
@@ -145,7 +149,16 @@ class SiteController {
 	}
 
 	public function deleteUserProcess($id) {
-		User::delete($id);
+		$user = User::loadById($id);
+		echo($user->id);
+		$user->delete();
+		header('Location: '.BASE_URL.'/admin'); exit();
+	}
+	public function editUserProcess($id, $permission) {
+		$user = User::loadById($id);
+		$user->permission = $permission;
+		$user->save();
+		header('Location: '.BASE_URL.'/admin'); exit();
 	}
 	public function login() {
 		$pageTitle = 'Login';

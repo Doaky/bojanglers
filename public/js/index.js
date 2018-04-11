@@ -10,8 +10,11 @@ $(document).ready(function() {
 
 	// addUsername();
   deleteUser();
+  editUser();
 	asyncFunctions();
 	searchEventListener();
+
+  closeDelete();
 	if (document.title == "Chaplain | Chaplain Stories") {
 		loadChaplainImage(); // Gets image from API
 		loadChaplainDocs(); // Gets info from API
@@ -270,22 +273,18 @@ function toTitleCase(str) {
  * Async delete function
  */
 function deleteUser() {
-  $(".delete-user").click(function(e) {
-
-    var users = $(e.target).parent().parent().children();
-    var userID = users[0].innerHTML;
-    console.log(userID);
-    $.ajax({
-      url: window.location.origin + "/bojanglers/user/deleteProcess/",
-      type: "POST",
-      data: {
-        "id": userID
-      },
-      success: function(result) {
-        alert(userID + " deleted");
-      }
-    })
-  })
+  $("#deleteUser").click(function(e) {
+    $("#deleteView").show();
+  });
+}
+function editUser() {
+  $("#editPerm").click(function(e) {
+    $("#editView").show();
+  });
+}
+function closeDelete() {
+  $("#deleteView").hide();
+  $("#editView").hide();
 }
 
 /**

@@ -108,7 +108,6 @@ class User {
 	  		$db->escape($this->firstName),
 			$db->escape($this->lastName),
 			$db->escape($this->education)
-
 			);
 		$db->query($q); // execute query
 		// echo $db->getInsertID();
@@ -128,6 +127,7 @@ class User {
 			email     = %s,
 			firstName = %s,
 			lastName  = %s,
+			permission =%s,
 			education = %s
 			WHERE id  = %s;",
 			$db->escape($this->username),
@@ -135,6 +135,7 @@ class User {
 			$db->escape($this->email),
 	  	$db->escape($this->firstName),
 			$db->escape($this->lastName),
+			$db->escape($this->permission),
 			$db->escape($this->education),
 			$db->escape($this->id)
 		);
@@ -155,6 +156,7 @@ class User {
 			$db->escape($this->id)
 			);
 		$db->query($q);
+		echo($q);
 		return 0; // return this object's ID
 	}
 }
