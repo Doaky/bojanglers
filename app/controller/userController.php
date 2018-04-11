@@ -27,6 +27,18 @@ class UserController {
 				if ($save) {
 					$this->editAccount();
 				}
+				break;
+
+			case 'addFollower':
+				$id = $_GET['id'];
+				$followed = $_GET['followed'];
+				$this->view($id, $followed);
+				break;
+
+			case 'removeFollowing':
+				$id = $_GET['id'];
+				$this->view($id);
+				break;
 		}
 	}
 
@@ -71,4 +83,28 @@ class UserController {
 
 		header('Location: '.BASE_URL.'/account/'); exit();
 	}
+
+	public function addFollower($id, $follower) {
+		$following = new Following();
+		$following->fkFollower = $id;
+		$following->fkFollowed = $follower;
+		$following->save();
+		$action = new FollowingAction();
+		$action->fkFollower = $id;
+		$action->fkFollowed = $follower;
+		$action->actionType = 0;
+		$action->save();
+	}
+
+	public function removeFollower($id) { #id of following relationship
+		$following = Following.loadById($id);
+		$action = new FollowingAction();
+		$action->fkFollower = $following->fkFollower;
+		$action->fkFollowed = $following->fkFollowed;
+		$action->actionType = 1;
+		$following->delete();
+		$action->save();
+	}
+
+
 }

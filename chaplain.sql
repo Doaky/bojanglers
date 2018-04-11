@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Apr 11, 2018 at 12:43 AM
+-- Generation Time: Apr 11, 2018 at 07:07 PM
 -- Server version: 5.6.39
 -- PHP Version: 7.0.27
 
@@ -136,7 +136,7 @@ CREATE TABLE `users` (
   `date_created` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `firstName` varchar(50) DEFAULT NULL,
   `lastName` varchar(50) DEFAULT NULL,
-  `permission` int(11) NOT NULL COMMENT '0 registered user, 1 admin, 2 site admin or superadmin',
+  `permission` int(11) NOT NULL COMMENT '0 user, 1 admin, 2 superadmin',
   `education` int(11) DEFAULT NULL COMMENT '0 no finish hs, 1 hs, 2 some college, 3 bachelors, 4 graduate'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 ROW_FORMAT=COMPACT;
 
@@ -145,10 +145,10 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `username`, `password`, `email`, `date_created`, `firstName`, `lastName`, `permission`, `education`) VALUES
-(1, 'djo96', 'bojanglers18', 'djo96@vt.edu', '2018-03-29 15:54:18', '', '', 1, NULL),
-(2, 'bgregos', 'bojanglers18', 'bgregos@vt.edu', '2018-03-29 15:54:51', '', '', 1, NULL),
-(3, 'jpark96', 'bojanglers18', 'jpark96@vt.edu', '2018-03-30 02:13:49', '', '', 1, NULL),
-(4, 'parker45', 'bojanglers18', 'parker45@vt.edu', '2018-03-30 17:44:48', '', '', 1, NULL);
+(1, 'djo96', 'bojanglers18', 'djo96@vt.edu', '2018-03-29 15:54:18', '', '', 0, NULL),
+(2, 'bgregos', 'bojanglers18', 'bgregos@vt.edu', '2018-03-29 15:54:51', '', '', 0, NULL),
+(3, 'jpark96', 'bojanglers18', 'jpark96@vt.edu', '2018-03-30 02:13:49', '', '', 0, NULL),
+(4, 'parker45', 'bojanglers18', 'parker45@vt.edu', '2018-03-30 17:44:48', '', '', 0, NULL);
 
 --
 -- Indexes for dumped tables
