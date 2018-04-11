@@ -67,6 +67,11 @@ class SiteController {
 	}
 
 	public function info() {
+
+		if (!isset($_SESSION['username']) || !isset($_SESSION['userID'])) {
+			header('Location: '.BASE_URL.'/login'); exit();
+		}
+
 		$pageTitle = 'Info';
 		include_once SYSTEM_PATH.'/view/header.tpl';
 		include_once SYSTEM_PATH.'/view/info.tpl';
@@ -75,9 +80,12 @@ class SiteController {
 
 	public function account() {
 		// redirect if not logged in
-		if (!isset($_SESSION['username'])) {
+		if (!isset($_SESSION['username']) || !isset($_SESSION['userID'])) {
 			header('Location: '.BASE_URL.'/login'); exit();
 		}
+
+		$user = User::loadById($_SESSION['userID']);
+
 		$pageTitle = 'Account';
 		include_once SYSTEM_PATH.'/view/header.tpl';
 		include_once SYSTEM_PATH.'/view/account.tpl';

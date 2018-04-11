@@ -7,10 +7,10 @@ class User {
 	public $password        = '';
 	public $email   = '';
 	public $date_created = 0;
-  public $firstName = '';
-  public $lastName = '';
-  public $permission = 0;
-  public $education = NULL;
+	public $firstName = '';
+	public $lastName = '';
+	public $permission = 0;
+	public $education = NULL;
 
 	// return a Chaplains object by ID
 	public static function loadById($id) {
@@ -27,51 +27,52 @@ class User {
 		}
 		else {
 			$row = $result->fetch_assoc(); // get results as associative array
-			$user = new user(); // instantiate new Chaplains object
+			$user = new User(); // instantiate new Chaplains object
 			// store db results in local object
-			$user->id            = $row['id'];
-			$user->username         = $row['name'];
-			$user->password        = $row['password'];
-			$user->email           = $row['email'];
+			$user->id           = $row['id'];
+			$user->username     = $row['username'];
+			$user->password     = $row['password'];
+			$user->email        = $row['email'];
 			$user->date_created = $row['date_created'];
-      $user->firstName = $row['firstName'];
-      $user->lastName = $row['lastName'];
-      $user->permission = $row['permission'];
-      $user->education = $row['education'];
+			$user->firstName    = $row['firstName'];
+			$user->lastName     = $row['lastName'];
+			$user->permission   = $row['permission'];
+			$user->education    = $row['education'];
 
 			return $user; // return the chaplains
 		}
 	}
-  public static function login($un, $pw) {
-    $db = Db::instance(); // create db connection
+	public static function login($un, $pw) {
+		$db = Db::instance(); // create db connection
 		// build query
 		$q = sprintf("SELECT * FROM `%s` WHERE username = '%s' AND password = '%s';",
 			self::DB_TABLE,
 			$un,
-      $pw
-			);
+		  	$pw
+		  );
 		$result = $db->query($q); // execute query
-    echo($q);
+		echo($q);
 		// make sure we found something
 		if ($result->num_rows == 0) {
 			return null;
 		}
-    else {
-      $row = $result->fetch_assoc(); // get results as associative array
+		else {
+			$row = $result->fetch_assoc(); // get results as associative array
 			$user = new user(); // instantiate new Chaplains object
 			// store db results in local object
-			$user->id            = $row['id'];
-			$user->username         = $row['username'];
-			$user->password        = $row['password'];
-			$user->email           = $row['email'];
+			$user->id           = $row['id'];
+			$user->username     = $row['username'];
+			$user->password     = $row['password'];
+			$user->email        = $row['email'];
 			$user->date_created = $row['date_created'];
-      $user->firstName = $row['firstName'];
-      $user->lastName = $row['lastName'];
-      $user->permission = $row['permission'];
-      $user->education = $row['education'];
+			$user->firstName    = $row['firstName'];
+			$user->lastName     = $row['lastName'];
+			$user->permission   = $row['permission'];
+			$user->education    = $row['education'];
 			return $user; // return the chaplains
-    }
-  }
+		}
+	}
+
 	// return all Chaplains as an array
 	public static function getUsers() {
 		$db = Db::instance();
@@ -86,8 +87,13 @@ class User {
 		return $users;
 	}
 	public function save(){
-		return $this->insert(); // user is new and needs to be created
+		if ($this->id == 0) {
+			return $this->insert(); // chaplains is new and needs to be created
+		} else {
+			return $this->update(); // chaplains already exists and needs to be updated
+		}
 	}
+
 	public function insert() {
 		if($this->id != 0)
 			return null; // can't insert something that already has an ID
@@ -99,15 +105,46 @@ class User {
 			$db->escape($this->username),
 			$db->escape($this->password),
 			$db->escape($this->email),
-      $db->escape($this->firstName),
+	  		$db->escape($this->firstName),
 			$db->escape($this->lastName),
-			$db->escape($this->education),
+			$db->escape($this->education)
 
 			);
 		$db->query($q); // execute query
 		// echo $db->getInsertID();
 		return $db->getInsertID(); // return last inserted ID
 	}
+
+	public function update() {
+		if($this->id == 0)
+			return null; // can't update something without an ID
+
+		$db = Db::instance(); // connect to db
+
+		// build query
+		$q = sprintf("UPDATE users SET
+			username  = %s,
+			password  = %s,
+			email     = %s,
+			firstName = %s,
+			lastName  = %s,
+			education = %s,
+			WHERE id  = %s;",
+			$db->escape($this->username),
+			$db->escape($this->password),
+			$db->escape($this->email),
+	  		$db->escape($this->firstName),
+			$db->escape($this->lastName),
+			$db->escape($this->education),
+			$db->escape($this->id)
+		);
+
+		$db->query($q);
+		echo($q);
+
+		return $this->id; // return this object's ID
+	}
+
 	public function delete() {
 		if($this->id == 0) {
 			return null; // can't update something without an ID

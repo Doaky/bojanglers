@@ -39,6 +39,8 @@ $(document).ready(function() {
 	var timelineEditModal = document.getElementById('timelineEdit');
 	var chaplainEditModal = document.getElementById('chaplainEdit');
 
+	var accountEditModal = document.getElementById('accountEdit');
+
 	// Get the <span> element that closes the modal
 	var span = document.getElementsByClassName("close")[0];
 
@@ -84,12 +86,29 @@ $(document).ready(function() {
 		});
 	});
 
+	$("#account").click(function() {
+		accountEditModal.style.display = "block";
+		accountEditModal.animate([
+			// keyframes
+			{ opacity: '0', transform: 'scale3d(0.3, 0.3, 0.3)', background: 'rgba(0,0,0,0)' },
+			{ opacity: '1', transform: 'scale3d(1, 1, 1)', background: 'rgba(0,0,0,0.4)' }
+		], {
+			// timing options
+			duration: 250,
+			iterations: 1
+		});
+	});
+
 	// When the user clicks on <span> (x), close the modal
 	// span.onclick = function() {
 	$(".close").click(function() {
 		timelineEditModal.style.display = "none";
 		timelineAddModal.style.display = "none";
 		chaplainEditModal.style.display = "none";
+	});
+
+	$(".close3").click(function() {
+		accountEditModal.style.display = "none";
 	});
 //---------------------------End Editing Chaplain-------------------------//
 //___________________________________________________________________-____//

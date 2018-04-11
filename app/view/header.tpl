@@ -21,29 +21,33 @@
       <?php endif; ?>
 
       <?php if(isset($_SESSION['username'])): ?>
+        <?php if($pageTitle == 'Account'): ?>
+          <li class="nav-item"><a href="<?= BASE_URL ?>/account/" class="selected">Account</a></li>
+        <?php else: ?>
+          <li class="nav-item"><a href="<?= BASE_URL ?>/account/">Account</a></li>
+        <?php endif; ?>
+      <?php endif; ?>
+
+      <?php if(isset($_SESSION['username'])): ?>
         <?php if($pageTitle == 'Add Chaplain'): ?>
           <li class="nav-item"><a href="<?= BASE_URL ?>/addchaplain/" class="selected">Add Chaplain</a></li>
         <?php else: ?>
           <li class="nav-item"><a href="<?= BASE_URL ?>/addchaplain/">Add Chaplain</a></li>
         <?php endif; ?>
       <?php endif; ?>
-
-      <?php if($pageTitle == 'Account'): ?>
-        <li class="nav-item"><a href="<?= BASE_URL ?>/account/" class="selected">Account</a></li>
-      <?php else: ?>
-        <li class="nav-item"><a href="<?= BASE_URL ?>/account/">Account</a></li>
-      <?php endif; ?>
-
+      
       <?php if($pageTitle == 'Search'): ?>
         <li class="nav-item"><a href="<?= BASE_URL ?>/search/?search=" class="selected">Search</a></li>
       <?php else: ?>
         <li class="nav-item"><a href="<?= BASE_URL ?>/search/?search=">Search</a></li>
       <?php endif; ?>
-
-      <?php if($pageTitle == 'Info'): ?>
-        <li class="nav-item"><a href="<?= BASE_URL ?>/info/" class="selected">Info</a></li>
-      <?php else: ?>
-        <li class="nav-item"><a href="<?= BASE_URL ?>/info/">Info</a></li>
+    
+      <?php if(isset($_SESSION['username'])): ?>
+        <?php if($pageTitle == 'Info'): ?>
+          <li class="nav-item"><a href="<?= BASE_URL ?>/info/" class="selected">Info</a></li>
+        <?php else: ?>
+          <li class="nav-item"><a href="<?= BASE_URL ?>/info/">Info</a></li>
+        <?php endif; ?>
       <?php endif; ?>
     </ul>
 

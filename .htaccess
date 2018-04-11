@@ -12,6 +12,10 @@ RewriteRule ^logout/?$ app/controller/siteController.php?action=logout [QSA,L]
 RewriteRule ^createaccount/?$ app/controller/siteController.php?action=createaccount [QSA,L]
 RewriteRule ^createaccount/process/?$ app/controller/siteController.php?action=createaccountProcess [QSA,L]
 
+# Users
+RewriteRule ^user/(\d+)/?$ app/controller/userController.php?action=user&id=$1 [QSA,L]
+RewriteRule ^user/editaccount/?$ app/controller/userController.php?action=editaccount [QSA,L]
+
 # Header
 RewriteRule ^$ app/controller/siteController.php?action=home [QSA,L]
 RewriteRule ^info/$ app/controller/siteController.php?action=info
