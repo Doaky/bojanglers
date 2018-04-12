@@ -14,7 +14,7 @@ class ChaplainAction {
 	public static function loadById($id) {
 		$db = Db::instance(); // create db connection
 		// build query
-		$q = sprintf("SELECT * FROM `%s` WHERE id = %d;",
+		$q = sprintf("SELECT * FROM `%s` WHERE id = %s;",
 			self::DB_TABLE,
 			$id
 			);
@@ -40,7 +40,7 @@ class ChaplainAction {
 	// return all actions associated with the user
 	public static function getbyUserId($userId) {
 		$db = Db::instance();
-		$q = sprintf("SELECT * FROM `%s` WHERE `fkUser` = %d ",
+		$q = sprintf("SELECT * FROM `%s` WHERE `fkUser` = %s ",
 			self::DB_TABLE,
 			$userID
 			);
@@ -86,7 +86,7 @@ class ChaplainAction {
 		$db = Db::instance(); // connect to db
 		// build query
 		$q = sprintf("INSERT INTO %s (fkUser, actionType)
-		VALUES (%d, %d);",
+		VALUES (%s, %s);",
 			self::DB_TABLE,
 			$db->escape($this->fkUser),
 			$db->escape($this->actionType)

@@ -15,7 +15,7 @@ class FollowingAction {
 	public static function loadById($id) {
 		$db = Db::instance(); // create db connection
 		// build query
-		$q = sprintf("SELECT * FROM `%s` WHERE id = %d;",
+		$q = sprintf("SELECT * FROM `%s` WHERE id = %s;",
 			self::DB_TABLE,
 			$id
 			);
@@ -42,7 +42,7 @@ class FollowingAction {
 	// return all following actions associated with the user
 	public static function getbyFollowingId($userId) {
 		$db = Db::instance();
-		$q = sprintf("SELECT * FROM `%s` WHERE `fkFollower` = %d ",
+		$q = sprintf("SELECT * FROM `%s` WHERE `fkFollower` = %s ",
 			self::DB_TABLE,
 			$userID
 			);
@@ -61,7 +61,7 @@ class FollowingAction {
 	// return all following actions associated with people following the user given
 	public static function getUsersFollowed($userID) {
 		$db = Db::instance();
-		$q = sprintf("SELECT * FROM `%s` WHERE `fkFollowed` = %d ",
+		$q = sprintf("SELECT * FROM `%s` WHERE `fkFollowed` = %s ",
 			self::DB_TABLE,
 			$userID
 			);
@@ -93,7 +93,7 @@ class FollowingAction {
 		$db = Db::instance(); // connect to db
 		// build query
 		$q = sprintf("INSERT INTO %s (fkFollower, fkFollowed, actionType)
-		VALUES (%d, %d, %d);",
+		VALUES (%s, %s, %s);",
 			self::DB_TABLE,
 			$db->escape($this->fkFollower),
 			$db->escape($this->fkFollowed),

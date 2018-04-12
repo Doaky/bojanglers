@@ -168,7 +168,7 @@ class ChaplainController {
 
 		$id         = $_POST['id'];
 		$chaplainID = $_POST['chaplainID'];
-		$userID     = $_POST['userID'];
+		$userid     = $_POST['userID'];
 
 		$timelineEntry = new TimelineEntry();
 
@@ -177,10 +177,9 @@ class ChaplainController {
 		$action = new ChaplainAction();
 		$action->fkUser = $userid;
 		$action->actionType = 5;
-
+		$action->save();
 		$timelineID = $timelineEntry->delete();
 
-		$action->save();
 
 		header('Location: '.BASE_URL.'/chaplain/'.$chaplainID); exit();
 	}
