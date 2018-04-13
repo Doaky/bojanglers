@@ -8,13 +8,14 @@ class ChaplainAction {
 	public $id = 0;
 	public $fkUser = 0;
 	public $actionType = 0;
+	public $chaplainName = '';
 	public $timestamp = '';
 
 	// return a Chaplain Action object by ID
 	public static function loadById($id) {
 		$db = Db::instance(); // create db connection
 		// build query
-		$q = sprintf("SELECT * FROM `%s` WHERE id = %d;",
+		$q = sprintf("SELECT * FROM `%s` WHERE id = %s;",
 			self::DB_TABLE,
 			$id
 			);
@@ -31,6 +32,7 @@ class ChaplainAction {
 			$f->id           = $row['id'];
 			$f->fkUser  = $row['fkUser'];
 			$f->actionType        = $row['actionType'];
+			$f->chaplainName 	= $row['chaplainName'];
 			$f->timestamp         = $row['timestamp'];
 
 			return $f; // return the life event
@@ -40,7 +42,7 @@ class ChaplainAction {
 	// return all actions associated with the user
 	public static function getbyUserId($userId) {
 		$db = Db::instance();
-		$q = sprintf("SELECT * FROM `%s` WHERE `fkUser` = %d ",
+		$q = sprintf("SELECT * FROM `%s` WHERE `fkUser` = %s ",
 			self::DB_TABLE,
 			$userID
 			);
@@ -85,10 +87,11 @@ class ChaplainAction {
 
 		$db = Db::instance(); // connect to db
 		// build query
-		$q = sprintf("INSERT INTO %s (fkUser, actionType)
-		VALUES (%d, %d);",
+		$q = sprintf("INSERT INTO %s (fkUser, chaplainName, actionType)
+		VALUES (%s, %s, %s);",
 			self::DB_TABLE,
 			$db->escape($this->fkUser),
+			$db->escape($this->chaplainName),
 			$db->escape($this->actionType)
 			);
 

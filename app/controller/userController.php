@@ -92,7 +92,7 @@ class UserController {
 		$action = new FollowingAction();
 		$action->fkFollower = $id;
 		$action->fkFollowed = $follower;
-		$action->actionType = 0;
+		$action->actionType = '0';
 		$action->save();
 	}
 
@@ -101,7 +101,7 @@ class UserController {
 		$action = new FollowingAction();
 		$action->fkFollower = $following->fkFollower;
 		$action->fkFollowed = $following->fkFollowed;
-		$action->actionType = 1;
+		$action->actionType = '1';
 		$following->delete();
 		$action->save();
 	}
