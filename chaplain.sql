@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Apr 11, 2018 at 07:07 PM
+-- Generation Time: Apr 13, 2018 at 02:19 AM
 -- Server version: 5.6.39
 -- PHP Version: 7.0.27
 
@@ -57,6 +57,7 @@ INSERT INTO `chaplains` (`id`, `name`, `faith`, `faith_type`, `rank`, `hometown`
 CREATE TABLE `chaplain_actions` (
   `id` int(11) NOT NULL,
   `fkUser` int(11) NOT NULL,
+  `chaplainName` varchar(50) NOT NULL,
   `actionType` int(11) NOT NULL COMMENT '0 add chaplain, 1 edit, 2 delete, 3 add timeline, 4 edit, 5 delete',
   `timestamp` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;

@@ -128,6 +128,7 @@ class ChaplainController {
 
 		$action = new ChaplainAction();
 		$action->fkUser = $userid;
+		$action = $chaplain->name;
 		$action->actionType = 0;
 		$action->save();
 
@@ -146,6 +147,7 @@ class ChaplainController {
 		$timelineEntry = new TimelineEntry();
 
 		$timelineEntry->year = $year;
+		echo($year);
 		$timelineEntry->title = $title;
 		$timelineEntry->description = $description;
 		$timelineEntry->chaplain_id = $chaplainID;
@@ -155,13 +157,15 @@ class ChaplainController {
 
 		$timelineID = $timelineEntry->save();
 
+		$chaplain = Chaplain::loadById($chaplainID);
 		$action = new ChaplainAction();
 		$action->fkUser = $userid;
+		$action->chaplainName = $chaplain->name;
 		$action->actionType = 4;
 		$action->save();
 
 
-		header('Location: '.BASE_URL.'/chaplain/'.$chaplainID); exit();
+		//header('Location: '.BASE_URL.'/chaplain/'.$chaplainID); exit();
 	}
 
 	public function deleteTimeline() {
@@ -174,8 +178,10 @@ class ChaplainController {
 
 		$timelineEntry->id = $id;
 
+		$chaplain = Chaplain::loadById($chaplainID);
 		$action = new ChaplainAction();
 		$action->fkUser = $userid;
+		$action->chaplainName = $chaplain->name;
 		$action->actionType = 5;
 		$action->save();
 		$timelineID = $timelineEntry->delete();
@@ -207,6 +213,7 @@ class ChaplainController {
 
 		$action = new ChaplainAction();
 		$action->fkUser = $userid;
+		$action = $chaplain->name;
 		$action->actionType = 1;
 		$action->save();
 
@@ -224,6 +231,7 @@ class ChaplainController {
 
 		$action = new ChaplainAction();
 		$action->fkUser = $userid;
+		$action = $chaplain->name;
 		$action->actionType = 2;
 
 		$chaplainID = $chaplain->delete();

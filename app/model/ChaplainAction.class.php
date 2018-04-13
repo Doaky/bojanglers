@@ -8,6 +8,7 @@ class ChaplainAction {
 	public $id = 0;
 	public $fkUser = 0;
 	public $actionType = 0;
+	public $chaplainName = '';
 	public $timestamp = '';
 
 	// return a Chaplain Action object by ID
@@ -31,6 +32,7 @@ class ChaplainAction {
 			$f->id           = $row['id'];
 			$f->fkUser  = $row['fkUser'];
 			$f->actionType        = $row['actionType'];
+			$f->chaplainName 	= $row['chaplainName'];
 			$f->timestamp         = $row['timestamp'];
 
 			return $f; // return the life event
@@ -85,10 +87,11 @@ class ChaplainAction {
 
 		$db = Db::instance(); // connect to db
 		// build query
-		$q = sprintf("INSERT INTO %s (fkUser, actionType)
-		VALUES (%s, %s);",
+		$q = sprintf("INSERT INTO %s (fkUser, chaplainName, actionType)
+		VALUES (%s, %s, %s);",
 			self::DB_TABLE,
 			$db->escape($this->fkUser),
+			$db->escape($this->chaplainName),
 			$db->escape($this->actionType)
 			);
 
