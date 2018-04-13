@@ -30,25 +30,30 @@ class UserController {
 				break;
 
 			case 'addFollower':
-				$id = $_GET['id'];
-				$followed = $_GET['followed'];
-				$this->view($id, $followed);
+				$this->addFollower();
 				break;
 
 			case 'removeFollowing':
-				$id = $_GET['id'];
-				$this->view($id);
+				$this->removeFollower();
 				break;
 		}
 	}
 
 	public function view($id) {
+		if ($id == $_SESSION['userID']) {
+			header('Location: '.BASE_URL.'/account'); exit();
+		}
+
 		$pageTitle = "User";
 
 		include_once SYSTEM_PATH.'/view/header.tpl';
 
 		// Loads in profile from id
 		$user = User::loadById($id);
+		$following = Following::isFollowing($_SESSION['userID'], $id);
+
+		$followers = Following::getUsersFollowing($id);
+
 		if ($user != null) {
 			include_once SYSTEM_PATH.'/view/user.tpl';
 		}
@@ -84,27 +89,40 @@ class UserController {
 		header('Location: '.BASE_URL.'/account/'); exit();
 	}
 
-	public function addFollower($id, $follower) {
-		$following = new Following();
-		$following->fkFollower = $id;
-		$following->fkFollowed = $follower;
+	public function addFollower() {
+		$fkFollower  = $_POST['fkFollower'];
+		$fkFollowed  = $_POST['fkFollowed'];
+
+		$following             = new Following();
+		$following->fkFollower = $fkFollower;
+		$following->fkFollowed = $fkFollowed;
 		$following->save();
-		$action = new FollowingAction();
-		$action->fkFollower = $id;
-		$action->fkFollowed = $follower;
-		$action->actionType = '0';
+
+		$action                = new FollowingAction();
+		$action->fkFollower    = $fkFollower;
+		$action->fkFollowed    = $fkFollowed;
+		$action->actionType    = '0';
 		$action->save();
+
+		header('Location: '.BASE_URL.'/user/'.$fkFollowed); exit();
 	}
 
-	public function removeFollower($id) { #id of following relationship
-		$following = Following.loadById($id);
-		$action = new FollowingAction();
+	public function removeFollower() { #id of following relationship
+
+		$fkFollower  = $_POST['fkFollower'];
+		$fkFollowed  = $_POST['fkFollowed'];
+
+		$followingID = Following::followingID($fkFollower, $fkFollowed);
+
+		$following = Following::loadById($followingID);
+
+		$action             = new FollowingAction();
 		$action->fkFollower = $following->fkFollower;
 		$action->fkFollowed = $following->fkFollowed;
 		$action->actionType = '1';
 		$following->delete();
 		$action->save();
+
+		header('Location: '.BASE_URL.'/user/'.$fkFollowed); exit();
 	}
-
-
 }

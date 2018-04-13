@@ -101,7 +101,7 @@ class User {
 		$db = Db::instance(); // connect to db
 		// build query
 		$q = sprintf("INSERT INTO %s (username, password, email, firstName, lastName, education)
-		VALUES (%s, %s, %s, %s, %s, %d);",
+		VALUES (%s, %s, %s, %s, %s, %s);",
 			self::DB_TABLE,
 			$db->escape($this->username),
 			$db->escape($this->password),

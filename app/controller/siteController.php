@@ -93,7 +93,7 @@ class SiteController {
 	}
 
 	public function admin() {
-		if ($_SESSION['admin'] != 2) {
+		if ($_SESSION['admin'] == 0) {
 			header('Location: '.BASE_URL); exit();
 		}
 		$pageTitle = 'Admin';
@@ -110,6 +110,8 @@ class SiteController {
 		}
 
 		$user = User::loadById($_SESSION['userID']);
+
+		$followers = Following::getUsersFollowing($_SESSION['userID']);
 
 		$pageTitle = 'Account';
 		include_once SYSTEM_PATH.'/view/header.tpl';

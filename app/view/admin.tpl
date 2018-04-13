@@ -16,7 +16,7 @@
         if ($entry->permission == 1) {
           echo('<td>Admin</td>');
         }
-        elseif ($entry->permission == 1) {
+        elseif ($entry->permission == 2) {
           echo('<td>Founder</td>');
         }
         else {
@@ -71,7 +71,7 @@
      <option value="0">Registered User</option>
      <option value= "1">Admin</option>
      <?php if($_SESSION['admin'] == 2) {
-       echo('<option value "2">Site admin</option>');
+       echo('<option value="2">Founder</option>');
      } ?>
    </select>
     <div id="confirmButton">
