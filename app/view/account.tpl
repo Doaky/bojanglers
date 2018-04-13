@@ -60,8 +60,10 @@
 		<section class="left">
 			<h1><?= $user->username ?></h1>
 
-			<?php if($user->permission == 0): ?>
+			<?php if($user->permission == 1): ?>
 				<h4>Admin</h4> <br><br>
+			<?php elseif($user->permission == 2): ?>
+				<h4>Founder</h4> <br><br>
 			<?php endif; ?>
 
 			<?php if($user->firstName != null AND $user->firstName != null): ?>

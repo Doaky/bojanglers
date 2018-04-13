@@ -93,7 +93,7 @@ class SiteController {
 	}
 
 	public function admin() {
-		if($_SESSION['admin'] != 1) {
+		if ($_SESSION['admin'] != 2) {
 			header('Location: '.BASE_URL); exit();
 		}
 		$pageTitle = 'Admin';
@@ -130,7 +130,7 @@ class SiteController {
 		$user->firstName  = $fn;
 		$user->lastName   = $ln;
 		$user->education  = $ed;
-		$user->permission = 2;
+		$user->permission = 0;
 		$userID           = $user->save();
 		$this->loginProcess($user->username, $user->password);
 	}

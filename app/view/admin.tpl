@@ -12,9 +12,12 @@
       if($entry->username != $_SESSION['username']) {
         echo('<tr>');
         echo('<td>'.$entry->id.'</td>');
-        echo('<td>'.$entry->username.'</td>');
+        echo('<td><a href="'.BASE_URL.'/user/'.$entry->id.'">'.$entry->username.'</a></td>');
         if ($entry->permission == 1) {
           echo('<td>Admin</td>');
+        }
+        elseif ($entry->permission == 1) {
+          echo('<td>Founder</td>');
         }
         else {
           echo('<td>Registered User</td>');

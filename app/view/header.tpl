@@ -51,7 +51,7 @@
       <?php endif; ?>
 
       <?php if(isset($_SESSION['admin'])): ?>
-        <?php if($_SESSION['admin'] == 1): ?>
+        <?php if($_SESSION['admin'] == 1 OR $_SESSION['admin'] == 2): ?>
         <?php if($pageTitle == 'Admin'): ?>
           <li class="nav-item"><a href="<?= BASE_URL ?>/admin/" class="selected">Admin</a></li>
         <?php else: ?>
