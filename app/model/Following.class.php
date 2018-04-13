@@ -8,7 +8,7 @@ class Following {
 	public $id = 0;
 	public $fkFollowing = 0;
 	public $actionType = 0;
-	public $timestamp = 0;
+	// public $timestamp = 0;
 
 	// return a Following object by ID
 	public static function loadById($id) {
@@ -28,10 +28,10 @@ class Following {
 			$f = new Following(); // instantiate new Following
 
 			// store db results in local object
-			$f->id           = $row['id'];
-			$f->fkFollower  = $row['fkFollower'];
-			$f->fkFollowed        = $row['fkFollowed'];
-			$f->timestamp         = $row['timestamp'];
+			$f->id         = $row['id'];
+			$f->fkFollower = $row['fkFollower'];
+			$f->fkFollowed = $row['fkFollowed'];
+			// $f->timestamp  = $row['timestamp'];
 
 			return $f; // return the life event
 		}
@@ -40,20 +40,21 @@ class Following {
 	// return all people following a person, given that user's ID
 	public static function getUsersFollowing($userID) {
 		$db = Db::instance();
-		$q = sprintf("SELECT * FROM `%s` WHERE `fkFollower` = %d ",
+		$q = sprintf("SELECT * FROM `%s` WHERE `fkFollowed` = %d ",
 			self::DB_TABLE,
 			$userID
 			);
 
 		$result = $db->query($q);
 
-		$events = array();
+		$users = array();
 		if($result->num_rows != 0) {
 			while($row = $result->fetch_assoc()) {
-				$events[] = self::loadById($row['fkFollowed']);
+				$users[] = User::loadById($row['fkFollower']);
+				// $events[] = self::loadById($row['fkFollowed']);
 			}
 		}
-		return $events;
+		return $users;
 	}
 
 	// return all people a user is following, given that user's ID
@@ -75,6 +76,38 @@ class Following {
 		return $events;
 	}
 
+	// Get follower relation
+	public static function isFollowing($fkFollower, $fkFollowed) {
+		$db = Db::instance();
+		$q = sprintf("SELECT * FROM %s WHERE `fkFollower` = %s AND `fkFollowed` = %s",
+			self::DB_TABLE,
+			$fkFollower,
+			$fkFollowed
+			);
+
+		$result = $db->query($q);
+
+		if ($result->num_rows != 0) {
+			return true;
+		}
+		return false;
+	}
+
+	// Get follower id by relation
+	public static function followingID($fkFollower, $fkFollowed) {
+		$db = Db::instance();
+		$q = sprintf("SELECT * FROM %s WHERE `fkFollower` = %s AND `fkFollowed` = %s",
+			self::DB_TABLE,
+			$fkFollower,
+			$fkFollowed
+			);
+
+		$result = $db->query($q);
+		$row = $result->fetch_assoc();
+
+		return $row['id'];
+	}
+
 	public function save(){
 		if ($this->id == 0) {
 			return $this->insert(); // object is new and needs to be created
@@ -91,10 +124,10 @@ class Following {
 		$db = Db::instance(); // connect to db
 		// build query
 		$q = sprintf("INSERT INTO %s (fkFollower, fkFollowed)
-		VALUES (%d, %d);",
+		VALUES (%s, %s);",
 			self::DB_TABLE,
 			$db->escape($this->fkFollower),
-			$db->escape($this->fkFollowed),
+			$db->escape($this->fkFollowed)
 			);
 
 		$db->query($q); // execute query

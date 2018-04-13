@@ -94,6 +94,13 @@
 
 			<h3>Followers:</h3>
 			<div class="follower-list">
+				<?php if($followers != null): ?>
+					<?php foreach($followers as $f): ?>
+						<h4> <a href="<?= BASE_URL ?>/user/<?= $f->id ?>"><?= $f->username ?></a></h4>
+					<?php endforeach; ?>
+				<?php else: ?>
+					<h4>None</h4>
+				<?php endif; ?>
 			</div>
 		</section>
 		<section class="right">

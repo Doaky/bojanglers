@@ -17,6 +17,8 @@ RewriteRule ^edituser/process/?$ app/controller/siteController.php?action=editUs
 # Users
 RewriteRule ^user/(\d+)/?$ app/controller/userController.php?action=user&id=$1 [QSA,L]
 RewriteRule ^user/editaccount/?$ app/controller/userController.php?action=editaccount [QSA,L]
+RewriteRule ^user/addFollower/?$ app/controller/userController.php?action=addFollower [QSA,L]
+RewriteRule ^user/removeFollowing/?$ app/controller/userController.php?action=removeFollowing [QSA,L]
 
 # Header
 RewriteRule ^$ app/controller/siteController.php?action=home [QSA,L]

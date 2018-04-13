@@ -5,12 +5,12 @@
 	<h2>Create Account</h2>
 
 	<form method="POST" action="<?= BASE_URL ?>/createaccount/process/">
-		<label>Email <input type="email" name="email" placeholder="Enter Email..."></label> <br>
+		<label>Email <input type="email" name="email" required="required" placeholder="Enter Email..."></label> <br>
 		<label>Username <input type="text" name="username" required="required" placeholder="Enter Username..."></label> <br>
-		<label>First Name <input type="text" name="firstName" placeholder="Enter First Name..."></label> <br>
-		<label>Last Name <input type="text" name="lastName" placeholder="Enter Last Name..."></label> <br>
+		<label>First Name <input type="text" name="firstName" required="required" placeholder="Enter First Name..."></label> <br>
+		<label>Last Name <input type="text" name="lastName" required="required" placeholder="Enter Last Name..."></label> <br>
 		<label>Education Level
-			<select name="education">
+			<select name="education" required="required">
 				<option disabled selected value>Select an Education Level</option>
 				<option value="0">Less than High School</option>
 				<option value="1">High School</option>
