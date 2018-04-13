@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Apr 13, 2018 at 02:19 AM
+-- Generation Time: Apr 13, 2018 at 05:00 PM
 -- Server version: 5.6.39
 -- PHP Version: 7.0.27
 
@@ -98,7 +98,7 @@ CREATE TABLE `timeline_entries` (
   `id` int(11) NOT NULL,
   `chaplain_id` int(11) NOT NULL,
   `title` varchar(200) NOT NULL,
-  `year` year(4) NOT NULL,
+  `year` int(4) NOT NULL,
   `description` mediumtext NOT NULL,
   `creator_id` int(11) NOT NULL,
   `date_created` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
@@ -146,10 +146,10 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `username`, `password`, `email`, `date_created`, `firstName`, `lastName`, `permission`, `education`) VALUES
-(1, 'djo96', 'bojanglers18', 'djo96@vt.edu', '2018-03-29 15:54:18', '', '', 2, NULL),
-(2, 'bgregos', 'bojanglers18', 'bgregos@vt.edu', '2018-03-29 15:54:51', '', '', 2, NULL),
-(3, 'jpark96', 'bojanglers18', 'jpark96@vt.edu', '2018-03-30 02:13:49', '', '', 2, NULL),
-(4, 'parker45', 'bojanglers18', 'parker45@vt.edu', '2018-03-30 17:44:48', '', '', 2, NULL);
+(1, 'djo96', 'bojanglers18', 'djo96@vt.edu', '2018-03-29 15:54:18', '', '', 0, NULL),
+(2, 'bgregos', 'bojanglers18', 'bgregos@vt.edu', '2018-03-29 15:54:51', '', '', 0, NULL),
+(3, 'jpark96', 'bojanglers18', 'jpark96@vt.edu', '2018-03-30 02:13:49', '', '', 0, NULL),
+(4, 'parker45', 'bojanglers18', 'parker45@vt.edu', '2018-03-30 17:44:48', '', '', 0, NULL);
 
 --
 -- Indexes for dumped tables
