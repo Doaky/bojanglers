@@ -136,7 +136,7 @@ class TimelineEntry {
 			$db->query($q);
 		}
 
-		return 0; // return this object's ID
+		return -1; // return this object's ID
 	}
 
 	public function delete() {

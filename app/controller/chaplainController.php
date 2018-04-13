@@ -155,13 +155,19 @@ class ChaplainController {
 
 		$timelineEntry->id = $id;
 
-		$timelineID = $timelineEntry->save();
+		$updated = $timelineID = $timelineEntry->save();
+
+		$action = new ChaplainAction();
+		$action->actionType = '3';
+		if($updated == -1){ //if updated instead of created
+			$action->actionType = '4';
+		}
 
 		$chaplain = Chaplain::loadById($chaplainID);
-		$action = new ChaplainAction();
+
 		$action->fkUser = $userid;
 		$action->chaplainName = $chaplain->name;
-		$action->actionType = '4';
+
 		$action->save();
 
 
