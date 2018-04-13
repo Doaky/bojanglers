@@ -25,7 +25,6 @@
 				<fieldset>
 					<legend>Description</legend>
 					<select name="education" value="<?= $user->education ?>">
-						<option disabled selected value>Select an Education Level</option>
 						<option value="0">Less than High School</option>
 						<option value="1">High School</option>
 						<option value="2">Some College</option>
@@ -36,7 +35,7 @@
 
 				<fieldset>
 					<legend>New Password</legend>
-					<input required="required" id="pw" type="password" name="pw" value="<?= $user->password ?>">
+					<input required="required" id="pw" type="password" name="password" value="<?= $user->password ?>">
 				</fieldset>
 
 				<fieldset>
