@@ -128,8 +128,8 @@ class ChaplainController {
 
 		$action = new ChaplainAction();
 		$action->fkUser = $userid;
-		$action = $chaplain->name;
-		$action->actionType = 0;
+		$action->chaplainName = $chaplain->name;
+		$action->actionType = '0';
 		$action->save();
 
 		header('Location: '.BASE_URL.'/chaplain/'.$chaplainID); exit();
@@ -165,7 +165,7 @@ class ChaplainController {
 		$action->save();
 
 
-		//header('Location: '.BASE_URL.'/chaplain/'.$chaplainID); exit();
+		header('Location: '.BASE_URL.'/chaplain/'.$chaplainID); exit();
 	}
 
 	public function deleteTimeline() {
@@ -213,7 +213,7 @@ class ChaplainController {
 
 		$action = new ChaplainAction();
 		$action->fkUser = $userid;
-		$action = $chaplain->name;
+		$action->chaplainName = $chaplain->name;
 		$action->actionType = 1;
 		$action->save();
 
@@ -231,7 +231,7 @@ class ChaplainController {
 
 		$action = new ChaplainAction();
 		$action->fkUser = $userid;
-		$action = $chaplain->name;
+		$action->chaplainName = $chaplain->name;
 		$action->actionType = 2;
 
 		$chaplainID = $chaplain->delete();
