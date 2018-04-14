@@ -231,9 +231,7 @@ class ChaplainController {
 		$id      = $_POST['id'];
 		$userid  = $_POST['userID'];
 
-		$chaplain = new Chaplain();
-
-		$chaplain->id = $id;
+		$chaplain = Chaplain::loadById($id);
 
 		$action = new ChaplainAction();
 		$action->fkUser = $userid;
