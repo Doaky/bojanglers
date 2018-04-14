@@ -103,7 +103,7 @@ class Chaplain {
 			faith      = %s,
 			faith_type = %s,
 			rank       = %s,
-			hometown   = %s,
+			hometown   = %s
 			WHERE id   = %s;",
 			$db->escape($this->name),
 			$db->escape($this->faith),
@@ -114,7 +114,7 @@ class Chaplain {
 		);
 
 		$db->query($q);
-
+		echo($q);
 		return $this->id; // return this object's ID
 	}
 
