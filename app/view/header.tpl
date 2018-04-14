@@ -35,13 +35,13 @@
           <li class="nav-item"><a href="<?= BASE_URL ?>/addchaplain/">Add Chaplain</a></li>
         <?php endif; ?>
       <?php endif; ?>
-      
+
       <?php if($pageTitle == 'Search'): ?>
         <li class="nav-item"><a href="<?= BASE_URL ?>/search/?search=" class="selected">Search</a></li>
       <?php else: ?>
         <li class="nav-item"><a href="<?= BASE_URL ?>/search/?search=">Search</a></li>
       <?php endif; ?>
-    
+
       <?php if(isset($_SESSION['username'])): ?>
         <?php if($pageTitle == 'Info'): ?>
           <li class="nav-item"><a href="<?= BASE_URL ?>/info/" class="selected">Info</a></li>
@@ -50,13 +50,11 @@
         <?php endif; ?>
       <?php endif; ?>
 
-      <?php if(isset($_SESSION['admin'])): ?>
-        <?php if($_SESSION['admin'] == 1 OR $_SESSION['admin'] == 2): ?>
-        <?php if($pageTitle == 'Admin'): ?>
-          <li class="nav-item"><a href="<?= BASE_URL ?>/admin/" class="selected">Admin</a></li>
+      <?php if(isset($_SESSION['username'])): ?>
+        <?php if($pageTitle == 'Users'): ?>
+          <li class="nav-item"><a href="<?= BASE_URL ?>/admin/" class="selected">Users</a></li>
         <?php else: ?>
-          <li class="nav-item"><a href="<?= BASE_URL ?>/admin/">Admin</a></li>
-        <?php endif; ?>
+          <li class="nav-item"><a href="<?= BASE_URL ?>/admin/">Users</a></li>
         <?php endif; ?>
       <?php endif; ?>
 

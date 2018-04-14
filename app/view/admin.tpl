@@ -1,7 +1,9 @@
 <main class = "users">
   <h1>Users</h1>
+  <?php if($_SESSION['admin'] == 1 OR $_SESSION['admin'] == 2): ?>
   <button type="button" id = "deleteUser" class = "button">Delete User</button>
   <button type="button" id = "editPerm" class = "button">Edit Permissions</button>
+  <?php endif; ?>
   <p></p>
   <table id = "celebTable">
     <th>User Id</th>
@@ -53,8 +55,8 @@
   </div>
 </div>
 
-<div class="promptWindow" id="editView">
-<div class="promptContent" id="editContent">
+<div class="promptWindow" id="editViewAdmin">
+<div class="promptContent" id="editContentAdmin">
   <span onClick="closeDelete()" class="close">&times;</span>
   <form action="<?= BASE_URL ?>/edituser/process" method="POST">
     <p id="editDirections">Are you sure you would like to change this users permission?</p><br>

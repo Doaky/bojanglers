@@ -23,9 +23,29 @@ body {
 }
 
 .text {
+	max-width: 500px;
+	margin: 0 auto;
+	padding: 25px;
+	text-align: center;
+}
+.text-div {
+	background-color: rgba(11, 11, 11, 0.7);
+	max-width: 500px;
+	margin: 0 auto;
+	border-radius: 3px;
+}
+.text-div-about {
+	background-color: rgba(11, 11, 11, 0.7);
+	max-width: 800px;
+	max-height: 85%;
+	margin: 0 auto;
+	overflow-y: scroll;
+	border-radius: 3px;
+}
+.text-about {
 	max-width: 800px;
 	margin: 0 auto;
-	padding-left: 25px;
+	padding: 25px;
 	text-align: left;
 }
 
@@ -608,9 +628,6 @@ chaplain button {
 	filter: opacity(.5) blur(2px);
 }
 
-.about-page p {
-	padding-top: 150px;
-}
 
 .help-page {
 	height: calc(100vh - 208px) !important;
@@ -637,7 +654,7 @@ chaplain button {
 	padding-top: 150px;
 }
 
-/*#editView{
+#editView{
     display: none;
     position: fixed;
     left: 0;
@@ -658,7 +675,7 @@ chaplain button {
     border: 1px solid #888;
     width: 80%;
     height: 80%;
-}*/
+}
 
 #celebTable {
     border-collapse: collapse;
@@ -715,7 +732,7 @@ th, td {
 	height: 30%;
 }
 
-#editView{
+#editViewAdmin{
 	display: none;
 	position: fixed;
 	left: 0;
@@ -727,7 +744,7 @@ th, td {
 	z-index: 1;
 }
 
-#editContent {
+#editContentAdmin {
 	margin: 0 auto;
 	margin-top: 15%;
 	background-color: #888;

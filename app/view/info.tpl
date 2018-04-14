@@ -1,6 +1,6 @@
 <main class="info-page">
-		<div id="editView1" class="modal">
-	  		<div id="editContent1" class="modal-content">
+		<div id="editView" class="modal">
+	  		<div id="editContent" class="modal-content">
 				<span class="close2" id="#close2">&times;</span>
 				<br><br>
 				<form id="formOrder">

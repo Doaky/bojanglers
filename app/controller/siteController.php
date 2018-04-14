@@ -94,10 +94,7 @@ class SiteController {
 	}
 
 	public function admin() {
-		if ($_SESSION['admin'] == 0) {
-			header('Location: '.BASE_URL); exit();
-		}
-		$pageTitle = 'Admin';
+		$pageTitle = 'Users';
 		$users = User::getUsers();
 		include_once SYSTEM_PATH.'/view/header.tpl';
 		include_once SYSTEM_PATH.'/view/admin.tpl';
