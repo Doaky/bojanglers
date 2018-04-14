@@ -84,7 +84,6 @@ class SiteController {
 		$pageTitle = 'Info';
 
 		$users = User::getUsers();
-
 		$chapactions = ChaplainAction::getActions();
 		$chaplains = Chaplain::getChaplains();
 		$followactions = FollowingAction::getAllFollowingActions();
@@ -115,6 +114,11 @@ class SiteController {
 
 		$followers = Following::getUsersFollowing($_SESSION['userID']);
 		$following = Following::getUsersFollowed($_SESSION['userID']);
+
+		$users = User::getUsers();
+		$chapactions = ChaplainAction::getbyUserId($_SESSION['userID']);
+		$chaplains = Chaplain::getChaplains();
+		$followactions = FollowingAction::getbyFollowingId($_SESSION['userID']);
 
 		$pageTitle = 'Account';
 		include_once SYSTEM_PATH.'/view/header.tpl';

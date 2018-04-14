@@ -40,7 +40,7 @@ class ChaplainAction {
 	}
 
 	// return all actions associated with the user
-	public static function getbyUserId($userId) {
+	public static function getbyUserId($userID) {
 		$db = Db::instance();
 		$q = sprintf("SELECT * FROM `%s` WHERE `fkUser` = %s ",
 			self::DB_TABLE,

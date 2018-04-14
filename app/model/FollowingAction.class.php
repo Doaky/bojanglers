@@ -46,7 +46,7 @@ class FollowingAction {
 			);
 
 		$result = $db->query($q);
-		echo($q);
+		// echo($q);
 
 		$events = array();
 		if($result->num_rows != 0) {
@@ -57,7 +57,7 @@ class FollowingAction {
 		return $events;
 	}
 	// return all actions where userid is following
-	public static function getbyFollowingId($userId) {
+	public static function getbyFollowingId($userID) {
 		$db = Db::instance();
 		$q = sprintf("SELECT * FROM `%s` WHERE `fkFollower` = %s ",
 			self::DB_TABLE,
@@ -65,12 +65,12 @@ class FollowingAction {
 			);
 
 		$result = $db->query($q);
-		echo($q);
+		// echo($q);
 
 		$events = array();
 		if($result->num_rows != 0) {
 			while($row = $result->fetch_assoc()) {
-				$events[] = self::loadById($row['fkFollower']);
+				$events[] = self::loadById($row['id']);
 			}
 		}
 		return $events;

@@ -64,7 +64,33 @@
 	</section>
 	<section class="right">
 		<h2 class="activity-title">Activity:</h2>
-		<div class="activity">
-		</div>
+		<aside class="a-results">
+			<?php
+				$strlist = array();
+				foreach($chapactions as $a){
+					$actionString='';
+					if($a->actionType == '0'){$actionString='was added';}
+					if($a->actionType == '1'){$actionString='was edited';}
+					if($a->actionType == '2'){$actionString='was removed';}
+					if($a->actionType == '3'){$actionString='\'s timeline was added to';}
+					if($a->actionType == '4'){$actionString='\'s timeline was edited';}
+					if($a->actionType == '5'){$actionString='\'s timeline was removed from';}
+					$userString=User::loadById($a->fkUser)->username;
+					array_push($strlist, $a->chaplainName . " " . $actionString . " by " . $userString);
+				}
+				foreach($followactions as $a){
+					$actionString='';
+					if($a->actionType == '0'){$actionString='started';}
+					if($a->actionType == '1'){$actionString='stopped';}
+					$followeruser=User::loadById($a->fkFollower)->username;
+					$followeduser=User::loadById($a->fkFollowed)->username;
+					array_push($strlist, $followeruser . " " . $actionString . " following " . $followeduser);
+				}
+				foreach($strlist as $s): ?>
+					<article class="action">
+						<?= $s ?>
+					</article>
+			<?php endforeach; ?>
+		</aside>
 	</section>
 </main>

@@ -51,8 +51,12 @@ class UserController {
 		// Loads in profile from id
 		$user = User::loadById($id);
 		$following = Following::isFollowing($_SESSION['userID'], $id);
-
 		$followers = Following::getUsersFollowing($id);
+
+		$users = User::getUsers();
+		$chapactions = ChaplainAction::getbyUserId($id);
+		$chaplains = Chaplain::getChaplains();
+		$followactions = FollowingAction::getbyFollowingId($id);
 
 		if ($user != null) {
 			include_once SYSTEM_PATH.'/view/user.tpl';

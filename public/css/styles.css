@@ -748,6 +748,17 @@ th, td {
 	padding-right: 1.25%;
 }
 
+.info-page {
+	height: calc(100vh - 136px) !important;
+}
+
+.a-results {
+    overflow-y: scroll;
+    height: calc(100vh - 204px) !important;
+    position: relative;
+    width: 100%;
+}
+
 
 @media (max-width: 900px) {
 	nav {
