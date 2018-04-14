@@ -3,14 +3,14 @@ class User {
 	const DB_TABLE = 'users'; // database table name
 	// database fields for this table
 	public $id           = 0;
-	public $username         = '';
-	public $password        = '';
-	public $email   = '';
+	public $username     = '';
+	public $password     = '';
+	public $email        = '';
 	public $date_created = 0;
-	public $firstName = '';
-	public $lastName = '';
-	public $permission = 0;
-	public $education = NULL;
+	public $firstName    = '';
+	public $lastName     = '';
+	public $permission   = 0;
+	public $education    = NULL;
 
 	// return a Chaplains object by ID
 	public static function loadById($id) {

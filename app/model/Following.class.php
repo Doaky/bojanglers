@@ -51,7 +51,6 @@ class Following {
 		if($result->num_rows != 0) {
 			while($row = $result->fetch_assoc()) {
 				$users[] = User::loadById($row['fkFollower']);
-				// $events[] = self::loadById($row['fkFollowed']);
 			}
 		}
 		return $users;
@@ -60,20 +59,20 @@ class Following {
 	// return all people a user is following, given that user's ID
 	public static function getUsersFollowed($userID) {
 		$db = Db::instance();
-		$q = sprintf("SELECT * FROM `%s` WHERE `fkFollowed` = %d ",
+		$q = sprintf("SELECT * FROM `%s` WHERE `fkFollower` = %d ",
 			self::DB_TABLE,
 			$userID
 			);
 
 		$result = $db->query($q);
 
-		$events = array();
+		$users = array();
 		if($result->num_rows != 0) {
 			while($row = $result->fetch_assoc()) {
-				$events[] = self::loadById($row['fkFollower']);
+				$users[] = User::loadById($row['fkFollowed']);
 			}
 		}
-		return $events;
+		return $users;
 	}
 
 	// Get follower relation
