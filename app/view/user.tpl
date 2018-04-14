@@ -55,7 +55,7 @@
 		<div class="follower-list">
 			<?php if($followers != null): ?>
 				<?php foreach($followers as $f): ?>
-					<h4> <a href="<?= BASE_URL ?>/user/<?= $f->id ?>"><?= $f->username ?></a></h4>
+					<h4> <a href="<?= BASE_URL ?>/user/<?= $f->id ?>"><?= $f->username ?></a></h4><br>
 				<?php endforeach; ?>
 			<?php else: ?>
 				<h4>None</h4>

@@ -25,7 +25,6 @@
 				<fieldset>
 					<legend>Description</legend>
 					<select name="education" value="<?= $user->education ?>">
-						<option disabled selected value>Select an Education Level</option>
 						<option value="0">Less than High School</option>
 						<option value="1">High School</option>
 						<option value="2">Some College</option>
@@ -36,7 +35,7 @@
 
 				<fieldset>
 					<legend>New Password</legend>
-					<input required="required" id="pw" type="password" name="pw" value="<?= $user->password ?>">
+					<input required="required" id="pw" type="password" name="password" value="<?= $user->password ?>">
 				</fieldset>
 
 				<fieldset>
@@ -96,7 +95,20 @@
 			<div class="follower-list">
 				<?php if($followers != null): ?>
 					<?php foreach($followers as $f): ?>
-						<h4> <a href="<?= BASE_URL ?>/user/<?= $f->id ?>"><?= $f->username ?></a></h4>
+						<h4> <a href="<?= BASE_URL ?>/user/<?= $f->id ?>"><?= $f->username ?></a></h4> <br>
+					<?php endforeach; ?>
+				<?php else: ?>
+					<h4>None</h4>
+				<?php endif; ?>
+			</div>
+
+			<br> <br>
+
+			<h3>Following:</h3>
+			<div class="follower-list">
+				<?php if($following != null): ?>
+					<?php foreach($following as $f): ?>
+						<h4> <a href="<?= BASE_URL ?>/user/<?= $f->id ?>"><?= $f->username ?></a></h4> <br>
 					<?php endforeach; ?>
 				<?php else: ?>
 					<h4>None</h4>

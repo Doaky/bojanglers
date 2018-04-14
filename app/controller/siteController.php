@@ -114,6 +114,7 @@ class SiteController {
 		$user = User::loadById($_SESSION['userID']);
 
 		$followers = Following::getUsersFollowing($_SESSION['userID']);
+		$following = Following::getUsersFollowed($_SESSION['userID']);
 
 		$pageTitle = 'Account';
 		include_once SYSTEM_PATH.'/view/header.tpl';
