@@ -30,8 +30,8 @@ class FollowingAction {
 
 			// store db results in local object
 			$f->id           = $row['id'];
-			$f->fkFollower  = $row['fkfollower'];
-			$f->fkFollowed  = $row['fkfollowed'];
+			$f->fkFollower  = $row['fkFollower'];
+			$f->fkFollowed  = $row['fkFollowed'];
 			$f->actionType        = $row['actionType'];
 			$f->timestamp         = $row['timestamp'];
 
@@ -39,7 +39,24 @@ class FollowingAction {
 		}
 	}
 
-	// return all following actions associated with the user
+	public static function getAllFollowingActions() {
+		$db = Db::instance();
+		$q = sprintf("SELECT * FROM `%s`",
+			self::DB_TABLE
+			);
+
+		$result = $db->query($q);
+		echo($q);
+
+		$events = array();
+		if($result->num_rows != 0) {
+			while($row = $result->fetch_assoc()) {
+				$events[] = self::loadById($row['id']);
+			}
+		}
+		return $events;
+	}
+	// return all actions where userid is following
 	public static function getbyFollowingId($userId) {
 		$db = Db::instance();
 		$q = sprintf("SELECT * FROM `%s` WHERE `fkFollower` = %s ",
@@ -48,6 +65,7 @@ class FollowingAction {
 			);
 
 		$result = $db->query($q);
+		echo($q);
 
 		$events = array();
 		if($result->num_rows != 0) {
@@ -58,7 +76,7 @@ class FollowingAction {
 		return $events;
 	}
 
-	// return all following actions associated with people following the user given
+	// return all actions where userid was followed
 	public static function getUsersFollowed($userID) {
 		$db = Db::instance();
 		$q = sprintf("SELECT * FROM `%s` WHERE `fkFollowed` = %s ",

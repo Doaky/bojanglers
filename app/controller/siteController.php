@@ -85,7 +85,9 @@ class SiteController {
 
 		$users = User::getUsers();
 
-		$actions = ChaplainAction::getActions();
+		$chapactions = ChaplainAction::getActions();
+		$chaplains = Chaplain::getChaplains();
+		$followactions = FollowingAction::getAllFollowingActions();
 
 		include_once SYSTEM_PATH.'/view/header.tpl';
 		include_once SYSTEM_PATH.'/view/info.tpl';
