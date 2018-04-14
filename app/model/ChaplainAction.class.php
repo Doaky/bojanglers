@@ -30,10 +30,10 @@ class ChaplainAction {
 
 			// store db results in local object
 			$f->id           = $row['id'];
-			$f->fkUser  = $row['fkUser'];
-			$f->actionType        = $row['actionType'];
-			$f->chaplainName 	= $row['chaplainName'];
-			$f->timestamp         = $row['timestamp'];
+			$f->fkUser       = $row['fkUser'];
+			$f->actionType   = $row['actionType'];
+			$f->chaplainName = $row['chaplainName'];
+			$f->timestamp    = $row['timestamp'];
 
 			return $f; // return the life event
 		}
