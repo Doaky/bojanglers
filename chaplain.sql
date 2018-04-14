@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Apr 13, 2018 at 05:00 PM
+-- Generation Time: Apr 14, 2018 at 02:07 AM
 -- Server version: 5.6.39
 -- PHP Version: 7.0.27
 
@@ -74,6 +74,15 @@ CREATE TABLE `following` (
   `fkFollowed` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Dumping data for table `following`
+--
+
+INSERT INTO `following` (`id`, `fkFollower`, `fkFollowed`) VALUES
+(2, 1, 3),
+(3, 1, 2),
+(4, 1, 4);
+
 -- --------------------------------------------------------
 
 --
@@ -87,6 +96,17 @@ CREATE TABLE `following_actions` (
   `actionType` int(11) NOT NULL COMMENT '0 add following, 1 remove',
   `timestamp` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `following_actions`
+--
+
+INSERT INTO `following_actions` (`id`, `fkFollower`, `fkFollowed`, `actionType`, `timestamp`) VALUES
+(1, 1, 4, 0, '2018-04-14 01:21:44'),
+(2, 1, 3, 0, '2018-04-14 01:21:48'),
+(3, 1, 2, 0, '2018-04-14 01:21:51'),
+(4, 1, 4, 1, '2018-04-14 02:04:45'),
+(5, 1, 4, 0, '2018-04-14 02:04:46');
 
 -- --------------------------------------------------------
 
@@ -146,10 +166,13 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `username`, `password`, `email`, `date_created`, `firstName`, `lastName`, `permission`, `education`) VALUES
-(1, 'djo96', 'bojanglers18', 'djo96@vt.edu', '2018-03-29 15:54:18', '', '', 0, NULL),
-(2, 'bgregos', 'bojanglers18', 'bgregos@vt.edu', '2018-03-29 15:54:51', '', '', 0, NULL),
-(3, 'jpark96', 'bojanglers18', 'jpark96@vt.edu', '2018-03-30 02:13:49', '', '', 0, NULL),
-(4, 'parker45', 'bojanglers18', 'parker45@vt.edu', '2018-03-30 17:44:48', '', '', 0, NULL);
+(1, 'djo96', 'bojanglers18', 'djo96@vt.edu', '2018-03-29 15:54:18', 'Daniel', 'Ocheltree', 2, 2),
+(2, 'bgregos', 'bojanglers18', 'bgregos@vt.edu', '2018-03-29 15:54:51', '', '', 2, NULL),
+(3, 'jpark96', 'bojanglers18', 'jpark96@vt.edu', '2018-03-30 02:13:49', '', '', 2, NULL),
+(4, 'parker45', 'bojanglers18', 'parker45@vt.edu', '2018-03-30 17:44:48', '', '', 2, NULL),
+(5, 'mturk', 'cs3744s18', 'mturk@gmail.com', '2018-04-14 02:03:58', 'm', 'turk', 0, 2),
+(6, 'emilys97', 'bojanglers18', 'emilys97@vt.edu', '2018-04-14 02:05:47', 'Emily ', 'Stewart', 2, 2),
+(7, 'grader', 'bojanglers18', 'grader@vt.edu', '2018-04-14 02:07:06', 'Grader', 'Grader', 2, 2);
 
 --
 -- Indexes for dumped tables
@@ -220,13 +243,13 @@ ALTER TABLE `chaplain_actions`
 -- AUTO_INCREMENT for table `following`
 --
 ALTER TABLE `following`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `following_actions`
 --
 ALTER TABLE `following_actions`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `timeline_entries`
@@ -238,7 +261,7 @@ ALTER TABLE `timeline_entries`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2021;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
