@@ -108,6 +108,7 @@ class ChaplainController {
 		$faith_type = $_POST['faith_type']; // required
 		$rank       = $_POST['rank'];
 		$hometown   = $_POST['hometown'];
+		$userid		= $_POST['userID']; //required
 
 		// name and faith are required
 		if ( !isset($name) || !isset($faith_type) ) {
@@ -121,9 +122,15 @@ class ChaplainController {
 		$chaplain->faith_type = $faith_type;
 		$chaplain->rank       = $rank;
 		$chaplain->hometown   = $hometown;
-		$chaplain->creator_id = 1; // hard coded user ID for now
+		$chaplain->creator_id = $userid;
 
 		$chaplainID = $chaplain->save();
+
+		$action = new ChaplainAction();
+		$action->fkUser = $userid;
+		$action->chaplainName = $chaplain->name;
+		$action->actionType = '0';
+		$action->save();
 
 		header('Location: '.BASE_URL.'/chaplain/'.$chaplainID); exit();
 	}
@@ -135,10 +142,12 @@ class ChaplainController {
 		$description = $_POST['description'];
 		$id          = $_POST['id'];
 		$chaplainID  = $_POST['chaplainID'];
+		$userid      = $_POST['userID'];
 
 		$timelineEntry = new TimelineEntry();
 
 		$timelineEntry->year = $year;
+		echo($year);
 		$timelineEntry->title = $title;
 		$timelineEntry->description = $description;
 		$timelineEntry->chaplain_id = $chaplainID;
@@ -146,7 +155,21 @@ class ChaplainController {
 
 		$timelineEntry->id = $id;
 
-		$timelineID = $timelineEntry->save();
+		$updated = $timelineID = $timelineEntry->save();
+
+		$action = new ChaplainAction();
+		$action->actionType = '3';
+		if($updated == -1){ //if updated instead of created
+			$action->actionType = '4';
+		}
+
+		$chaplain = Chaplain::loadById($chaplainID);
+
+		$action->fkUser = $userid;
+		$action->chaplainName = $chaplain->name;
+
+		$action->save();
+
 
 		header('Location: '.BASE_URL.'/chaplain/'.$chaplainID); exit();
 	}
@@ -155,12 +178,20 @@ class ChaplainController {
 
 		$id         = $_POST['id'];
 		$chaplainID = $_POST['chaplainID'];
+		$userid     = $_POST['userID'];
 
 		$timelineEntry = new TimelineEntry();
 
 		$timelineEntry->id = $id;
 
+		$chaplain = Chaplain::loadById($chaplainID);
+		$action = new ChaplainAction();
+		$action->fkUser = $userid;
+		$action->chaplainName = $chaplain->name;
+		$action->actionType = '5';
+		$action->save();
 		$timelineID = $timelineEntry->delete();
+
 
 		header('Location: '.BASE_URL.'/chaplain/'.$chaplainID); exit();
 	}
@@ -173,6 +204,7 @@ class ChaplainController {
 		$rank       = $_POST['rank'];
 		$hometown   = $_POST['hometown'];
 		$id         = $_POST['id'];
+		$userid     = $_POST['userID'];
 
 		$chaplain = new Chaplain();
 
@@ -185,18 +217,32 @@ class ChaplainController {
 
 		$chaplainID = $chaplain->save();
 
+		$action = new ChaplainAction();
+		$action->fkUser = $userid;
+		$action->chaplainName = $chaplain->name;
+		$action->actionType = '1';
+		$action->save();
+
 		header('Location: '.BASE_URL.'/chaplain/'.$chaplainID); exit();
 	}
 
 	public function deleteChaplain() {
 
 		$id      = $_POST['id'];
+		$userid  = $_POST['userID'];
 
 		$chaplain = new Chaplain();
 
 		$chaplain->id = $id;
 
+		$action = new ChaplainAction();
+		$action->fkUser = $userid;
+		$action->chaplainName = $chaplain->name;
+		$action->actionType = '2';
+
 		$chaplainID = $chaplain->delete();
+
+		$action->save();
 
 		header('Location: '.BASE_URL.'/search/?search='); exit();
 	}

@@ -23,9 +23,29 @@ body {
 }
 
 .text {
+	max-width: 500px;
+	margin: 0 auto;
+	padding: 25px;
+	text-align: center;
+}
+.text-div {
+	background-color: rgba(11, 11, 11, 0.7);
+	max-width: 500px;
+	margin: 0 auto;
+	border-radius: 3px;
+}
+.text-div-about {
+	background-color: rgba(11, 11, 11, 0.7);
+	max-width: 800px;
+	max-height: 85%;
+	margin: 0 auto;
+	overflow-y: scroll;
+	border-radius: 3px;
+}
+.text-about {
 	max-width: 800px;
 	margin: 0 auto;
-	padding-left: 25px;
+	padding: 25px;
 	text-align: left;
 }
 
@@ -210,11 +230,23 @@ footer > a {
 }
 
 .account-page {
+	height: calc(100vh - 135px) !important;
 	padding-top: 25px;
 }
 
 .account-page .background-image {
 	margin-top: -25px;
+}
+
+.account-page .left,
+.account-page .right {
+	padding-left: 1.25%;
+	padding-right: 1.25%;
+}
+
+.users {
+	height: calc(100vh - 135px) !important;
+    padding-top: 25px;
 }
 
 #home-search {
@@ -537,7 +569,7 @@ chaplain button {
 	width: 80%;
 }
 
-.close, .close2 {
+.close, .close2, .close3 {
 	color: #aaaaaa;
 	float: right;
 	font-size: 28px;
@@ -548,7 +580,9 @@ chaplain button {
 .close:hover,
 .close:focus,
 .close2:hover,
-.close2:focus {
+.close2:focus,
+.close3:hover,
+.close3:focus {
 	color: #000;
 	text-decoration: none;
 	cursor: pointer;
@@ -594,9 +628,6 @@ chaplain button {
 	filter: opacity(.5) blur(2px);
 }
 
-.about-page p {
-	padding-top: 150px;
-}
 
 .help-page {
 	height: calc(100vh - 208px) !important;
@@ -623,7 +654,7 @@ chaplain button {
 	padding-top: 150px;
 }
 
-/*#editView{
+#editView{
     display: none;
     position: fixed;
     left: 0;
@@ -644,7 +675,7 @@ chaplain button {
     border: 1px solid #888;
     width: 80%;
     height: 80%;
-}*/
+}
 
 #celebTable {
     border-collapse: collapse;
@@ -667,7 +698,7 @@ th, td {
     -webkit-transition-duration: 0.4s;
     transition-duration: 0.4s;
     cursor: pointer;
-    float: right;
+    float: left;
 }
 
 #addEntry:hover{
@@ -678,6 +709,73 @@ th, td {
 #content{
   margin-top: 5%;
 }
+
+#deleteView{
+	display: none;
+	position: fixed;
+	left: 0;
+	top: 0;
+	width: 100%;
+	height: 100%;
+	background-color: rgb(0,0,0);
+	background-color: rgba(0,0,0,0.4);
+	z-index: 1;
+}
+
+#deleteContent {
+	margin: 0 auto;
+	margin-top: 15%;
+	background-color: #888;
+	padding: 20px;
+	border: 1px solid #888;
+	width: 30%;
+	height: 30%;
+}
+
+#editViewAdmin{
+	display: none;
+	position: fixed;
+	left: 0;
+	top: 0;
+	width: 100%;
+	height: 100%;
+	background-color: rgb(0,0,0);
+	background-color: rgba(0,0,0,0.4);
+	z-index: 1;
+}
+
+#editContentAdmin {
+	margin: 0 auto;
+	margin-top: 15%;
+	background-color: #888;
+	padding: 20px;
+	border: 1px solid #888;
+	width: 30%;
+	height: 30%;
+}
+
+.info {
+	height: calc(100vh - 110px) !important;
+}
+
+.info-page .left,
+.info-page .right {
+	width: 45%;
+	padding-left: 1.25%;
+	padding-right: 1.25%;
+}
+
+.info-page {
+	height: calc(100vh - 136px) !important;
+}
+
+.a-results {
+    overflow-y: scroll;
+    height: calc(100vh - 204px) !important;
+    position: relative;
+    width: 100%;
+}
+
 
 @media (max-width: 900px) {
 	nav {

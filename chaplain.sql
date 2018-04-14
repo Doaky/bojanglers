@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Mar 30, 2018 at 07:06 PM
+-- Generation Time: Apr 14, 2018 at 02:07 AM
 -- Server version: 5.6.39
 -- PHP Version: 7.0.27
 
@@ -51,6 +51,66 @@ INSERT INTO `chaplains` (`id`, `name`, `faith`, `faith_type`, `rank`, `hometown`
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `chaplain_actions`
+--
+
+CREATE TABLE `chaplain_actions` (
+  `id` int(11) NOT NULL,
+  `fkUser` int(11) NOT NULL,
+  `chaplainName` varchar(50) NOT NULL,
+  `actionType` int(11) NOT NULL COMMENT '0 add chaplain, 1 edit, 2 delete, 3 add timeline, 4 edit, 5 delete',
+  `timestamp` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `following`
+--
+
+CREATE TABLE `following` (
+  `id` int(11) NOT NULL,
+  `fkFollower` int(11) NOT NULL,
+  `fkFollowed` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `following`
+--
+
+INSERT INTO `following` (`id`, `fkFollower`, `fkFollowed`) VALUES
+(2, 1, 3),
+(3, 1, 2),
+(4, 1, 4);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `following_actions`
+--
+
+CREATE TABLE `following_actions` (
+  `id` int(11) NOT NULL,
+  `fkFollower` int(11) NOT NULL,
+  `fkFollowed` int(11) NOT NULL,
+  `actionType` int(11) NOT NULL COMMENT '0 add following, 1 remove',
+  `timestamp` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `following_actions`
+--
+
+INSERT INTO `following_actions` (`id`, `fkFollower`, `fkFollowed`, `actionType`, `timestamp`) VALUES
+(1, 1, 4, 0, '2018-04-14 01:21:44'),
+(2, 1, 3, 0, '2018-04-14 01:21:48'),
+(3, 1, 2, 0, '2018-04-14 01:21:51'),
+(4, 1, 4, 1, '2018-04-14 02:04:45'),
+(5, 1, 4, 0, '2018-04-14 02:04:46');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `timeline_entries`
 --
 
@@ -58,7 +118,7 @@ CREATE TABLE `timeline_entries` (
   `id` int(11) NOT NULL,
   `chaplain_id` int(11) NOT NULL,
   `title` varchar(200) NOT NULL,
-  `year` year(4) NOT NULL,
+  `year` int(4) NOT NULL,
   `description` mediumtext NOT NULL,
   `creator_id` int(11) NOT NULL,
   `date_created` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
@@ -94,18 +154,25 @@ CREATE TABLE `users` (
   `username` varchar(30) NOT NULL,
   `password` varchar(30) NOT NULL,
   `email` varchar(50) NOT NULL,
-  `date_created` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
+  `date_created` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `firstName` varchar(50) DEFAULT NULL,
+  `lastName` varchar(50) DEFAULT NULL,
+  `permission` int(11) NOT NULL COMMENT '0 user, 1 admin, 2 superadmin',
+  `education` int(11) DEFAULT NULL COMMENT '0 no finish hs, 1 hs, 2 some college, 3 bachelors, 4 graduate'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 ROW_FORMAT=COMPACT;
 
 --
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`id`, `username`, `password`, `email`, `date_created`) VALUES
-(1, 'djo96', 'bojanglers18', 'djo96@vt.edu', '2018-03-29 15:54:18'),
-(2, 'bgregos', 'bojanglers18', 'bgregos@vt.edu', '2018-03-29 15:54:51'),
-(3, 'jpark96', 'bojanglers18', 'jpark96@vt.edu', '2018-03-30 02:13:49'),
-(4, 'parker45', 'bojanglers18', 'parker45@vt.edu', '2018-03-30 17:44:48');
+INSERT INTO `users` (`id`, `username`, `password`, `email`, `date_created`, `firstName`, `lastName`, `permission`, `education`) VALUES
+(1, 'djo96', 'bojanglers18', 'djo96@vt.edu', '2018-03-29 15:54:18', 'Daniel', 'Ocheltree', 2, 2),
+(2, 'bgregos', 'bojanglers18', 'bgregos@vt.edu', '2018-03-29 15:54:51', '', '', 2, NULL),
+(3, 'jpark96', 'bojanglers18', 'jpark96@vt.edu', '2018-03-30 02:13:49', '', '', 2, NULL),
+(4, 'parker45', 'bojanglers18', 'parker45@vt.edu', '2018-03-30 17:44:48', '', '', 2, NULL),
+(5, 'mturk', 'cs3744s18', 'mturk@gmail.com', '2018-04-14 02:03:58', 'm', 'turk', 0, 2),
+(6, 'emilys97', 'bojanglers18', 'emilys97@vt.edu', '2018-04-14 02:05:47', 'Emily ', 'Stewart', 2, 2),
+(7, 'grader', 'bojanglers18', 'grader@vt.edu', '2018-04-14 02:07:06', 'Grader', 'Grader', 2, 2);
 
 --
 -- Indexes for dumped tables
@@ -122,6 +189,24 @@ ALTER TABLE `chaplains`
   ADD KEY `faith` (`faith`),
   ADD KEY `faith_type` (`faith_type`),
   ADD KEY `rank` (`rank`);
+
+--
+-- Indexes for table `chaplain_actions`
+--
+ALTER TABLE `chaplain_actions`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `following`
+--
+ALTER TABLE `following`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `following_actions`
+--
+ALTER TABLE `following_actions`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `timeline_entries`
@@ -146,7 +231,25 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `chaplains`
 --
 ALTER TABLE `chaplains`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+
+--
+-- AUTO_INCREMENT for table `chaplain_actions`
+--
+ALTER TABLE `chaplain_actions`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `following`
+--
+ALTER TABLE `following`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
+-- AUTO_INCREMENT for table `following_actions`
+--
+ALTER TABLE `following_actions`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `timeline_entries`
@@ -158,7 +261,7 @@ ALTER TABLE `timeline_entries`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2021;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

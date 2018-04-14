@@ -76,7 +76,7 @@ class Chaplain {
 
 		// build query
 		$q = sprintf("INSERT INTO chaplains (name, faith, faith_type, rank, hometown, creator_id)
-		VALUES (%s, %s, %d, %s, %s, %d);",
+		VALUES (%s, %s, %s, %s, %s, %d);",
 			$db->escape($this->name),
 			$db->escape($this->faith),
 			$db->escape($this->faith_type),

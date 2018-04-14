@@ -9,12 +9,23 @@ RewriteEngine on
 RewriteRule ^login/?$ app/controller/siteController.php?action=login [QSA,L]
 RewriteRule ^login/process/?$ app/controller/siteController.php?action=loginProcess [QSA,L]
 RewriteRule ^logout/?$ app/controller/siteController.php?action=logout [QSA,L]
+RewriteRule ^createaccount/?$ app/controller/siteController.php?action=createaccount [QSA,L]
+RewriteRule ^createaccount/process/?$ app/controller/siteController.php?action=createaccountProcess [QSA,L]
+RewriteRule ^deleteuser/process/?$ app/controller/siteController.php?action=deleteUserProcess [QSA,L]
+RewriteRule ^edituser/process/?$ app/controller/siteController.php?action=editUserProcess [QSA,L]
+
+# Users
+RewriteRule ^user/(\d+)/?$ app/controller/userController.php?action=user&id=$1 [QSA,L]
+RewriteRule ^user/editaccount/?$ app/controller/userController.php?action=editaccount [QSA,L]
+RewriteRule ^user/addFollower/?$ app/controller/userController.php?action=addFollower [QSA,L]
+RewriteRule ^user/removeFollowing/?$ app/controller/userController.php?action=removeFollowing [QSA,L]
 
 # Header
 RewriteRule ^$ app/controller/siteController.php?action=home [QSA,L]
 RewriteRule ^info/$ app/controller/siteController.php?action=info
 RewriteRule ^account/?$ app/controller/siteController.php?action=account [QSA,L]
 RewriteRule ^addchaplain/?$ app/controller/siteController.php?action=add [QSA,L]
+RewriteRule ^admin/?$ app/controller/siteController.php?action=admin [QSA,L]
 
 # Footer
 RewriteRule ^about/?$ app/controller/siteController.php?action=about [QSA,L]

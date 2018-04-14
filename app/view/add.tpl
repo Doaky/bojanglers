@@ -51,6 +51,8 @@
 					</div>
 
 				</section>
+
+				<input class="hide-info" type="number" name="userID" value="<?= $_SESSION['userID'] ?>">
 				
 				<input id="add-submit" class="button" type="submit" value="Add Chaplain">
 
