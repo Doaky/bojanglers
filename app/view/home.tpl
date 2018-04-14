@@ -7,25 +7,15 @@
 		<h1 class="title-text">Chaplain Stories</h1> <br>
 		<h3>Community, Comfort, Combat</h3>
 	</section>
+<div class = "text-div">
+	<p class = "text">
+		“Community, Comfort and Combat”
+		focuses on the experience of a World War II Military Chaplain. A well-known story about WWII chaplains comes from four chaplains serving on the SS Dorchester. The story of The Four Chaplains starts, and ends, on February 3rd, 1943. Heroically, these four men worked to calm army soldiers aboard the ship under fire. The chaplains tended to the wounded, distributed lifejackets when it was apparent the ship was going under, and ultimately gave their lives in order to serve the greater purpose of the American Army.
+	</p>
+	<a href="<?= BASE_URL ?>/about/">Learn More</a>
+	<p><br></p>
+</div>
 
-	<?php if(isset($_SESSION['username'])): ?>
-		<h5 class="logged-in"><i>Welcome Back, </i><i class="username">User</i>!</h5>
-	<?php else: ?>
-		<h5 class="logged-out"><i>New Here? <a href="<?= BASE_URL ?>/createaccount/">Create an Account</a> or <a href="<?= BASE_URL ?>/login/"">Sign In</a> for all features</i></h5>
-	<?php endif; ?>
-	<br>
 
-	<a href="<?= BASE_URL ?>/search/">
-		<button id="create-zoo">Search</button>
-	</a>
-
-	<h5>or</h5>
-	<?php if(isset($_SESSION['username'])): ?>
-		<a href="<?= BASE_URL ?>/addchaplain/">
-			<button class="logged-in" id="create-zoo">Add New Chaplain</button>
-		</a>
-	<?php else: ?>
-		<h5 class="logged-out"><i><a href="<?= BASE_URL ?>/login/"">Sign In</a> to Add or Edit Data</i></h5>
-	<?php endif; ?>
 
 </main>

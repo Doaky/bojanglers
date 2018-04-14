@@ -279,12 +279,12 @@ function deleteUser() {
 }
 function editUser() {
   $("#editPerm").click(function(e) {
-    $("#editView").show();
+    $("#editViewAdmin").show();
   });
 }
 function closeDelete() {
   $("#deleteView").hide();
-  $("#editView").hide();
+  $("#editViewAdmin").hide();
 }
 
 /**

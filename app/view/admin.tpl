@@ -53,8 +53,8 @@
   </div>
 </div>
 
-<div class="promptWindow" id="editView">
-<div class="promptContent" id="editContent">
+<div class="promptWindow" id="editViewAdmin">
+<div class="promptContent" id="editContentAdmin">
   <span onClick="closeDelete()" class="close">&times;</span>
   <form action="<?= BASE_URL ?>/edituser/process" method="POST">
     <p id="editDirections">Are you sure you would like to change this users permission?</p><br>
