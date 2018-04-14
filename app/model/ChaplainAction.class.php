@@ -52,7 +52,7 @@ class ChaplainAction {
 		$events = array();
 		if ($result->num_rows != 0) {
 			while ($row = $result->fetch_assoc()) {
-				$events[] = self::loadById($row['fkUser']);
+				$events[] = self::loadById($row['id']);
 			}
 		}
 		return $events;
