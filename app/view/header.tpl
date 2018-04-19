@@ -6,9 +6,14 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=0">
 
   <link rel="stylesheet" type="text/css" href="<?= BASE_URL ?>/public/css/styles.css" />
+  <link rel="stylesheet" type="text/css" href="<?= BASE_URL ?>/public/css/timeline.css"/>
   <link rel="icon" href="<?= BASE_URL ?>/public/img/logo.png">
   <script src="<?= BASE_URL ?>/public/js/jquery-3.1.1.min.js"></script>
+  <script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
   <script src="<?= BASE_URL ?>/public/js/index.js"></script>
+  <script src="<?= BASE_URL ?>/public/js/d3timeline.js"></script>
+
+
 </head>
 
 <body>

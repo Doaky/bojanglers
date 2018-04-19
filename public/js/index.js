@@ -16,8 +16,11 @@ $(document).ready(function() {
 
   closeDelete();
 	if (document.title == "Chaplain | Chaplain Stories") {
+    console.log( window.origin + "/bojanglers/public/demodata.json");
+    loadchart("svgContent", window.origin + "/bojanglers/public/demodata.json");
 		loadChaplainImage(); // Gets image from API
 		loadChaplainDocs(); // Gets info from API
+
 	}
 	else if (document.title == "Search | Chaplain Stories") {
 		loadChaplainDocs(); // Gets info from API

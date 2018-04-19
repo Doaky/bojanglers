@@ -1,3 +1,8 @@
+<!-- <script type="text/javascript">
+window.onload = function() {
+	loadchart("svgContent", "<?= BASE_URL ?>/public/demodata.json");
+}
+</script> -->
 <main class="chaplain">
 
 	<div id="timelineAdd" class="modal">
@@ -155,7 +160,8 @@
 
 		<hr>
 		<h4>Timeline:</h4>
-		<?php if(isset($_SESSION['username'])): ?>
+		<div id="svgContent" class="chart"></div>
+		<!-- <?php if(isset($_SESSION['username'])): ?>
 			<button id="addEvent" class="editing button">Add Event</button>
 		<?php endif; ?>
 		<br><br>
@@ -169,7 +175,7 @@
 					<p><?= $te->description ?></p>
 				</article>
 			<?php endforeach; ?>
-		</aside>
+		</aside> -->
 	</section>
 
 	<section class="middle">

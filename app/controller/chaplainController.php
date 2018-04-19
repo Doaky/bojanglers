@@ -53,6 +53,11 @@ class ChaplainController {
 					$this->deleteChaplain();
 				}
 				break;
+
+			case 'getEventsJSON';
+				$id = $_GET['id'];
+				$this->getEventsJSON($id);
+				break;
 		}
 
 	}
@@ -80,6 +85,10 @@ class ChaplainController {
 		}
 
 		include_once SYSTEM_PATH.'/view/footer.tpl';
+	}
+
+	public function getEventsJSON($id) {
+		//look at his function
 	}
 
 	public function search($search) {
