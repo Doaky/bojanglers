@@ -22,13 +22,12 @@ function loadchart(div, json) {
     d3.json(json, function (error, graph) {
 
         var line = d3.svg.line()
-        console.log("loading graph");
 
         var earliest = new Date(graph.nodes[0].date);
         // TODO discover latest by looking rather than assuming the nodes are sorted
         var latest = new Date(graph.nodes[graph.nodes.length - 1].date);
         // number of days in the data set ...
-        var interval = (latest - earliest) / 1000 / 60 / 60 / 24 + 1;
+        var interval = (latest - earliest) / 1000 / 60 / 60 / 24 / 365 / 4  + 1;
         // ... determines the width of the svg
         var width = interval * dayWidth;
 
@@ -62,15 +61,27 @@ function loadchart(div, json) {
             .tickFormat(d3.time.format("%B %Y"))
             .tickSize(5, 0);
 
-        svg.append('g')
-            .attr('class', 'x axis monthaxis')
-            .attr('transform', 'translate(0, ' + (height - margin.top - margin.bottom) + ')')
-            .attr('style', 'opacity: 0.1')
-            .call(xAxisMonths);
+        var xAxisYears = d3.svg.axis()
+            .scale(x)
+            .orient("bottom")
+            .ticks(d3.time.years, 1)
+            .tickFormat(d3.time.format("%Y"))
+            .tickSize(5);
+
         svg.append('g')
             .attr('class', 'x axis dayaxis')
             .attr('transform', 'translate(0, ' + (height - margin.top - margin.bottom) + ')')
-            .call(xAxisDays);
+            .attr('style', 'opacity: 1; fill: white')
+            .call(xAxisYears);
+        // svg.append('g')
+        //     .attr('class', 'x axis monthaxis')
+        //     .attr('transform', 'translate(0, ' + (height - margin.top - margin.bottom) + ')')
+        //     .attr('style', 'opacity: 0.1')
+        //     .call(xAxisMonths);
+        // svg.append('g')
+        //     .attr('class', 'x axis dayaxis')
+        //     .attr('transform', 'translate(0, ' + (height - margin.top - margin.bottom) + ')')
+        //     .call(xAxisDays);
 
 		/************************
 			Links

@@ -1,63 +1,76 @@
 .chart {
-  font-family: Arial, sans-serif;
-  font-size: 10px;
-  border: 1px solid black;
-  float: left;
-  width: 600px;
-  height: 210px;
-  overflow: auto;
-  white-space: nowrap;
+	font-family: 'Quattrocento Sans', sans-serif;
+	/*font-family: Arial, sans-serif;*/
+	font-size: 10px;
+	/*border: 1px solid black;*/
+	/*float: left;*/
+	width: 98%;
+	height: 110px;
+	overflow: auto;
+	white-space: nowrap;
+	padding: 5px;
+	color: white;
+	overflow-y: hidden;
 }
 
 .axis path, .axis line {
-  fill: none;
-  stroke: #000;
-  shape-rendering: crispEdges;
+	fill: none;
+	stroke: white;
+	shape-rendering: crispEdges;
 }
 
 .letter {
-  fill: #ffffd0;
-  stroke-width: 2
+	fill: #ffffd0;
+	stroke-width: 2
 }
 
 .precise {
-  stroke: #000000;
+	stroke: #000000;
 }
 
 .notprecise {
-  stroke: #ff2c00;
+	stroke: #ff2c00;
 }
 
 .link {
-  fill: none;
-  stroke: grey;
-  stroke-width: 1
+	fill: none;
+	stroke: white;
+	stroke-width: 1
 }
 
 .arrowhead {
-  stroke: grey;
-  fill: grey;
-  stroke-width: 1
+	stroke: white;
+	fill: white;
+	stroke-width: 1
 }
 
 .bar {
-  fill: steelblue;
+	fill: steelblue;
 }
 
 .fromR {
-  fill: #dca2ea;
+	fill: #dca2ea;
 }
 
 .fromF {
-  fill: #d7faaa;
+	fill: #d7faaa;
 }
 
 .monthaxis {
-  font-size: 300%;
+	font-size: 300%;
 }
 
 text.shadow {
-  stroke: #fff;
-  stroke-width: 3px;
-  stroke-opacity: .8;
+	stroke: #fff;
+	stroke-width: 3px;
+	stroke-opacity: .8;
+}
+
+g {
+	opacity: 1 !important;
+}
+
+.dayaxis {
+	transform: translateX(20px) translateY(75px);
+	/*transform: translateX(-20px);*/
 }
