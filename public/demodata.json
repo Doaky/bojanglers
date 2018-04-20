@@ -1,0 +1,13 @@
+{
+	"nodes":
+	[
+		{"name": "Born",            "date":"1908-01-01", "id":19, "from":"R", "type":"free"},
+		{"name": "Became a Deacon", "date":"1933-01-01", "id":6, "from":"R", "type":"free"},
+		{"name": "Became a priest", "date":"1935-01-01", "id":7, "from":"R", "type":"free"},
+		{"name": "Joined the Army", "date":"1941-01-01", "id":10, "from":"R", "type":"free"},
+		{"name": "Died",            "date":"1943-01-01", "id":11, "from":"R", "type":"free"}
+	],
+	"links":
+	[
+	]
+}

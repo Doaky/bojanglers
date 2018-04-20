@@ -1,0 +1,85 @@
+.chart {
+	font-family: 'Quattrocento Sans', sans-serif;
+	/*font-family: Arial, sans-serif;*/
+	font-size: 10px;
+	/*border: 1px solid black;*/
+	/*float: left;*/
+	width: 98%;
+	height: 110px;
+	overflow: auto;
+	white-space: nowrap;
+	padding: 5px;
+	color: white;
+	overflow-y: hidden;
+}
+
+.axis path, .axis line {
+	fill: none;
+	stroke: white;
+	shape-rendering: crispEdges;
+}
+
+.letter {
+	fill: #ffffd0;
+	stroke-width: 2
+}
+
+.precise {
+	stroke: #000000;
+}
+
+.notprecise {
+	stroke: #ff2c00;
+}
+
+.link {
+	fill: none;
+	stroke: white;
+	stroke-width: 1
+}
+
+.arrowhead {
+	stroke: white;
+	fill: white;
+	stroke-width: 1
+}
+
+.bar {
+	fill: steelblue;
+}
+
+.fromR {
+	fill: #dca2ea;
+}
+
+.fromF {
+	fill: #d7faaa;
+}
+
+.monthaxis {
+	font-size: 300%;
+}
+
+.node text {
+    display: none !important;
+}
+
+g {
+	opacity: 1 !important;
+}
+
+.dayaxis {
+	transform: translateX(20px) translateY(75px);
+}
+
+.node {
+	cursor: pointer;
+}
+
+.fromR {
+	fill: #095d49;
+}
+
+.notprecise {
+    stroke: #e5e6e6;
+}

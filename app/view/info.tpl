@@ -42,8 +42,10 @@
 	</br>
 	<section class="left">
 		<h2 class="title">Chaplains:</h2>
-		<div id="content">
-		</div>
+		<aside class="b-results">
+			<div id="content">
+			</div>
+		</aside>
 		<button id="addEntry">ADD ENTRY</button>
 	</section>
 
