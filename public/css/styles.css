@@ -741,6 +741,16 @@ th, td {
 	height: 30%;
 }
 
+.create-page {
+	text-align: -webkit-center;
+	padding-top: 120px;
+	min-height: 510px;
+}
+
+.create-page form {
+	width: 20%;
+}
+
 .info {
 	height: calc(100vh - 110px) !important;
 }

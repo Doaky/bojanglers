@@ -8,6 +8,13 @@
 		<label>Username <input type="text" name="username" value=""></label>
 		<br>
 		<label>Password &nbsp<input type="password" name="pw" value=""></label>
+
+		<?php 
+			if (!$_SESSION['attempt']) {
+				echo '<br> <br> Incorrect Username or Password, please try again.' ;
+			}
+		?> 
+
 		<br> <br>
 		<input class="button" type="submit" name="submit" value="Login">
 	</form>
