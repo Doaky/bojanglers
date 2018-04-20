@@ -165,7 +165,7 @@
 				<article class="timeline-entry">
 					<h4><?= $te->year ?> - <?= $te->title ?></h4>
 					<?php if(isset($_SESSION['username'])): ?>
-						<button id="<?= $te->id ?>" class="editing timelineEntry button">Edit Event</button>
+						<button id="<?= $te->id ?>" class="editing timelineEntry button"><?= $te->id ?> Edit Event</button>
 					<?php endif; ?>
 					<p><?= $te->description ?></p>
 				</article>
@@ -181,3 +181,16 @@
 	</section>
 
 </main>
+
+<script type="text/javascript">
+	function itemclick(d) {
+		var userID = "<?php echo $_SESSION['userID']; ?>";
+		if (userID) {
+			var elem = document.getElementById(d.id);
+			elem.click.apply(elem);
+		}
+		else {
+			alert("Login to Edit");
+		}
+	}
+</script>

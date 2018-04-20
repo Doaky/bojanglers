@@ -60,10 +60,8 @@
 	font-size: 300%;
 }
 
-text.shadow {
-	stroke: #fff;
-	stroke-width: 3px;
-	stroke-opacity: .8;
+.node text {
+    display: none !important;
 }
 
 g {
@@ -72,5 +70,16 @@ g {
 
 .dayaxis {
 	transform: translateX(20px) translateY(75px);
-	/*transform: translateX(-20px);*/
+}
+
+.node {
+	cursor: pointer;
+}
+
+.fromR {
+	fill: #095d49;
+}
+
+.notprecise {
+    stroke: #e5e6e6;
 }

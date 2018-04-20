@@ -486,6 +486,7 @@ chaplain button {
 	background: #131619;
 	margin-top: 10px;
 	margin-left: 15px;
+	overflow-y: auto;
 }
 
 .add-page .middle {
