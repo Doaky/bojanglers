@@ -48,10 +48,6 @@
 	fill: steelblue;
 }
 
-.fromR {
-	fill: #dca2ea;
-}
-
 .fromF {
 	fill: #d7faaa;
 }
@@ -78,6 +74,11 @@ g {
 
 .fromR {
 	fill: #095d49;
+	transition: .2s;
+}
+
+.fromR:hover {
+	fill: #139072
 }
 
 .notprecise {
