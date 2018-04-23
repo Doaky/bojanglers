@@ -83,10 +83,13 @@ class SiteController {
 
 		$pageTitle = 'Info';
 
-		$users = User::getUsers();
-		$chapactions = ChaplainAction::getActions();
-		$chaplains = Chaplain::getChaplains();
+		$users         = User::getUsers();
+		$chapactions   = ChaplainAction::getActions();
+		$chaplains     = Chaplain::getChaplains();
 		$followactions = FollowingAction::getAllFollowingActions();
+		$jewish        = Chaplain::loadByReligion(0);
+		$catholic      = Chaplain::loadByReligion(1);
+		$protestant    = Chaplain::loadByReligion(2);
 
 		include_once SYSTEM_PATH.'/view/header.tpl';
 		include_once SYSTEM_PATH.'/view/info.tpl';

@@ -1,6 +1,6 @@
 <main class="info-page">
 		<div id="editView" class="modal">
-	  		<div id="editContent" class="modal-content">
+			<div id="editContent" class="modal-content">
 				<span class="close2" id="#close2">&times;</span>
 				<br><br>
 				<form id="formOrder">
@@ -47,6 +47,10 @@
 			</div>
 		</aside>
 		<button id="addEntry">ADD ENTRY</button>
+
+		<div id="canvas-holder" style="width: 310px;">
+			<canvas id="myChart" width="300" height="300" />
+		</div>
 	</section>
 
 	<section class="right">
@@ -80,5 +84,52 @@
 			<?php endforeach; ?>
 		</aside>
 	</section>
-
 </main>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js"></script>
+
+<script type="text/javascript">
+	var jewish     = "<?php echo sizeof($jewish); ?>";
+	var catholic   = "<?php echo sizeof($catholic); ?>";
+	var protestant = "<?php echo sizeof($protestant); ?>";
+
+	var data = [jewish, catholic, protestant];
+
+	var ctx = document.getElementById('myChart').getContext('2d');
+	var myBarChart = new Chart(ctx, {
+		type: 'doughnut',
+		data: {
+			datasets: [{
+				data: data,
+				backgroundColor: [
+					'rgb(255, 99, 132)',
+					'rgb(75, 192, 192)',
+					'rgb(54, 162, 235)'
+				],
+			}],
+			labels: [
+				"Jewish: " + jewish,
+				"Catholic: " + catholic,
+				"Protestant: " + protestant
+			]
+		},
+		options: {
+			responsive: true,
+			legend: {
+				display: true,
+				fullWidth: false,
+				labels: {
+					boxWidth: 20,
+					fontSize: 11,
+					fontColor: '#fff'
+				}
+			},
+			title: {
+				display: true,
+				text: 'Chaplains by Faith',
+				fontSize: 16,
+				fontColor: '#fff'
+			}
+		}
+	});
+</script>
