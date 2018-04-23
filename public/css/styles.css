@@ -774,12 +774,16 @@ th, td {
 }
 
 .b-results {
-    overflow-y: scroll;
-    height: calc(100vh - 265px) !important;
-    position: relative;
-    width: 100%;
+	overflow-y: scroll;
+	height: calc(100vh - 265px) !important;
+	position: relative;
+	width: 100%;
 }
 
+.info-page .b-results {
+    height: calc(100vh - 568px) !important;
+    /*height: 75% !important;*/
+}
 
 @media (max-width: 900px) {
 	nav {
