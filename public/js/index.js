@@ -6,8 +6,8 @@ $(document).ready(function() {
 
 	closeDelete();
 	if (document.title == "Chaplain | Chaplain Stories") {
-		loadchart("svgContent", window.origin + "/bojanglers/public/demodata.json");
-		loadChaplainImage(); // Gets image from API
+    loadTimelineEvents();
+    loadChaplainImage(); // Gets image from API
 		loadChaplainDocs(); // Gets info from API
 	}
 	else if (document.title == "Search | Chaplain Stories") {
@@ -374,6 +374,11 @@ function asyncFunctions() {
 	}).fail(function(data) {
 		console.log("error in the get");
 	});
+}
+//loads the timeline events into a D3.js timeline graph
+function loadTimelineEvents() {
+  var chaplainID = window.location.pathname.substring(window.location.pathname.length - 1);
+  loadchart("svgContent", window.origin + "/bojanglers/chaplain/"+chaplainID+"/geteventsjson/");
 }
 //----------------------END OF AJAX ASYNC FUNCTIONS---------------------------//
 //____________________________________________________________________________//

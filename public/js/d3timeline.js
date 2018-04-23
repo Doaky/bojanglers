@@ -1,3 +1,8 @@
+//----------------------------------------------------//
+//Source: https://github.com/pbinkley/D3-dateline    //
+//Modifications in this file, index.js, chaplain.tpl//
+//-------------------------------------------------//
+
 function loadchart(div, json) {
 
     // pass in id of div where the svg will live and name/url of json data
@@ -20,7 +25,7 @@ function loadchart(div, json) {
     var ctly = 35;
 
     d3.json(json, function (error, graph) {
-
+        console.log(json);
         var line = d3.svg.line()
 
         var earliest = new Date(graph.nodes[0].date);
