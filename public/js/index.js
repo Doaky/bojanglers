@@ -6,8 +6,8 @@ $(document).ready(function() {
 
 	closeDelete();
 	if (document.title == "Chaplain | Chaplain Stories") {
-		loadchart("svgContent", window.origin + "/bojanglers/public/demodata.json");
-		loadChaplainImage(); // Gets image from API
+    loadTimelineEvents();
+    loadChaplainImage(); // Gets image from API
 		loadChaplainDocs(); // Gets info from API
 	}
 	else if (document.title == "Search | Chaplain Stories") {
@@ -375,6 +375,11 @@ function asyncFunctions() {
 		console.log("error in the get");
 	});
 }
+//loads the timeline events into a D3.js timeline graph
+function loadTimelineEvents() {
+  var chaplainID = window.location.pathname.substring(window.location.pathname.length - 1);
+  loadchart("svgContent", window.origin + "/bojanglers/chaplain/"+chaplainID+"/geteventsjson/");
+}
 //----------------------END OF AJAX ASYNC FUNCTIONS---------------------------//
 //____________________________________________________________________________//
 
@@ -403,11 +408,9 @@ function getWikiImage(title) {
 			titles: title
 		},
 		success: function(response) {
-			var image = response.query.pages[Object.keys(response.query.pages)[0]].original.source;
-			if (image) {
+			if (response.query.pages[Object.keys(response.query.pages)[0]].original) {
+				var image = response.query.pages[Object.keys(response.query.pages)[0]].original.source;
 				document.getElementsByClassName("profile-picture")[0].src = image;
-			} else {
-				console.log('the property is not available...');
 			}
 		}
 	});
