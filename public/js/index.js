@@ -6,7 +6,7 @@ $(document).ready(function() {
 
 	closeDelete();
 	if (document.title == "Chaplain | Chaplain Stories") {
-    loadTimelineEvents();
+    loadTimelineEvents(); // creates a timeline of events
     loadChaplainImage(); // Gets image from API
 		loadChaplainDocs(); // Gets info from API
 	}
@@ -377,7 +377,7 @@ function asyncFunctions() {
 }
 //loads the timeline events into a D3.js timeline graph
 function loadTimelineEvents() {
-  var chaplainID = window.location.pathname.substring(window.location.pathname.length - 1);
+  var chaplainID = window.location.pathname.match( /\d+/ )[0];
   loadchart("svgContent", window.origin + "/bojanglers/chaplain/"+chaplainID+"/geteventsjson/");
 }
 //----------------------END OF AJAX ASYNC FUNCTIONS---------------------------//
