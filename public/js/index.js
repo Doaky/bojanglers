@@ -408,11 +408,9 @@ function getWikiImage(title) {
 			titles: title
 		},
 		success: function(response) {
-			var image = response.query.pages[Object.keys(response.query.pages)[0]].original.source;
-			if (image) {
+			if (response.query.pages[Object.keys(response.query.pages)[0]].original) {
+				var image = response.query.pages[Object.keys(response.query.pages)[0]].original.source;
 				document.getElementsByClassName("profile-picture")[0].src = image;
-			} else {
-				console.log('the property is not available...');
 			}
 		}
 	});

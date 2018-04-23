@@ -25,9 +25,12 @@ function loadchart(div, json) {
     var ctly = 35;
 
     d3.json(json, function (error, graph) {
-        console.log(json);
-        var line = d3.svg.line()
+        console.log(graph);
+        if (!graph.nodes.length) {
+            return;
+        }
 
+        var line = d3.svg.line();
         var earliest = new Date(graph.nodes[0].date);
         // TODO discover latest by looking rather than assuming the nodes are sorted
         var latest = new Date(graph.nodes[graph.nodes.length - 1].date);

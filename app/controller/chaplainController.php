@@ -88,15 +88,15 @@ class ChaplainController {
 	}
 
 	public function getEventsJSON($id) {
-
 		//look at his function
 		$timelineEntries = TimelineEntry::getByChaplainId($id);
+
 		$jsonNodes = array();
-		foreach($timelineEntries as $entry) {
+		foreach ($timelineEntries as $entry) {
 			$event = array(
 				'name' => $entry->description,
 				'date' => $entry->year.'-01-01',
-				'id' => $entry->id,
+				'id'   => $entry->id,
 				'from' => 'R',
 				'type' => 'free'
 			);
