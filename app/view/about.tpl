@@ -2,6 +2,7 @@
 
 	<div id="about" class="background-image"></div>
 	<h1>Community, Comfort and Combat</h1>
+	<br> <br>
 	<div class = "text-div-about">
 		<p class="text-about">
 		 	In the wake of World War II, the United States was undergoing a change in religious culture. Specifically, the presidency of Franklin D. Roosevelt marked a pivotal point in United States religious history. It was during the years leading up to the war that American culture started to become more accepting of Judaism and Catholicism, making America more of atri-faith nation. Roosevelt, in his 1942 State of the Union address, references the religious implications of World War II. With the culture in America becoming more open toward free exercise and tolerance of religion, Chaplains were sent to serve alongside soldiers in the war to  provide moral support and guidance. A prominent influencer of the religious culture in America during this time period was Reverend Peter Marshall. Serving in one of Washington, D.C.’s most distinguished churches, New York Avenue Presbyterian Church, Marshall became close to powerful congressmen and the presidency. It was during pre-war era that Marshall delivered a famous sermon, titled “The Tap on the Shoulder.” In this sermon, Marshall states many ministers are not in their pulpit because they chose the profession, rather “he could not help it, because he has obeyed an imperious summons that will not be denied.” Military chaplains serving in the war effort undoubtedly received this personal summons to serve a greater calling in the war effort.
