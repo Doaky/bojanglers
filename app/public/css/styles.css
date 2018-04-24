@@ -903,7 +903,7 @@ th, td {
 		font-size: 25px;
 	}
 	#title h3 {
-	    font-size: 14px;
+		font-size: 14px;
 	}
 	#logo {
 		width: 25px;
@@ -931,5 +931,44 @@ th, td {
 	.zoo-listing > ul > li {
 		padding-left: 0px;
 		padding-bottom: 25px;
+	}
+}
+
+@media (max-width: 500px) {
+	.chaplain h1 {
+		font-size: 30px;
+	}
+	.chaplain .profile-picture-container {
+		padding-right: 5px;
+	}
+	.chaplain h3 {
+		font-size: 15px;
+	}
+	.status h4 {
+		display: none;
+	}
+	textarea {
+		max-width: 200px;
+	}
+}
+
+@media (max-width: 400px) {
+	.title-text {
+		font-size: 20px;
+	}
+	#title h3 {
+		font-size: 14px;
+	}
+	#logo {
+		display: none;
+	}
+	.home-page {
+		font-size: 10px;
+	}
+	.info-page .b-results {
+		height: calc(100vh - 430px) !important;
+	}
+	.info-page .left {
+		height: 125%;
 	}
 }
