@@ -3,7 +3,7 @@
 	<div class="background-image"></div>
 
 	<section id="title">
-		<img id="logo" src="<?= BASE_URL ?>/public/img/logo.png" alt="Chaplain Stories Logo">
+		<img id="logo" src="<?= BASE_URL ?>/app/public/img/logo.png" alt="Chaplain Stories Logo">
 		<h1 class="title-text">Chaplain Stories</h1> <br>
 		<h3>Community, Comfort, Combat</h3>
 	</section>

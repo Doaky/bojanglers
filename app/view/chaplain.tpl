@@ -116,7 +116,7 @@
 		<h1 id = "chaplain-name"><?= $chaplain->name ?></h1>
 
 		<figure class="profile-picture-container">
-				<img class="profile-picture" src="<?= BASE_URL ?>/public/img/placeholder.jpg" alt="Profile Picture"/><br>
+				<img class="profile-picture" src="<?= BASE_URL ?>/app/public/img/placeholder.jpg" alt="Profile Picture"/><br>
 		</figure>
 
 		<h3>
