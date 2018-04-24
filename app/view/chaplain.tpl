@@ -42,17 +42,17 @@
 			<form action="<?= BASE_URL ?>/chaplain/edittimeline/" method="POST">
 				<fieldset>
 					<legend>Year</legend>
-					<input type="number" name="year">
+					<input type="number" name="year" id="tl_year">
 				</fieldset>
 
 				<fieldset>
 					<legend>Title</legend>
-					<input type="text" name="title">
+					<input type="text" name="title" id="tl_title">
 				</fieldset>
 
 				<fieldset>
 					<legend>Description</legend>
-					<textarea rows="4" cols="50" name="description"></textarea>
+					<textarea rows="4" cols="50" name="description" id="tl_description"></textarea>
 				</fieldset>
 
 				<input class="hide-info" id="timelineID" type="number" name="id" value="0">
@@ -160,11 +160,12 @@
 		<?php endif; ?>
 		<br><br>
 		<aside class="timeline">
+			<div id="svgContent" class="chart"></div> <br>
 			<?php foreach($timelineEntries as $te): ?>
 				<article class="timeline-entry">
 					<h4><?= $te->year ?> - <?= $te->title ?></h4>
 					<?php if(isset($_SESSION['username'])): ?>
-						<button id="<?= $te->id ?>" class="editing timelineEntry button">Edit Event</button>
+						<button id="<?= $te->id ?>" class="editing timelineEntry button" onclick="editclick(this.id)">Edit Event</button>
 					<?php endif; ?>
 					<p><?= $te->description ?></p>
 				</article>
@@ -180,3 +181,37 @@
 	</section>
 
 </main>
+
+<script type="text/javascript">
+	function itemclick(d) {
+		var userID = "<?php echo $_SESSION['userID']; ?>";
+		if (userID) {
+			var elem = document.getElementById(d.id);
+			var timelineEntries = <?php echo json_encode($timelineEntries) ?>;// don't use quotes
+			$.each(timelineEntries, function(key, value) {
+				if (value.id == d.id) {
+					selectedEntry = value;
+				}
+			});
+			elem.click.apply(elem);
+			document.getElementById("tl_year").value = selectedEntry.year;
+			document.getElementById("tl_title").value = selectedEntry.title;
+			document.getElementById("tl_description").value = selectedEntry.description;
+		}
+		else {
+			alert("Login to Edit");
+		}
+	}
+
+	function editclick(id) {
+		var timelineEntries = <?php echo json_encode($timelineEntries) ?>;// don't use quotes
+		$.each(timelineEntries, function(key, value) {
+			if (value.id == id) {
+				selectedEntry = value;
+			}
+		});
+		document.getElementById("tl_year").value = selectedEntry.year;
+		document.getElementById("tl_title").value = selectedEntry.title;
+		document.getElementById("tl_description").value = selectedEntry.description;
+	}
+</script>

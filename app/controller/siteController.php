@@ -83,10 +83,13 @@ class SiteController {
 
 		$pageTitle = 'Info';
 
-		$users = User::getUsers();
-		$chapactions = ChaplainAction::getActions();
-		$chaplains = Chaplain::getChaplains();
+		$users         = User::getUsers();
+		$chapactions   = ChaplainAction::getActions();
+		$chaplains     = Chaplain::getChaplains();
 		$followactions = FollowingAction::getAllFollowingActions();
+		$jewish        = Chaplain::loadByReligion(0);
+		$catholic      = Chaplain::loadByReligion(1);
+		$protestant    = Chaplain::loadByReligion(2);
 
 		include_once SYSTEM_PATH.'/view/header.tpl';
 		include_once SYSTEM_PATH.'/view/info.tpl';
@@ -122,12 +125,14 @@ class SiteController {
 		include_once SYSTEM_PATH.'/view/account.tpl';
 		include_once SYSTEM_PATH.'/view/footer.tpl';
 	}
+
 	public function createaccount() {
 		$pageTitle = 'Create Account';
 		include_once SYSTEM_PATH.'/view/header.tpl';
 		include_once SYSTEM_PATH.'/view/createaccount.tpl';
 		include_once SYSTEM_PATH.'/view/footer.tpl';
 	}
+
 	public function createaccountProcess($email, $un, $pw, $fn, $ln, $ed) {
 		$user             = new User();
 		$user->username   = $un;
@@ -140,18 +145,18 @@ class SiteController {
 		$userID           = $user->save();
 		$this->loginProcess($user->username, $user->password);
 	}
+
 	public function loginProcess($un, $pw) {
-		// $correctUsername = 'admin';
-		// $correctPassword = '123';
 		$user = User::login($un, $pw);
 		if ($user == NULL) {
-			header('Location: '.BASE_URL);
+			$_SESSION['attempt']  = False;
+			header('Location: '.BASE_URL.'/login');
 		}
 		else {
+			$_SESSION['attempt']  = True;
 			$_SESSION['username'] = $user->username;
 			$_SESSION['userID']   = $user->id;
 			$_SESSION['admin']    = $user->permission;
-			// echo($_SESSION['userID']);
 			header('Location: '.BASE_URL.'/account'); exit();
 		}
 	}
@@ -162,41 +167,52 @@ class SiteController {
 		$user->delete();
 		header('Location: '.BASE_URL.'/admin'); exit();
 	}
+
 	public function editUserProcess($id, $permission) {
 		$user = User::loadById($id);
 		$user->permission = $permission;
 		$user->save();
 		header('Location: '.BASE_URL.'/admin'); exit();
 	}
+
 	public function login() {
+		if (!isset($_SESSION['attempt'])) {
+			$_SESSION['attempt']  = True;
+		}
+
 		$pageTitle = 'Login';
 		include_once SYSTEM_PATH.'/view/header.tpl';
 		include_once SYSTEM_PATH.'/view/login.tpl';
 		include_once SYSTEM_PATH.'/view/footer.tpl';
 	}
+
 	public function logoutProcess() {
 		unset($_SESSION['username']); // not necessary, but just to be safe
 		session_destroy();
 		header('Location: '.BASE_URL); exit(); // send us to home page
 	}
+
 	public function add() {
 		$pageTitle = 'Add Chaplain';
 		include_once SYSTEM_PATH.'/view/header.tpl';
 		include_once SYSTEM_PATH.'/view/add.tpl';
 		include_once SYSTEM_PATH.'/view/footer.tpl';
 	}
+
 	public function about() {
 		$pageTitle = 'About';
 		include_once SYSTEM_PATH.'/view/header.tpl';
 		include_once SYSTEM_PATH.'/view/about.tpl';
 		include_once SYSTEM_PATH.'/view/footer.tpl';
 	}
+
 	public function help() {
 		$pageTitle = 'Help';
 		include_once SYSTEM_PATH.'/view/header.tpl';
 		include_once SYSTEM_PATH.'/view/help.tpl';
 		include_once SYSTEM_PATH.'/view/footer.tpl';
 	}
+
 	public function contact() {
 		$pageTitle = 'Contact';
 		include_once SYSTEM_PATH.'/view/header.tpl';

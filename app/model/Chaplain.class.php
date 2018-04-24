@@ -60,6 +60,24 @@ class Chaplain {
 		return $chaplains;
 	}
 
+	public static function loadByReligion($faith) {
+		$db = Db::instance(); // create db connection
+		// build query
+		$q = sprintf("SELECT * FROM `%s` WHERE `faith_type` = '%s';",
+			self::DB_TABLE,
+			$faith
+			);
+		$result = $db->query($q); // execute query
+
+		$chaplains = array();
+		if ($result->num_rows != 0) {
+			while ($row = $result->fetch_assoc()) {
+				$chaplains[] = self::loadById($row['id']);
+			}
+		}
+		return $chaplains;
+	}
+
 	public function save(){
 		if($this->id == 0) {
 			return $this->insert(); // chaplains is new and needs to be created

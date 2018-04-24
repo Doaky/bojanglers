@@ -40,3 +40,5 @@ RewriteRule ^chaplain/add/process/?$ app/controller/chaplainController.php?actio
 RewriteRule ^chaplain/edittimeline/?$ app/controller/chaplainController.php?action=edittimeline [QSA,L]
 RewriteRule ^chaplain/editchaplain/?$ app/controller/chaplainController.php?action=editchaplain [QSA,L]
 RewriteRule ^chaplain/editdocument/?$ app/controller/chaplainController.php?action=editdocument [QSA,L]
+
+RewriteRule ^chaplain/(\d+)/geteventsjson/?$ app/controller/chaplainController.php?action=getEventsJSON&id=$1 [QSA,L]
