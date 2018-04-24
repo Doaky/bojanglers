@@ -944,7 +944,7 @@ th, td {
 	.chaplain h3 {
 		font-size: 15px;
 	}
-	.status h4 {
+	.status .logged-in {
 		display: none;
 	}
 	textarea {
