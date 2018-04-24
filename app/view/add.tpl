@@ -8,14 +8,6 @@
 
 			<form action="<?= BASE_URL ?>/chaplain/add/process/" method="POST">
 
-				<section class="left">
-					<h4>Picture:</h4>
-					<figure class="profile-picture-container">
-						<img class="profile-picture" src="<?= BASE_URL ?>/public/img/placeholder.jpg" alt="Profile Picture"/><br>
-					</figure>
-					<input class="file-upload" type="file" accept="image/*" name="file"/>
-				</section>
-
 				<section class="middle">
 					<h4>Chaplain Information:</h4>
 					
