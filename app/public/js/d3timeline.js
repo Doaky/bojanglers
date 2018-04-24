@@ -25,6 +25,7 @@ function loadchart(div, json) {
     var ctly = 35;
 
     d3.json(json, function (error, graph) {
+        console.log(graph);
         if (!graph.nodes.length) {
             return;
         }
