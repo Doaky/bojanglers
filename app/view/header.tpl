@@ -5,10 +5,10 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=0">
 
-  <link rel="stylesheet" type="text/css" href="<?= BASE_URL ?>/public/css/styles.css" />
+  <link rel="stylesheet" type="text/css" href="<?= BASE_URL ?>/app/public/css/styles.css" />
   <link rel="icon" href="<?= BASE_URL ?>/public/img/logo.png">
-  <script src="<?= BASE_URL ?>/public/js/jquery-3.1.1.min.js"></script>
-  <script src="<?= BASE_URL ?>/public/js/index.js"></script>
+  <script src="<?= BASE_URL ?>/app/public/js/jquery-3.1.1.min.js"></script>
+  <script src="<?= BASE_URL ?>/app/public/js/index.js"></script>
 </head>
 
 <body>
