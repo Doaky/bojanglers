@@ -224,9 +224,9 @@ function loadchart(div, json) {
                         r = radius + radius;
                     if (l < r) {
                         l = (l - r) / l * .5;
-                        node.x -= x *= l;
+                        // node.x -= x *= l;
                         node.y -= y *= l;
-                        quad.point.x += x;
+                        // quad.point.x += x;
                         quad.point.y += y;
                     }
                 }
