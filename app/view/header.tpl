@@ -9,7 +9,8 @@
   <link rel="stylesheet" type="text/css" href="<?= BASE_URL ?>/app/public/css/timeline.css"/>
   <link rel="icon" href="<?= BASE_URL ?>/app/public/img/logo.png">
   <script src="<?= BASE_URL ?>/app/public/js/jquery-3.1.1.min.js"></script>
-  <script src="<?= BASE_URL ?>/app/public/js/d3.min.js"></script>
+  <!-- <script src="https://d3js.org/d3.v3.min.js"></script> -->
+  <script src="<?= BASE_URL ?>/app/public/js/d3.v3.min.js"></script>
   <script src="<?= BASE_URL ?>/app/public/js/d3timeline.js"></script>
   <script src="<?= BASE_URL ?>/app/public/js/index.js"></script>
 

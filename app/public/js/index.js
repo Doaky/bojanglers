@@ -218,7 +218,7 @@ function displayResults(objectarray) {
 function ajaxCall(query, number, displayObjects) {
 	// Make an ajax call to the chroniclingamerica api and load results into an array
 	$.ajax({
-		url: 'http://chroniclingamerica.loc.gov/search/pages/results/',
+		url: 'https://chroniclingamerica.loc.gov/search/pages/results/',
 		dataType: 'jsonp',
 		data: {
 			andtext: 'chaplains ' + query,
