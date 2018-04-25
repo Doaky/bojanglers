@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Apr 19, 2018 at 05:53 PM
+-- Generation Time: Apr 25, 2018 at 03:47 PM
 -- Server version: 5.6.39
--- PHP Version: 7.0.27
+-- PHP Version: 7.0.29
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -44,26 +44,19 @@ CREATE TABLE `chaplains` (
 --
 
 INSERT INTO `chaplains` (`id`, `name`, `faith`, `faith_type`, `rank`, `hometown`, `creator_id`, `date_created`) VALUES
-(1, 'John P. Washington', 'Diocesan', 1, 'Lieutenant 1st Class', 'Newark, New Jersey', 2, '2018-03-29 15:56:24'),
+(1, 'John P. Washington', 'Roman Catholic', 1, 'Lieutenant 1st Class', 'Newark, New Jersey', 2, '2018-03-29 15:56:24'),
 (2, 'Joseph T. O\'Callahan', 'Jesuit', 1, 'Lieutenant Commander', 'Roxbury, Massachusetts', 1, '2018-03-29 15:57:19'),
 (3, 'Aloysius H. Schmitt ', 'Roman Catholic', 1, 'Lieutenant', 'St. Lucas, Iowa', 3, '2018-03-30 02:12:09'),
-(15, 'Arun Antho', NULL, 0, '106', 'Tamilnadu chennai', 0, '2018-04-15 11:47:42'),
-(16, 'Divya Antho', NULL, 0, '202', 'Chennai', 0, '2018-04-15 11:53:09'),
-(17, 'Johannes Maria Assmann', 'Baptist', 1, 'Catholic Prussian military bishop', 'Branice, Poland', 0, '2018-04-16 15:24:43'),
-(18, 'John Johnson', NULL, 0, 'Chaplain', 'Johnsonville', 0, '2018-04-16 15:32:04'),
-(19, 'George S. Rentz', NULL, 2, 'Chaplain', 'Lebanon, Pennsylvania', 0, '2018-04-17 03:20:19'),
-(20, 'Franz Rarkowski', 'Bishop', 1, 'officer', 'Poland', 0, '2018-04-17 16:00:41'),
-(21, 'George L. Fox', NULL, 2, 'Chaplain lieutenant', 'Lewistown', 0, '2018-04-17 20:25:31'),
-(22, 'Joseph T. O\'Callahan', 'N/A', 1, 'Captain', 'Roxbury, Massachusetts', 0, '2018-04-17 21:00:17'),
+(19, 'George S. Rentz', NULL, 2, 'Commander', 'Lebanon, Pennsylvania', 0, '2018-04-17 03:20:19'),
+(20, 'Franz Justus Rarkowski', 'Roman', 1, 'Episcopus Castrensis', 'Olsztyn, Poland', 0, '2018-04-17 16:00:41'),
+(21, 'George L. Fox', NULL, 2, 'Lieutenant', 'Lewistown, Pennsylvania', 0, '2018-04-17 20:25:31'),
 (23, 'Herman Felhoelter', NULL, 2, 'Chaplain', 'Lousiville, KY', 0, '2018-04-18 15:39:58'),
-(24, 'Edwin J. Kozak', 'Uh Catholic?', 1, 'CPT', 'Baltimore City, MD', 0, '2018-04-18 17:15:05'),
-(25, 'Franz Justus Rarkowski', 'Catholic', 1, 'Catholic Military Bishop', 'Allenstein', 0, '2018-04-18 18:48:31'),
-(27, 'John Doe', NULL, 0, 'Captain', NULL, 0, '2018-04-18 19:25:24'),
-(28, 'Joseph T. O\'Callahan', NULL, 2, 'Captain', 'Boston, MA', 0, '2018-04-18 20:45:02'),
-(29, 'William Kelt', NULL, 0, 'Major', 'Wahroonga', 0, '2018-04-18 23:43:30'),
+(24, 'Edwin J. Kozak', 'Roman', 1, 'Colonel', 'Baltimore, Maryland', 0, '2018-04-18 17:15:05'),
 (30, 'Charles I. Carpenter ', NULL, 2, 'Major General', 'Wilmington, Delaware ', 0, '2018-04-19 15:19:37'),
 (31, 'Robert P. Taylor', NULL, 2, 'Major General', 'Henderson, Texas', 0, '2018-04-19 15:23:20'),
-(32, 'George S.Renz', NULL, 2, 'Commander', 'Lebanon, Pennsylvania', 0, '2018-04-19 17:40:01');
+(37, 'Alexander D. Goode', NULL, 0, 'Lieutenant', 'Brooklyn, New York', 5, '2018-04-20 16:22:08'),
+(43, 'Ruth Louise Kinzeler ', NULL, 2, 'Captain', NULL, 5, '2018-04-20 20:05:39'),
+(46, 'Ivan Neill', NULL, 2, 'Chaplain to the Forces 3rd class', 'County Tipperary', 5, '2018-04-21 01:37:41');
 
 -- --------------------------------------------------------
 
@@ -140,7 +133,110 @@ INSERT INTO `chaplain_actions` (`id`, `fkUser`, `chaplainName`, `actionType`, `t
 (54, 6, 'Robert P. Taylor', 0, '2018-04-19 15:23:20'),
 (55, 6, 'Mario', 2, '2018-04-19 15:27:35'),
 (56, 5, 'George S.Renz', 0, '2018-04-19 17:40:01'),
-(57, 5, 'John P. Washington', 5, '2018-04-19 17:41:34');
+(57, 5, 'John P. Washington', 5, '2018-04-19 17:41:34'),
+(58, 5, 'BigD McGee', 0, '2018-04-20 04:31:11'),
+(59, 9, 'Herman G. Felhoelter', 0, '2018-04-20 04:31:49'),
+(60, 9, 'John Johnson', 1, '2018-04-20 04:33:09'),
+(61, 5, 'William R. Arnold', 0, '2018-04-20 15:32:52'),
+(62, 5, 'William R. Arnold', 3, '2018-04-20 15:37:01'),
+(63, 10, 'Connor Rudy', 0, '2018-04-20 15:56:49'),
+(64, 10, 'John Johnson', 1, '2018-04-20 15:58:07'),
+(65, 5, 'Rabbi Alexander D. Goode', 0, '2018-04-20 16:22:08'),
+(66, 5, 'Rabbi Alexander D. Goode', 3, '2018-04-20 16:23:29'),
+(67, 5, 'Rabbi Alexander D. Goode', 3, '2018-04-20 16:24:09'),
+(68, 5, 'Somya Malasri', 0, '2018-04-20 17:05:01'),
+(69, 5, 'Somya Malasri', 3, '2018-04-20 17:05:44'),
+(70, 5, 'Somya Malasri', 3, '2018-04-20 17:06:11'),
+(71, 5, 'Joseph T. O\'Callahan', 4, '2018-04-20 17:08:20'),
+(72, 5, 'Joseph T. O\'Callahan', 4, '2018-04-20 17:08:34'),
+(73, 5, 'Steve Jordanson', 0, '2018-04-20 18:28:05'),
+(74, 5, 'Joseph T. O\'Callahan', 3, '2018-04-20 18:28:52'),
+(75, 5, 'William R. Arnold', 0, '2018-04-20 18:45:32'),
+(76, 5, 'William Addison', 0, '2018-04-20 19:01:06'),
+(77, 5, 'William Addison', 3, '2018-04-20 19:01:33'),
+(78, 5, 'William Addison', 3, '2018-04-20 19:02:07'),
+(79, 5, 'Divya Antho', 3, '2018-04-20 19:02:49'),
+(80, 5, 'John Man', 0, '2018-04-20 19:13:36'),
+(81, 5, 'John P. Washington', 1, '2018-04-20 19:14:43'),
+(82, 5, 'Ruth L. Kinzeler ', 0, '2018-04-20 20:05:39'),
+(83, 5, 'Ruth L. Kinzeler ', 3, '2018-04-20 20:07:46'),
+(84, 5, 'Ruth L. Kinzeler ', 3, '2018-04-20 20:08:43'),
+(85, 5, 'George L. Fox', 1, '2018-04-20 20:12:03'),
+(86, 5, 'George L. Fox', 1, '2018-04-20 20:12:28'),
+(87, 5, 'George L. Fox', 4, '2018-04-20 20:13:10'),
+(88, 5, 'Charles Symons', 0, '2018-04-20 21:03:38'),
+(89, 5, 'John Man', 1, '2018-04-20 21:06:53'),
+(90, 11, 'Johannes Maria Assmann', 0, '2018-04-20 21:22:31'),
+(91, 5, 'Arun Antho', 3, '2018-04-20 21:38:16'),
+(92, 5, 'Ivan Neill', 0, '2018-04-21 01:37:41'),
+(93, 5, 'Ivan Neill', 3, '2018-04-21 01:59:58'),
+(94, 5, 'Ivan Neill', 3, '2018-04-21 02:01:24'),
+(95, 5, 'John Johnson', 3, '2018-04-21 02:05:01'),
+(96, 5, 'Divya Antho', 4, '2018-04-21 02:06:16'),
+(97, 5, 'Judah Nadich', 0, '2018-04-21 04:39:06'),
+(98, 5, 'John Doe', 3, '2018-04-21 04:41:55'),
+(99, 1, 'Herman Felhoelter', 3, '2018-04-23 23:42:48'),
+(100, 1, 'Herman Felhoelter', 5, '2018-04-23 23:42:51'),
+(101, 1, 'John P. Washington', 3, '2018-04-23 23:49:05'),
+(102, 1, 'John P. Washington', 5, '2018-04-25 14:57:41'),
+(103, 1, 'Joseph T. O\'Callahan', 4, '2018-04-25 14:58:49'),
+(104, 1, 'Aloysius H. Schmitt ', 3, '2018-04-25 15:00:05'),
+(105, 1, 'Aloysius H. Schmitt ', 4, '2018-04-25 15:02:39'),
+(106, 1, 'Arun Antho', 2, '2018-04-25 15:03:54'),
+(107, 1, 'Divya Antho', 2, '2018-04-25 15:04:26'),
+(108, 1, 'Johannes Maria Assmann', 4, '2018-04-25 15:05:57'),
+(109, 1, 'Johannes Maria Assmann', 2, '2018-04-25 15:06:26'),
+(110, 1, 'John Johnson', 2, '2018-04-25 15:06:34'),
+(111, 1, 'George S. Rentz', 1, '2018-04-25 15:07:16'),
+(112, 1, 'George S. Rentz', 3, '2018-04-25 15:07:51'),
+(113, 1, 'George S. Rentz', 3, '2018-04-25 15:09:29'),
+(114, 1, 'George S. Rentz', 3, '2018-04-25 15:11:51'),
+(115, 1, 'George S. Rentz', 4, '2018-04-25 15:12:24'),
+(116, 1, 'Franz Justus Rarkowski', 1, '2018-04-25 15:17:22'),
+(117, 1, 'Franz Justus Rarkowski', 4, '2018-04-25 15:21:01'),
+(118, 1, 'Franz Justus Rarkowski', 3, '2018-04-25 15:22:35'),
+(119, 1, 'Franz Justus Rarkowski', 1, '2018-04-25 15:22:43'),
+(120, 1, 'Franz Justus Rarkowski', 3, '2018-04-25 15:23:23'),
+(121, 1, 'Franz Justus Rarkowski', 1, '2018-04-25 15:23:53'),
+(122, 1, 'John P. Washington', 1, '2018-04-25 15:24:24'),
+(123, 1, 'Joseph T. O\'Callahan', 2, '2018-04-25 15:24:34'),
+(124, 1, 'George L. Fox', 1, '2018-04-25 15:25:07'),
+(125, 1, 'Edwin J. Kozak', 1, '2018-04-25 15:27:42'),
+(126, 1, 'Edwin J. Kozak', 3, '2018-04-25 15:28:44'),
+(127, 1, 'Edwin J. Kozak', 3, '2018-04-25 15:29:16'),
+(128, 1, 'Edwin J. Kozak', 1, '2018-04-25 15:29:37'),
+(129, 1, 'Edwin J. Kozak', 3, '2018-04-25 15:30:15'),
+(130, 1, 'Franz Justus Rarkowski', 2, '2018-04-25 15:30:36'),
+(131, 1, 'John Doe', 2, '2018-04-25 15:30:55'),
+(132, 1, 'Joseph T. O\'Callahan', 2, '2018-04-25 15:31:04'),
+(133, 1, 'William Kelt', 2, '2018-04-25 15:31:22'),
+(134, 1, 'Charles I. Carpenter ', 3, '2018-04-25 15:32:07'),
+(135, 1, 'Charles I. Carpenter ', 3, '2018-04-25 15:33:06'),
+(136, 1, 'Charles I. Carpenter ', 3, '2018-04-25 15:33:48'),
+(137, 1, 'Charles I. Carpenter ', 3, '2018-04-25 15:34:13'),
+(138, 1, 'Charles I. Carpenter ', 3, '2018-04-25 15:34:45'),
+(139, 1, 'Robert P. Taylor', 3, '2018-04-25 15:35:17'),
+(140, 1, 'Robert P. Taylor', 3, '2018-04-25 15:36:01'),
+(141, 1, 'Robert P. Taylor', 3, '2018-04-25 15:36:30'),
+(142, 1, 'Robert P. Taylor', 3, '2018-04-25 15:37:22'),
+(143, 1, 'George S.Renz', 2, '2018-04-25 15:38:12'),
+(144, 1, 'BigD McGee', 2, '2018-04-25 15:38:42'),
+(145, 1, 'Herman G. Felhoelter', 2, '2018-04-25 15:39:21'),
+(146, 1, 'Judah Nadich', 2, '2018-04-25 15:39:37'),
+(147, 1, 'Ivan Neill', 4, '2018-04-25 15:40:19'),
+(148, 1, 'Ivan Neill', 4, '2018-04-25 15:40:26'),
+(149, 1, 'Johannes Maria Assmann', 2, '2018-04-25 15:40:38'),
+(150, 1, 'Charles Symons', 2, '2018-04-25 15:40:45'),
+(151, 1, 'Ruth Louise Kinzeler ', 1, '2018-04-25 15:41:57'),
+(152, 1, 'Ruth Louise Kinzeler ', 3, '2018-04-25 15:42:16'),
+(153, 1, 'John Man', 2, '2018-04-25 15:42:25'),
+(154, 1, 'William Addison', 2, '2018-04-25 15:42:32'),
+(155, 1, 'William R. Arnold', 2, '2018-04-25 15:42:39'),
+(156, 1, 'Steve Jordanson', 2, '2018-04-25 15:42:44'),
+(157, 1, 'Somya Malasri', 2, '2018-04-25 15:42:53'),
+(158, 1, 'Alexander D. Goode', 1, '2018-04-25 15:43:22'),
+(159, 1, 'Connor Rudy', 2, '2018-04-25 15:43:37'),
+(160, 1, 'William R. Arnold', 2, '2018-04-25 15:43:44');
 
 -- --------------------------------------------------------
 
@@ -164,7 +260,9 @@ INSERT INTO `following` (`id`, `fkFollower`, `fkFollowed`) VALUES
 (4, 1, 4),
 (5, 4, 1),
 (6, 2, 3),
-(7, 5, 1);
+(7, 5, 1),
+(8, 1, 6),
+(9, 1, 7);
 
 -- --------------------------------------------------------
 
@@ -192,7 +290,9 @@ INSERT INTO `following_actions` (`id`, `fkFollower`, `fkFollowed`, `actionType`,
 (5, 1, 4, 0, '2018-04-14 02:04:46'),
 (6, 4, 1, 0, '2018-04-14 02:16:20'),
 (7, 2, 3, 0, '2018-04-14 03:02:32'),
-(8, 5, 1, 0, '2018-04-18 23:44:53');
+(8, 5, 1, 0, '2018-04-18 23:44:53'),
+(9, 1, 6, 0, '2018-04-25 14:55:57'),
+(10, 1, 7, 0, '2018-04-25 14:56:04');
 
 -- --------------------------------------------------------
 
@@ -229,20 +329,53 @@ INSERT INTO `timeline_entries` (`id`, `chaplain_id`, `title`, `year`, `descripti
 (14, 3, 'Ordain', 1935, 'Ordained on December 8th, 1935', 3, '2018-03-30 17:59:09'),
 (15, 3, 'Graduation', 1932, 'Graduate from Columbia College in 1932', 3, '2018-03-30 18:02:25'),
 (16, 13, 'Attacked England', 1044, 'and lost', 0, '2018-04-14 03:03:41'),
-(17, 17, 'Birth', 1833, 'Was born on August 26, 1833 in Branice, Poland', 0, '2018-04-16 15:26:10'),
+(17, 17, 'Born', 1833, 'Was born on August 26, 1833 in Branice, Poland', 0, '2018-04-16 15:26:10'),
 (18, 17, 'Death', 1903, 'Died on May 27, 1903 in Ahrweiler, Germany', 0, '2018-04-16 15:26:37'),
 (19, 1, 'Born', 1908, 'Born as one of seven children to Irish immigrants Frank and Mary Washington in Newark, New Jersey.', 0, '2018-04-17 03:25:34'),
 (20, 20, 'Associate of President', 1935, 'He was a former associate of President Paul von Hindenburg, and Ambassador Diego von Bergen was informed in July 1935 that he was the favored candidate of the Nazi Party. Rarkowski had not graduated from high school, but was admitted to study theology for the priesthood in Switzerland, where he left his religious order.', 0, '2018-04-17 16:02:23'),
 (21, 20, 'Died', 1950, 'Franz died peaceful in 1950 shortly after the second world war ended. He was 76 when he passed away.', 0, '2018-04-17 16:03:15'),
 (22, 15, 'officer', 1935, 'fought in famous war battle.', 0, '2018-04-17 16:06:48'),
-(23, 21, 'Birth', 1900, 'Lt. George L. Fox was born in Lewistown, PA', 0, '2018-04-17 20:27:22'),
+(23, 21, 'Birth', 1901, 'Lt. George L. Fox was born in Lewistown, PA', 0, '2018-04-17 20:27:22'),
 (24, 21, 'Death', 1943, 'Lt. Fox died on the SS Dorchester with his fellow chaplains', 0, '2018-04-17 20:28:16'),
 (25, 23, 'Ordained', 1939, 'Felhoelter was ordained in 1939.', 0, '2018-04-18 15:40:33'),
 (26, 23, 'Died during Battle', 1950, 'Felhoelter died in the Battle of Taejon in July of 1950 in North Korea.', 0, '2018-04-18 15:42:22'),
-(27, 2, 'Retired', 1953, 'O\'Callahan retired in 1953 with the rank of Captain', 0, '2018-04-18 15:47:01'),
+(27, 2, 'Retired', 1953, 'He retired in 1953 as a Captain.', 0, '2018-04-18 15:47:01'),
 (28, 28, 'Born', 1905, 'Born on May 14th, 1905 in Boston, MA.', 0, '2018-04-18 20:46:07'),
 (29, 28, 'Appointed Lieutenant, J.G. in the Chaplain Corps of the U.S. Navy Reserve', 1940, 'Appointed Lieutenant, J.G. in the Chaplain Corps of the U.S. Navy Reserve on August 7, 1940.', 0, '2018-04-18 20:47:08'),
-(31, 20, 'Warren', 1979, 'Born on August the 12th', 0, '2018-04-18 23:44:14');
+(31, 20, 'Born', 1873, 'Born June 8, 1873', 0, '2018-04-18 23:44:14'),
+(32, 35, 'Born', 1881, 'William was born to Augustine Adam and Catherine Mary (nÃ©e Dalton) Arnold.', 0, '2018-04-20 15:37:01'),
+(33, 37, 'Born', 1911, 'Was born in Brooklyn', 0, '2018-04-20 16:23:29'),
+(34, 37, 'Death', 1942, 'From a torpedo', 0, '2018-04-20 16:24:09'),
+(35, 38, 'Captain', 1925, 'He earned the rank of Captain.', 0, '2018-04-20 17:05:44'),
+(36, 38, 'Army', 1910, 'He enlisted in the army.', 0, '2018-04-20 17:06:11'),
+(37, 2, 'Born', 1905, 'Born May 14, 1905 in Boston, Massachusetts.', 0, '2018-04-20 18:28:52'),
+(38, 16, 'Supposed Event', 1920, 'There could be one.', 0, '2018-04-20 19:02:49'),
+(39, 43, 'boarded the USAT â€œThomas H. Barryâ€ ', 1942, 'Our roommates are Jane Ingram and Gladys Hanes. Unpacked handbags. Dinner at 1830 hours. Arranged our bath schedule then tried to go on deck with no success. We visited around a bit, then went to bed at 2230.', 0, '2018-04-20 20:07:46'),
+(40, 43, 'Mustered Out', 1945, 'Ruth was honorably discharged from the United States Army in September 1945. After leaving the service, she attended â€œCase Western Reserve Universityâ€ and graduated from the â€œFrances Payne Bolton School of Nursingâ€ in 1947 with a Bachelor of Science in Nursing.', 0, '2018-04-20 20:08:43'),
+(41, 15, 'Test', 1999, 'Test event', 0, '2018-04-20 21:38:16'),
+(42, 46, 'Birth', 1912, 'Neill was born on 10 July 1912 at the Templeharry rectory in County Tipperary, Ireland.', 0, '2018-04-21 01:59:58'),
+(43, 46, 'Death', 2001, 'Neill died on 18 June 2001.', 0, '2018-04-21 02:01:24'),
+(44, 18, 'Birth', 1908, 'John Johnson was born to Joanna Johnson and Johnny Johnson (Sr.) in Johnsonville.', 0, '2018-04-21 02:05:01'),
+(45, 27, 'World War II', 1939, 'War started in Europe', 0, '2018-04-21 04:41:55'),
+(48, 3, 'Born', 1909, 'Born December 4, 1909 in St. Lucas Iowa', 0, '2018-04-25 15:00:05'),
+(49, 19, 'Born', 1882, 'Born on March 1, 1882 in Lebanon, Pennsylvania.', 0, '2018-04-25 15:07:51'),
+(50, 19, 'Died', 1942, 'February 4, 1942 his ship sank during a Japanese Attack. He gave his life helping other crew members stay calm and survive.', 0, '2018-04-25 15:09:29'),
+(51, 19, 'Graduated College', 1903, 'Graduated from Gettysburg College Class of 1903.', 0, '2018-04-25 15:11:51'),
+(52, 20, 'Consecrated', 1938, 'On Febraury 29, 1938 he was consecrated as episcopus castrensis, which translates to Field Bisop of the German Army', 0, '2018-04-25 15:22:35'),
+(53, 20, 'End of Term', 1945, 'On February 1, 1945 his term ended.', 0, '2018-04-25 15:23:23'),
+(54, 24, 'First Jump', 1943, 'Jumped in both the Sicilian and Italian Invasions and recieved the Bronze Star with oak leaf cluster for meritorious service from Fifth Army Headquarters.', 0, '2018-04-25 15:28:44'),
+(55, 24, 'Died', 1980, 'Died on Febraury 4, 1980', 0, '2018-04-25 15:29:16'),
+(56, 24, 'Born', 1911, 'Born August 24, 1911 in Baltamore, Maryland.', 0, '2018-04-25 15:30:15'),
+(57, 30, 'Born', 1906, 'Born on January 13, 1906 in Wilmington, Delaware.', 0, '2018-04-25 15:32:07'),
+(58, 30, 'Joined the Army', 1936, 'He joined the United States Army in 1936 and was assigned to Fort H. G. Wright.', 0, '2018-04-25 15:33:06'),
+(59, 30, 'Reassigned', 1942, 'He was assigned to the Pentagon to establish chaplaincy work in the United States Army Air Forces.', 0, '2018-04-25 15:33:48'),
+(60, 30, 'Promotion', 1948, 'Named the first Chief of Chaplains.', 0, '2018-04-25 15:34:13'),
+(61, 30, 'Died', 1994, 'Died on Febraury 22, 1994.', 0, '2018-04-25 15:34:45'),
+(62, 31, 'Born', 1909, 'Born April 11, 1909 in Henderson, Texas', 0, '2018-04-25 15:35:17'),
+(63, 31, 'Promotion', 1962, 'Began his tenure as Chief of Chaplains on Septermber 1, 1962', 0, '2018-04-25 15:36:01'),
+(64, 31, 'Retired', 1966, 'Retired from Chief of Chaplains on August 1, 1966.', 0, '2018-04-25 15:36:30'),
+(65, 31, 'Died', 1997, 'Died on February 1, 1997.', 0, '2018-04-25 15:37:22'),
+(66, 43, 'Died', 1994, 'Died in 1994', 0, '2018-04-25 15:42:16');
 
 -- --------------------------------------------------------
 
@@ -270,11 +403,11 @@ INSERT INTO `users` (`id`, `username`, `password`, `email`, `date_created`, `fir
 (1, 'djo96', 'bojanglers18', 'djo96@vt.edu', '2018-03-29 15:54:18', 'Daniel', 'Ocheltree', 2, 2),
 (2, 'bgregos', 'bojanglers18', 'bgregos@vt.edu', '2018-03-29 15:54:51', '', '', 2, NULL),
 (3, 'jpark96', 'bojanglers18', 'jpark96@vt.edu', '2018-03-30 02:13:49', NULL, NULL, 2, NULL),
-(4, 'parker45', 'bojanglers18', 'parker45@vt.edu', '2018-03-30 17:44:48', 'Parker', 'Irving', 0, 3),
-(5, 'mturk', 'cs3744s18', 'mturk@gmail.com', '2018-04-14 02:03:58', 'm', 'turk', 0, 2),
+(4, 'parker45', 'bojanglers18', 'parker45@vt.edu', '2018-03-30 17:44:48', 'Parker', 'Irving', 2, 3),
+(5, 'mturk', 'cs3744s18!', '', '2018-04-14 02:03:58', NULL, NULL, 0, 2),
 (6, 'emilys97', 'bojanglers18', 'emilys97@vt.edu', '2018-04-14 02:05:47', 'Emily ', 'Stewart', 2, 2),
 (7, 'grader', 'bojanglers18', 'grader@vt.edu', '2018-04-14 02:07:06', 'Grader', 'Grader', 2, 2),
-(8, 'mario', 'luigisucks', 'mario@me.com', '2018-04-18 19:02:00', 'Mario', 'Plumber', 0, 0);
+(10, 'cmrudy', 'cs09', 'cmrudy@vt.edu', '2018-04-20 15:55:42', 'Connor', 'Rudy', 0, 2);
 
 --
 -- Indexes for dumped tables
@@ -333,37 +466,37 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `chaplains`
 --
 ALTER TABLE `chaplains`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=48;
 
 --
 -- AUTO_INCREMENT for table `chaplain_actions`
 --
 ALTER TABLE `chaplain_actions`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=58;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=161;
 
 --
 -- AUTO_INCREMENT for table `following`
 --
 ALTER TABLE `following`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `following_actions`
 --
 ALTER TABLE `following_actions`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `timeline_entries`
 --
 ALTER TABLE `timeline_entries`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=67;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
